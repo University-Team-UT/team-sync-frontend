@@ -1,0 +1,10 @@
+{
+	// Required in vscode-eslint < v3.0.10 only
+	"eslint.useFlatConfig": true,
+	"files.associations": {
+		"*.css": "tailwindcss"
+	},
+	"editor.quickSuggestions": {
+		"strings": "on"
+	}
+}
