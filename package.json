@@ -30,6 +30,7 @@
 		"vue-router": "^4.5.0"
 	},
 	"devDependencies": {
+		"@iconify-json/lucide": "^1.2.29",
 		"@trivago/prettier-plugin-sort-imports": "^5.2.2",
 		"typescript": "^5.8.2"
 	}
