@@ -40,22 +40,23 @@ export default defineNuxtConfig({
 		]
 	},
 	i18n: {
+		vueI18n: 'i18n.config.ts',
 		lazy: true,
 		strategy: 'prefix',
-		langDir: 'locales',
+		langDir: 'locales/',
 		defaultLocale: 'ru',
 		locales: [
 			{
 				code: 'ru',
 				iso: 'ru-RU',
 				name: 'Русский',
-				file: 'ru.json'
+				file: 'ru.ts'
 			},
 			{
 				code: 'en',
 				iso: 'en-US',
 				name: 'English',
-				file: 'en.json'
+				file: 'en.ts'
 			}
 		]
 	},
