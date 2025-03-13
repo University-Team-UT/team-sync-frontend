@@ -5,6 +5,9 @@ declare module 'vue-i18n' {
 		welcome: string
 		hello: string
 		search: string
-		invite: string
+		invite: {
+			index: string
+			title: string
+		}
 	}
 }

@@ -2,5 +2,8 @@ export default defineI18nLocale(() => ({
 	welcome: 'Добро пожаловать',
 	hello: 'Привет',
 	search: 'Поиск',
-	invite: 'Пригласить людей'
+	invite: {
+		index: 'Пригласить людей',
+		title: '123'
+	}
 }))
