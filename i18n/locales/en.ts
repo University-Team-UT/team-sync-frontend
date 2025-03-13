@@ -4,6 +4,16 @@ export default defineI18nLocale(() => ({
 	search: 'Search',
 	invite: {
 		index: 'Invite people',
-		title: 'fuc'
+		title: 'Invite people to your workspace',
+		description: 'Your teammates get a link to the project and work with you',
+		tabs: {
+			team: 'Team member',
+			guest: 'Guests',
+			content: {
+				title: 'Invite link',
+				tooltip:
+					'Users who follow this link will be automatically attached to the workspace'
+			}
+		}
 	}
 }))
