@@ -1,5 +1,7 @@
 export default defineI18nLocale(() => ({
 	welcome: 'Welcome',
 	hello: 'Hello',
-	search: 'Search'
+	search: 'Search',
+	invite: 'Invite people',
+	
 }))
