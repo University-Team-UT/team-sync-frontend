@@ -1,4 +1,5 @@
 export default defineI18nLocale(() => ({
 	welcome: 'Добро пожаловать',
-	hello: 'Привет'
+	hello: 'Привет',
+	search: 'Поиск'
 }))

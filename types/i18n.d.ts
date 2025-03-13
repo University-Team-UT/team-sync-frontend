@@ -4,5 +4,6 @@ declare module 'vue-i18n' {
 	export interface DefineLocaleMessage {
 		welcome: string
 		hello: string
+		search: string
 	}
 }
