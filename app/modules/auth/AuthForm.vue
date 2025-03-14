@@ -8,7 +8,10 @@ const { t } = useI18n()
 	<AppLogo />
 	<div class="flex flex-col gap-5 justify-center text-center py-10">
 		<span>{{ t('auth.index') }}</span>
-		<AuthProviderButton />
+		<AuthProviderButton
+			:name="t('auth.providers.yandex')"
+			image-src="~/assets/images/yandex.png"
+		/>
 		<UButton class="flex justify-center text-white bg-root-900"
 			><img src="/assets/images/yandex.png" alt="Yandex" />
 			<span>{{ t('auth.providers.yandex') }}</span>

@@ -4,8 +4,8 @@ export default defineI18nLocale(() => ({
 	auth: {
 		index: 'Login or Register with',
 		providers: {
-			yandex: 'Login with Yandex',
-			vk: 'Login with Vk',
+			yandex: 'Login with Yandex ID',
+			vk: 'Login with VK',
 			email: 'Continue with Email'
 		},
 		or: 'Or',

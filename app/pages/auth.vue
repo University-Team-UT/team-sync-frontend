@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import AuthForm from '~/modules/auth/AuthForm.vue'
 
+
 //TODO input поменять
 </script>
 

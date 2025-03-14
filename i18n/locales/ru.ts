@@ -5,7 +5,7 @@ export default defineI18nLocale(() => ({
 		index: 'Войти или зарегистрироваться с',
 		providers: {
 			yandex: 'Войти с Яндекс ID',
-			vk: 'Войти через Vk',
+			vk: 'Войти через VK',
 			email: 'Продолжить с Email'
 		},
 		or: 'Или',
