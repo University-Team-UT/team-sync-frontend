@@ -2,7 +2,7 @@
 
 <template>
 	<div>
-		<img src="public/img/image 1.png" alt="Background" />
+		<img src="public/img/image 1.png" alt="Background">
 	</div>
 </template>
 
