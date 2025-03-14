@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import AuthProviderButton from './AuthProviderButton.vue'
-
 const { t } = useI18n()
 </script>
 
@@ -10,20 +8,8 @@ const { t } = useI18n()
 		<span>{{ t('auth.index') }}</span>
 		<AuthProviderButton
 			:name="t('auth.providers.yandex')"
-			image-src="~/assets/images/yandex.png"
+			image-src="/img/yandex.png"
 		/>
-		<UButton class="flex justify-center text-white bg-root-900"
-			><img src="/assets/images/yandex.png" alt="Yandex" />
-			<span>{{ t('auth.providers.yandex') }}</span>
-		</UButton>
-		<UButton class="flex justify-center text-white bg-root-900"
-			><img src="/assets/images/vk.png" alt="Yandex" />
-			<span>{{ t('auth.providers.vk') }}</span>
-		</UButton>
-		<UButton class="flex justify-center text-white bg-root-900"
-			><img src="/assets/images/email.png" alt="Yandex" />
-			<span>{{ t('auth.providers.email') }}</span>
-		</UButton>
 	</div>
 	<div>
 		<USeparator
