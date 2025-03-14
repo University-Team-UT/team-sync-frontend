@@ -62,17 +62,23 @@ const items = ref([
 								</UTooltip>
 								<USwitch default-value size="sm" />
 							</div>
-							<div class="grid gap-[10%] grid-cols-[70%_20%]">
-								<UInput
-									trailing-icon="lucide:files"
-									:placeholder="t('invite.link')"
-									size="lg"
-									class="w-full"
-									variant="soft"
-								/>
-								<UButton color="primary" variant="link">{{
-									t('invite.copy')
-								}}</UButton>
+							<div class="flex gap-5 justify-between">
+								<UButtonGroup class="w-full">
+									<UInput
+										color="neutral"
+										variant="soft"
+										:placeholder="t('invite.link')"
+										class="w-full"
+									/>
+
+									<UButton color="neutral" variant="soft" icon="lucide-files" />
+								</UButtonGroup>
+								<UButton
+									color="primary"
+									class="font-bold self-center px-7"
+									size="sm"
+									>{{ t('invite.copy') }}</UButton
+								>
 							</div>
 						</div>
 					</template>
@@ -84,7 +90,12 @@ const items = ref([
 			<template #footer>
 				<div class="flex flex-col w-full gap-4">
 					<div class="flex gap-8">
-						<UInput :placeholder="t('invite.footer.mail')" size="lg" class="w-full" variant="soft"/>
+						<UInput
+							:placeholder="t('invite.footer.mail')"
+							size="lg"
+							class="w-full"
+							variant="soft"
+						/>
 						<UPopover
 							:content="{
 								align: 'end',
@@ -145,7 +156,9 @@ const items = ref([
 											class="col-span-6 flex flex-col items-start p-2 rounded-lg gap-1"
 										>
 											<H1 class="text-root-100">Участник </H1>
-											<p class="text-root-600 text-xs">Работает и может приглашать других</p>
+											<p class="text-root-600 text-xs">
+												Работает и может приглашать других
+											</p>
 										</div>
 									</div>
 								</Placeholder>
@@ -153,10 +166,24 @@ const items = ref([
 						</UPopover>
 						<UButton icon="lucide:x" color="neutral" variant="link" />
 					</div>
-					 <UButton icon="lucide:circle-fading-plus" size="md" class="text-root-400" variant="link">{{ t('invite.footer.more') }}</UButton>
+					<UButton
+						icon="lucide:circle-fading-plus"
+						size="md"
+						class="text-root-400"
+						variant="link"
+						>{{ t('invite.footer.more') }}</UButton
+					>
 					<div class="flex justify-end w-full gap-2">
-						<UButton color="primary" :label="t('invite.footer.cancel')" variant="outline" />
-						<UButton color="primary" :label="t('invite.footer.send')" variant="ghost" />
+						<UButton
+							color="primary"
+							:label="t('invite.footer.cancel')"
+							variant="outline"
+						/>
+						<UButton
+							color="primary"
+							:label="t('invite.footer.send')"
+							variant="ghost"
+						/>
 					</div>
 				</div>
 			</template>
