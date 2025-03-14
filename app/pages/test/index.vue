@@ -2,8 +2,6 @@ import { useI18n } from 'vue-i18n';
 <script lang="ts" setup>
 import { useI18n, useLocalePath } from '#imports'
 
-import { ROUTES } from '~/shared/config/routes'
-
 definePageMeta({
 	layout: 'test'
 })
