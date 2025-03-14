@@ -24,10 +24,11 @@ export default defineI18nLocale(() => ({
 			role: 'Участник',
 			more: 'Добавить ещё',
 			cancel: 'Отмена',
-			send:'Пригласить людей'
-
+			send: 'Пригласить людей'
 		}
 	},
+	auth: {
+		index: 'Войти или зарегистрироваться с',
 		providers: {
 			yandex: 'Войти с Яндекс ID',
 			vk: 'Войти через VK',
