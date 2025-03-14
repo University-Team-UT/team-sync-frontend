@@ -98,7 +98,7 @@ export default defineNuxtConfig({
 		ui: {
 			button: {
 				slots: {
-					base: 'cursor-pointer'
+					base: 'cursor-pointer rounded-xl'
 				}
 			},
 			colors: {
