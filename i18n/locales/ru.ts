@@ -1,6 +1,5 @@
 export default defineI18nLocale(() => ({
 	welcome: 'Добро пожаловать',
-	hello: 'Привет',
 	search: 'Поиск',
 	invite: {
 		index: 'Пригласить людей',
@@ -27,6 +26,20 @@ export default defineI18nLocale(() => ({
 			cancel: 'Отмена',
 			send:'Пригласить людей'
 
+		}
+	},
+		providers: {
+			yandex: 'Войти с Яндекс ID',
+			vk: 'Войти через VK',
+			email: 'Продолжить с Email'
+		},
+		or: 'Или',
+		inputs: {
+			email: 'Введите ваш Email'
+		},
+		buttons: {
+			continue: 'Продолжить',
+			help: 'Нужна помощь?'
 		}
 	}
 }))

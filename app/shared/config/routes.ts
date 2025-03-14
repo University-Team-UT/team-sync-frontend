@@ -1,3 +1,5 @@
-export const ROUTES = {}
- 
+export const ROUTES = {
+	AUTH: '/auth'
+}
+
 export type AppRoutes = typeof ROUTES
