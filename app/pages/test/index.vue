@@ -1,5 +1,7 @@
 import { useI18n } from 'vue-i18n';
 <script lang="ts" setup>
+import { useI18n, useLocalePath } from '#imports'
+
 definePageMeta({
 	layout: 'test'
 })
@@ -7,6 +9,8 @@ definePageMeta({
 const { ui } = useAppConfig()
 
 const { t } = useI18n()
+
+const localPath = useLocalePath()
 
 const setTheme = (color: string) => {
 	ui.colors.primary = color
@@ -17,6 +21,7 @@ const setTheme = (color: string) => {
 	<div class="bg-root-950">
 		<NuxtLink to="/" class="">{{ t('welcome') }}</NuxtLink>
 		<NuxtLink to="/" class="">{{ t('hello') }}</NuxtLink>
+		<NuxtLink :to="localPath('/auth')" class="">{{ t('Sign In') }}</NuxtLink>
 		<UButton @click="setTheme('red')">Красный</UButton>
 		<UButton @click="setTheme('green')">Зелёный</UButton>
 		<UButton @click="setTheme('blue')">Синий</UButton>
