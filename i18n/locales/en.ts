@@ -5,7 +5,11 @@ export default defineI18nLocale(() => ({
 	invite: {
 		index: 'Invite people',
 		title: 'Invite people to your workspace',
-		description: 'Your teammates get a link to the project and work with you',
+		description:
+			'Your teammates get a link to the project and will be able to work with you',
+		link: 'The text to copy has not been generated yet',
+		copy: 'Copy',
+
 		tabs: {
 			team: 'Team member',
 			guest: 'Guests',
@@ -14,6 +18,14 @@ export default defineI18nLocale(() => ({
 				tooltip:
 					'Users who follow this link will be automatically attached to the workspace'
 			}
+		},
+
+		footer: {
+			mail: 'Mail...',
+			role: 'Participant',
+			more: 'Add more',
+			cancel: 'Cancel',
+			send: 'Invite people'
 		}
 	}
 }))
