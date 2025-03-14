@@ -20,5 +20,24 @@ declare module 'vue-i18n' {
 				help: string
 			}
 		}
+		invite: {
+			index: string
+			title: string
+			description: string
+			link: string
+			copy: string
+			tabs: {
+				team: string
+				guest: string
+				tooltip: string
+			}
+			footer: {
+				mail: string
+				role: string
+				more: string
+				cancel: string
+				send: string
+			}
+		}
 	}
 }
