@@ -21,7 +21,9 @@ import AuthForm from '~/modules/auth/components/AuthForm.vue'
 					<AuthForm />
 				</div>
 			</div>
-			<div class="bg-red-950 w-full h-"></div>
+			<div>
+				<img src="/assets/images/background-image.png" class="h-full" alt="" />
+			</div>
 		</div>
 	</div>
 </template>

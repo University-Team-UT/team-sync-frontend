@@ -10,6 +10,14 @@ const { t } = useI18n()
 			:name="t('auth.providers.yandex')"
 			image-src="/img/yandex.png"
 		/>
+		<AuthProviderButton
+			:name="t('auth.providers.vk')"
+			image-src="/img/vk.png"
+		/>
+		<AuthProviderButton
+			:name="t('auth.providers.email')"
+			image-src="/img/email.png"
+		/>
 	</div>
 	<div>
 		<USeparator
