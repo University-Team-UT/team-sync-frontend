@@ -19,6 +19,10 @@ declare module 'vue-i18n' {
 				continue: string
 				help: string
 			}
+			alert: {
+				title: string
+				description: string
+			}
 		}
 		invite: {
 			index: string

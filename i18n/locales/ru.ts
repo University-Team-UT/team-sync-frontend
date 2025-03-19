@@ -41,6 +41,10 @@ export default defineI18nLocale(() => ({
 		buttons: {
 			continue: 'Продолжить',
 			help: 'Нужна помощь?'
+		},
+		alert: {
+			title: 'Продолжить с Почтой',
+			description: 'Создайте аккаунт через электронную почту'
 		}
 	}
 }))

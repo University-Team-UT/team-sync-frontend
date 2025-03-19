@@ -14,6 +14,10 @@ export default defineI18nLocale(() => ({
 		buttons: {
 			continue: 'Continue',
 			help: 'Need help?'
+		},
+		alert: {
+			title: 'Continue with Email',
+			description: 'Create an account via email'
 		}
 	},
 	search: 'Search',

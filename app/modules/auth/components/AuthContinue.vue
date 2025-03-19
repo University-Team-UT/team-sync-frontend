@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 const emit = defineEmits(['setPageTab'])
+const { t } = useI18n()
 </script>
 
 <template>
 	<AppLogo />
 	<UAlert
 		class="text-wrap"
-		title="Продолжить с Почтой"
-		description="Создайте аккаунт через электронную почту"
-		icon="i-lucide-terminal"
+		:title="t('auth.alert.title')"
+		:description="t('auth.alert.description')"
+		icon="material-symbols:mail-outline-rounded"
 		variant="outline"
 		color="primary"
 	/>
