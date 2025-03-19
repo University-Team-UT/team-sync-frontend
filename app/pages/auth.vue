@@ -26,7 +26,7 @@ const setPageTab = (tab: PageTabType) => {
 				class="w-full flex relative flex-col h-[calc(100vh-80px)] bg-root-950 rounded-l-xl px-20 text-nowrap"
 			>
 				<div class="absolute top-5 right-5">
-					<LocaleSwitchButton />
+					<IconLanguageSwitch />
 				</div>
 				<div class="my-auto">
 					<AuthForm
