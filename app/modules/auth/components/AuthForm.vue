@@ -1,5 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n()
+
+const emit = defineEmits(['setPageTab'])
 </script>
 
 <template>
@@ -17,6 +19,7 @@ const { t } = useI18n()
 		<AuthProviderButton
 			:name="t('auth.providers.email')"
 			image-src="/img/email.png"
+			@click="emit('setPageTab', 'continue')"
 		/>
 	</div>
 	<div>

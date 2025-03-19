@@ -1,5 +1,16 @@
 <script lang="ts" setup>
 import AuthForm from '~/modules/auth/components/AuthForm.vue'
+import type { PageTabType } from '~/modules/auth/types'
+
+useHead({
+	title: 'Auth'
+})
+
+const currentPageTab = ref<PageTabType>('start')
+
+const setPageTab = (tab: PageTabType) => {
+	currentPageTab.value = tab
+}
 
 //TODO input поменять
 </script>
@@ -18,14 +29,35 @@ import AuthForm from '~/modules/auth/components/AuthForm.vue'
 					<LocaleSwitchButton />
 				</div>
 				<div class="my-auto">
-					<AuthForm />
+					<AuthForm
+						v-if="currentPageTab === 'start'"
+						@set-page-tab="setPageTab"
+					/>
+					<AuthContinue
+						v-else-if="currentPageTab === 'continue'"
+						@set-page-tab="setPageTab"
+					/>
 				</div>
 			</div>
-			<div>
-				<img src="/assets/images/background-image.png" class="h-full" alt="" />
+			<div class="rounded-r-xl">
+				<img
+					src="/assets/images/background-image.png"
+					class="h-full rounded-r-xl object-cover"
+					alt="auth-background"
+				/>
 			</div>
 		</div>
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
+}
+</style>
