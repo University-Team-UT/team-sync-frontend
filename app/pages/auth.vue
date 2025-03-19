@@ -11,12 +11,12 @@ const router = useRouter()
 
 const setPageTab = (tab: PageTabType) => {
 	currentPageTab.value = tab
-	router.push({ query: { tab } })
+	router.push({ query: { step: tab } })
 }
 
 onMounted(() => {
-	if (router.currentRoute.value.query) {
-		currentPageTab.value = router.currentRoute.value.query.tab as PageTabType
+	if (router.currentRoute.value.query.step) {
+		currentPageTab.value = router.currentRoute.value.query.step as PageTabType
 	}
 })
 

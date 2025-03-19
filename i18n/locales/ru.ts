@@ -36,7 +36,11 @@ export default defineI18nLocale(() => ({
 		},
 		or: 'Или',
 		inputs: {
-			email: 'Введите ваш Email'
+			email: 'Введите ваш Email',
+			password: {
+				enter: 'Введите пароль',
+				repeat: 'Повторите пароль'
+			}
 		},
 		buttons: {
 			continue: 'Продолжить',
