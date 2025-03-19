@@ -7,10 +7,18 @@ useHead({
 })
 
 const currentPageTab = ref<PageTabType>('start')
+const router = useRouter()
 
 const setPageTab = (tab: PageTabType) => {
 	currentPageTab.value = tab
+	router.push({ query: { tab } })
 }
+
+onMounted(() => {
+	if (router.currentRoute.value.query) {
+		currentPageTab.value = router.currentRoute.value.query.tab as PageTabType
+	}
+})
 
 //TODO input поменять
 </script>
