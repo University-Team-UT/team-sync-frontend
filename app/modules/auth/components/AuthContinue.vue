@@ -1,14 +1,16 @@
 <script lang="ts" setup>
-import BackIcon from '~/shared/icons/BackIcon.vue'
-
 const emit = defineEmits(['setPageTab'])
 const { t } = useI18n()
 </script>
 
 <template>
-	<div @click="emit('setPageTab', 'start')">
-		<BackIcon />
-	</div>
+	<UButton
+		icon="lucide:arrow-left-from-line"
+		variant="link"
+		class="text-white hover:text-white/70 absolute left-3 top-3"
+		@click="emit('setPageTab', 'start')"
+	/>
+
 	<AppLogo />
 	<UAlert
 		class="text-wrap"
