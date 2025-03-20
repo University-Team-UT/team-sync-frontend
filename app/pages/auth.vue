@@ -36,7 +36,7 @@ onMounted(() => {
 				<div class="absolute top-5 right-5">
 					<IconLanguageSwitch />
 				</div>
-				<div class="my-auto">
+				<div class="my-auto h-full">
 					<AuthForm
 						v-if="currentPageTab === 'start'"
 						@set-page-tab="setPageTab"

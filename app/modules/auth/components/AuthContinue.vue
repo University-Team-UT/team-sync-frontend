@@ -4,7 +4,7 @@ const { t } = useI18n()
 </script>
 
 <template>
-	<div class="flex flex-col h-full">
+	<div class="flex flex-col h-full justify-center">
 		<UButton
 			icon="lucide:arrow-left-from-line"
 			variant="link"
@@ -49,14 +49,12 @@ const { t } = useI18n()
 				{{ t('auth.buttons.help') }}
 			</UButton>
 		</div>
-		<div class="mt-auto">
-			<div class="flex justify-center my-5">
-				<span>{{ t('auth.bottom') }}</span>
-			</div>
-			<div class="flex justify-center gap-5">
-				<AuthProviderButton class="p-1 px-2" image-src="/img/yandex.png" />
-				<AuthProviderButton class="p-1 px-2" image-src="/img/vk.png" />
-			</div>
+		<div class="flex justify-center my-5">
+			<span>{{ t('auth.bottom') }}</span>
+		</div>
+		<div class="flex justify-center gap-5">
+			<AuthProviderButton class="p-1 px-2" image-src="/img/yandex.png" />
+			<AuthProviderButton class="p-1 px-2" image-src="/img/vk.png" />
 		</div>
 	</div>
 </template>
