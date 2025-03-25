@@ -11,6 +11,7 @@
 				пространства меняется в разделе Пользователь”</span
 			>
 		</div>
+
 		<div class="grid grid-cols-[130px_1fr] my-2">
 			<img class="py-5" width="100" src="/public/img/avatar.png" alt="logo" />
 			<div class="flex flex-col gap-1">
