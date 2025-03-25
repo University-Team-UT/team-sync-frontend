@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AddGuest from './AddGuest.vue'
 import AddParticipant from './AddParticipant.vue'
 import InviteLinkCreation from './InviteLinkCreation.vue'
 
@@ -35,7 +36,11 @@ const items = ref([
 					</div>
 				</template>
 
-				<template #guest> 2 </template>
+				<template #guest>
+					<div class="flex flex-col mt-5">		
+						<AddGuest/>
+					</div>
+				</template>
 			</UTabs>
 		</template>
 

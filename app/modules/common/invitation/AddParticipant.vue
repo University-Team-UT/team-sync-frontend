@@ -27,7 +27,7 @@ const roleItems = ref<IRoleItemProps[]>([
 <template>
 	<div class="flex gap-8">
 		<UInput
-			:placeholder="t('invite.footer.mail')"
+			:placeholder="t('invite.tabs.mail')"
 			size="lg"
 			class="w-full"
 			variant="soft"
@@ -44,7 +44,7 @@ const roleItems = ref<IRoleItemProps[]>([
 					base: 'px-6 '
 				}"
 				icon="lucide:handshake"
-				:label="t('invite.footer.role')"
+				:label="t('invite.tabs.role')"
 				color="neutral"
 				variant="soft"
 			/>
@@ -64,7 +64,7 @@ const roleItems = ref<IRoleItemProps[]>([
 		size="md"
 		class="text-root-400 self-start"
 		variant="link"
-		>{{ t('invite.footer.more') }}</UButton
+		>{{ t('invite.tabs.more') }}</UButton
 	>
 </template>
 

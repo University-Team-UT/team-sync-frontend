@@ -1,4 +1,8 @@
-import 'vue-i18n'
+import 'vue-i18n';
+
+
+
+
 
 declare module 'vue-i18n' {
 	export interface DefineLocaleMessage {
@@ -30,11 +34,11 @@ declare module 'vue-i18n' {
 				team: string
 				guest: string
 				tooltip: string
-			}
-			footer: {
 				mail: string
 				role: string
 				more: string
+			}
+			footer: {
 				cancel: string
 				send: string
 			}
