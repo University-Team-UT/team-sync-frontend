@@ -22,7 +22,7 @@ const setTheme = (color: string) => {
 		<NuxtLink to="/" class="">{{ t('welcome') }}</NuxtLink>
 		<NuxtLink to="/" class="">{{ t('hello') }}</NuxtLink>
 		<NuxtLink :to="localPath('/auth')" class="">{{ t('Sign In') }}</NuxtLink>
-		<NuxtLink :to="localPath('/settings')" class="">{{
+		<NuxtLink :to="localPath('/settings/index')" class="">{{
 			t('Settings')
 		}}</NuxtLink>
 		<UButton @click="setTheme('red')">Красный</UButton>
