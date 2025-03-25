@@ -4,7 +4,7 @@ import AppHeader from '~/modules/header/AppHeader.vue'
 
 <template>
 	<div class="flex">
-		<aside class="bg-green-400 fixed inset-y-0 w-62">1</aside>
+		<aside class=" fixed inset-y-0 w-62">1</aside>
 		<AppHeader />
 
 		<div class="flex flex-col mt-16 ml-62 w-full">

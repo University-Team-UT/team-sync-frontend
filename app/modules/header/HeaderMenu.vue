@@ -1,32 +1,48 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const headerMenuItems = [
+	{
+		icon: 'lucide:settings-2',
+		text: 'Settings'
+	},
+	{
+		icon: 'lucide:badge-help',
+		text: 'Help'
+	},
+	{
+		icon: 'lucide:bell-ring',
+		text: 'Notifications'
+	},
+	{
+		icon: 'lucide:folders',
+		text: 'Files'
+	}
+]
+</script>
 
 <template>
-	<div class="bg-root-700 flex items-center gap-2 px-2 rounded-xl h-">
-		<UButton
-			icon="lucide:search"
-			size="xl"
-			color="neutral"
-			variant="ghost"
-		/>
-		<UButton
-			icon="lucide:bell-ring"
-			size="xl"
-			color="neutral"
-			variant="ghost"
-		/>
-		<UButton
-			icon="lucide:badge-help"
-			size="xl"
-			color="neutral"
-			variant="ghost"
-		/>
-		<UButton icon="lucide:folders" size="xl" color="neutral" variant="ghost" />
-		<UButton
-			icon="lucide:chart-scatter"
-			size="xl"
-			color="neutral"
-			variant="ghost"
-		/>
+	<div class="bg-root-700 flex items-center gap-1 px-2 rounded-lg h-10">
+		<UTooltip
+			v-for="item in headerMenuItems"
+			:key="item.icon"
+			:text="item.text"
+		>
+			<UButton
+				class="hover:text-primary-400"
+				:icon="item.icon"
+				size="lg"
+				color="neutral"
+				variant="link"
+			/>
+		</UTooltip>
+		<UTooltip text="Mini-services">
+			<UButton
+				class="hover:text-primary-400"
+				icon="lucide:chart-scatter"
+				size="lg"
+				color="neutral"
+				variant="link"
+			/>
+		</UTooltip>
 	</div>
 </template>
 

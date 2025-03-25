@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import InvitationModal from '../common/invitation/InvitationModal.vue'
+
 import HeaderMenu from './HeaderMenu.vue'
 import SearchInput from '~/modules/common/search/SearchInput.vue'
 
@@ -19,7 +20,7 @@ const { t } = useI18n()
 					class="self-center py-2 px-6 size-xl h-10"
 			/></template>
 		</InvitationModal>
-		<HeaderMenu/>
+		<HeaderMenu class="my-auto"/>
 	</header>
 </template>
 
