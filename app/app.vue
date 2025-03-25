@@ -21,6 +21,7 @@ useHead({
 		}"
 		:locale="locales[locale]"
 	>
+		<AppRouterTest />
 		<NuxtLayout>
 			<NuxtPage />
 		</NuxtLayout>
