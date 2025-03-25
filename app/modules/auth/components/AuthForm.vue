@@ -5,10 +5,10 @@ const emit = defineEmits(['setPageTab'])
 </script>
 
 <template>
-	<div class="my-auto h-full flex flex-col justify-center">
+	<div class="flex flex-col h-full justify-center my-auto">
 		<AppLogo />
 
-		<div class="flex flex-col gap-5 justify-center text-center py-10">
+		<div class="flex flex-col justify-center text-center gap-5 py-10">
 			<span>{{ t('auth.index') }}</span>
 			<AuthProviderButton
 				:name="t('auth.providers.yandex')"
@@ -33,7 +33,7 @@ const emit = defineEmits(['setPageTab'])
 				}"
 			/>
 		</div>
-		<div class="flex flex-col pt-5 gap-3">
+		<div class="flex flex-col gap-3 pt-5">
 			<span>Email</span>
 			<UInput
 				:placeholder="t('auth.inputs.email')"
@@ -44,7 +44,7 @@ const emit = defineEmits(['setPageTab'])
 				{{ t('auth.buttons.continue') }}
 			</UButton>
 			<UButton
-				class="flex text-primary-400 justify-center"
+				class="flex justify-center text-primary-400"
 				variant="ghost"
 				color="primary"
 			>

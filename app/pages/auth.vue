@@ -25,18 +25,18 @@ onMounted(() => {
 
 <template>
 	<div
-		class="fixed inset-0 bg-[url(/assets/images/background-image.png)] h-screen bg-center bg-cover bg-no-repeat"
+		class="bg-[url(/assets/images/background-image.png)] bg-center bg-cover bg-no-repeat h-screen fixed inset-0"
 	>
-		<div class="absolute -z-10 inset-0 bg-black/80 backdrop-blur-md" />
+		<div class="bg-black/80 -z-10 absolute backdrop-blur-md inset-0" />
 
 		<div class="grid grid-cols-[450px_1fr] h-[calc(100vh-80px)] m-10">
 			<div
-				class="w-full relative flex flex-col h-[calc(100vh-80px)] bg-root-950 rounded-l-xl px-20 text-nowrap"
+				class="flex flex-col bg-root-950 h-[calc(100vh-80px)] rounded-l-xl text-nowrap w-full px-20 relative"
 			>
-				<div class="absolute top-5 right-5">
+				<div class="absolute right-5 top-5">
 					<IconLanguageSwitch />
 				</div>
-				<div class="my-auto h-full">
+				<div class="h-full my-auto">
 					<AuthForm
 						v-if="currentPageTab === 'start'"
 						@set-page-tab="setPageTab"
