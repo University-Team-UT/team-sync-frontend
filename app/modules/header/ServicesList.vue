@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import PopoverCard from './PopoverCard.vue'
-
 defineProps<{
 	headerMenuItems: { icon: string; text: string; isPined: boolean }[]
 }>()
@@ -14,22 +12,23 @@ defineProps<{
 			sideOffset: 10
 		}"
 	>
-		<UButton
-			class="hover:text-primary-400"
-			icon="lucide:chart-scatter"
-			size="lg"
-			color="neutral"
-			variant="link"
-		/>
+		<UTooltip text="Mini-services">
+			<UButton
+				class="hover:text-primary-400"
+				icon="lucide:chart-scatter"
+				size="lg"
+				color="neutral"
+				variant="link"
+			/>
+		</UTooltip>
+
 		<template #content>
 			<div class="grid grid-cols-3 gap-4 p-3">
-				<div
+				<ServiceItem
 					v-for="item in headerMenuItems"
 					:key="item.icon"
-					class="group bg-root-700 rounded-lg relative p-4"
-				>
-					<PopoverCard :header-menu-items="headerMenuItems" />
-				</div>
+					:item="item"
+				/>
 			</div>
 		</template>
 	</UPopover>

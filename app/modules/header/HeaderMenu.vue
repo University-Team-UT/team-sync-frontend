@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import HeaderMenuPopover from './HeaderMenuPopover.vue'
-
 const headerMenuItems = [
 	{
 		icon: 'lucide:settings-2',
@@ -55,9 +53,7 @@ const headerMenuItems = [
 				variant="link"
 			/>
 		</UTooltip>
-		<UTooltip text="Mini-services">
-			<HeaderMenuPopover :header-menu-items="headerMenuItems" />
-		</UTooltip>
+		<ServiceList :header-menu-items="headerMenuItems" />
 	</div>
 </template>
 
