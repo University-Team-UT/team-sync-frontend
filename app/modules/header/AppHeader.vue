@@ -21,6 +21,8 @@ const { t } = useI18n()
 			/></template>
 		</InvitationModal>
 		<HeaderMenu class="my-auto"/>
+	
+		
 	</header>
 </template>
 

@@ -1,20 +1,41 @@
 <script setup lang="ts">
+import HeaderMenuPopover from './HeaderMenuPopover.vue'
+
 const headerMenuItems = [
 	{
 		icon: 'lucide:settings-2',
-		text: 'Settings'
+		text: 'Settings',
+		isPined: true
 	},
 	{
 		icon: 'lucide:badge-help',
-		text: 'Help'
+		text: 'Help',
+		isPined: true
 	},
 	{
 		icon: 'lucide:bell-ring',
-		text: 'Notifications'
+		text: 'Notifications',
+		isPined: true
 	},
 	{
 		icon: 'lucide:folders',
-		text: 'Files'
+		text: 'Files',
+		isPined: true
+	},
+	{
+		icon: 'lucide:timer',
+		text: 'Timer',
+		isPined: false
+	},
+	{
+		icon: 'lucide:flame-kindling',
+		text: 'Meditation',
+		isPined: false
+	},
+	{
+		icon: 'lucide:file-spreadsheet',
+		text: 'Forms',
+		isPined: false
 	}
 ]
 </script>
@@ -35,13 +56,7 @@ const headerMenuItems = [
 			/>
 		</UTooltip>
 		<UTooltip text="Mini-services">
-			<UButton
-				class="hover:text-primary-400"
-				icon="lucide:chart-scatter"
-				size="lg"
-				color="neutral"
-				variant="link"
-			/>
+			<HeaderMenuPopover :header-menu-items="headerMenuItems" />
 		</UTooltip>
 	</div>
 </template>
