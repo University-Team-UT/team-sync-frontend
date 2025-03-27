@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ServicesList from './ServicesList.vue'
+
 const headerMenuItems = [
 	{
 		icon: 'lucide:settings-2',
@@ -46,6 +48,7 @@ const headerMenuItems = [
 			:text="item.text"
 		>
 			<UButton
+				v-show="item.isPined"
 				class="hover:text-primary-400"
 				:icon="item.icon"
 				size="lg"
@@ -53,7 +56,7 @@ const headerMenuItems = [
 				variant="link"
 			/>
 		</UTooltip>
-		<ServiceList :header-menu-items="headerMenuItems" />
+		<ServicesList :header-menu-items="headerMenuItems" />
 	</div>
 </template>
 

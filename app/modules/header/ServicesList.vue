@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ServiceItem from './ServiceItem.vue'
+
 defineProps<{
 	headerMenuItems: { icon: string; text: string; isPined: boolean }[]
 }>()
