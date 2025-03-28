@@ -16,7 +16,7 @@ const items = ref([
 </script>
 
 <template>
-	<header class="w-full h-16 bg-root-800 ml-62 fixed flex">
+	<header class="w-full h-16 bg-root-800 ml-62 fixed flex z-100">
 		<SearchInput class="my-auto" />
 		<UModal
 			:title="t('invite.title')"

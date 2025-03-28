@@ -12,10 +12,10 @@ const items = ref([
 	}
 ])
 
-const toggler = ref(false)
+const isEditing = ref(false)
 
 const editToggle = () => {
-	toggler.value = !toggler.value
+	isEditing.value = !isEditing.value
 }
 </script>
 
@@ -47,6 +47,11 @@ const editToggle = () => {
 				variant="soft"
 				:rows="8"
 				color="alt"
+				autoresize
+				:maxrows="8"
+				:ui="{
+					base: 'resize-none'
+				}"
 			/>
 		</div>
 		<div class="flex flex-col gap-2 mb-2">
@@ -77,7 +82,7 @@ const editToggle = () => {
 				<div class="flex gap-2 items-center">
 					<UIcon name="lucide:school" class="size-5" />
 					<Input
-						:disabled="toggler"
+						:disabled="isEditing"
 						class="text-gray-300 text-sm outline-none disabled:hover:bg-root-900 disabled:text-neutral-500 transition-colors duration-200 ease-in-out"
 						placeholder="Название организации"
 					>
@@ -102,6 +107,15 @@ const editToggle = () => {
 				color="primary"
 			>
 				Добавить организацию
+			</UButton>
+		</div>
+		<div class="flex justify-between mt-20 items-center">
+			<span class="text-gray-500 text-sm">Есть несохраненные изменения</span>
+			<UButton
+				class="flex justify-center text-white px-10 py-2"
+				color="primary"
+			>
+				Сохранить
 			</UButton>
 		</div>
 	</div>
