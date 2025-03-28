@@ -1,41 +1,42 @@
 <script setup lang="ts">
 import ServicesList from './ServicesList.vue'
+import type { IServiceItem } from './types'
 
-const headerMenuItems = [
+const headerMenuItems: IServiceItem[] = [
 	{
 		icon: 'lucide:settings-2',
 		text: 'Settings',
-		isPined: true
+		isPinned: true
 	},
 	{
 		icon: 'lucide:badge-help',
 		text: 'Help',
-		isPined: true
+		isPinned: true
 	},
 	{
 		icon: 'lucide:bell-ring',
 		text: 'Notifications',
-		isPined: true
+		isPinned: true
 	},
 	{
 		icon: 'lucide:folders',
 		text: 'Files',
-		isPined: true
+		isPinned: true
 	},
 	{
 		icon: 'lucide:timer',
 		text: 'Timer',
-		isPined: false
+		isPinned: false
 	},
 	{
 		icon: 'lucide:flame-kindling',
 		text: 'Meditation',
-		isPined: false
+		isPinned: false
 	},
 	{
 		icon: 'lucide:file-spreadsheet',
 		text: 'Forms',
-		isPined: false
+		isPinned: false
 	}
 ]
 </script>
@@ -48,7 +49,7 @@ const headerMenuItems = [
 			:text="item.text"
 		>
 			<UButton
-				v-show="item.isPined"
+				v-show="item.isPinned"
 				class="hover:text-primary-400"
 				:icon="item.icon"
 				size="lg"

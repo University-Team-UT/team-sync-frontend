@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import InvitationModal from '../common/invitation/InvitationModal.vue'
+import ServicesMenu from '../services/ServicesMenu.vue'
 
-import ServicesMenu from './ServicesMenu.vue'
 import SearchInput from '~/modules/common/search/SearchInput.vue'
 
 const { t } = useI18n()

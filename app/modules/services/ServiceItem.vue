@@ -1,7 +1,16 @@
 <script setup lang="ts">
-defineProps<{
-	item: { icon: string; text: string; isPined: boolean }
+import type { IServiceItem } from './types'
+
+const props = defineProps<{
+	item: IServiceItem
 }>()
+
+const emit = defineEmits(['closePopover'])
+
+const onClickService = () => {
+	emit('closePopover')
+	props.item?.onServiceClick?.()
+}
 </script>
 
 <template>
@@ -12,9 +21,9 @@ defineProps<{
 			color="neutral"
 			variant="link"
 			:class="[
-				item.isPined
+				item.isPinned
 					? 'hover:text-primary-400 absolute right-1 top-1'
-					: 'hover:text-primary-400 absolute group-hover:opacity-100 opacity-0 right-1 top-1 border-1 p-0.5 border-root-900 rounded-sm'
+					: 'hover:text-primary-400 absolute group-hover:opacity-100 opacity-0 transition-opacity right-1 top-1 border-1 p-0.5 border-root-900 rounded-sm'
 			]"
 		/>
 
@@ -25,6 +34,7 @@ defineProps<{
 				size="lg"
 				color="neutral"
 				variant="link"
+				@click="onClickService"
 			>
 				{{ item.text }}</UButton
 			>

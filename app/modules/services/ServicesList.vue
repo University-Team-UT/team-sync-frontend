@@ -1,18 +1,31 @@
 <script setup lang="ts">
 import ServiceItem from './ServiceItem.vue'
+import type { IServiceItem } from './types'
 
 defineProps<{
-	headerMenuItems: { icon: string; text: string; isPined: boolean }[]
+	headerMenuItems: IServiceItem[]
 }>()
+
+const isOpen = ref<boolean>(false)
+
+const closePopover = () => {
+	isOpen.value = false
+}
+
+const setIsOpen = (value: boolean) => {
+	isOpen.value = value
+}
 </script>
 
 <template>
 	<UPopover
+		:open="isOpen"
 		:content="{
 			align: 'end',
 			side: 'bottom',
 			sideOffset: 10
 		}"
+		@update:open="setIsOpen"
 	>
 		<UTooltip text="Mini-services">
 			<UButton
@@ -30,6 +43,7 @@ defineProps<{
 					v-for="item in headerMenuItems"
 					:key="item.icon"
 					:item="item"
+					@close-popover="closePopover"
 				/>
 			</div>
 		</template>

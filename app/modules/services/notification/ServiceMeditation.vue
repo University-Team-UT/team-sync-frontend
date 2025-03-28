@@ -1,9 +1,9 @@
 <script setup lang="ts"></script>
 
 <template>
-	<UPopover>
-		<div>1</div>
-	</UPopover>
+	<UTooltip text="penis w meditation">
+		<slot />
+	</UTooltip>
 </template>
 
 <style scoped></style>
