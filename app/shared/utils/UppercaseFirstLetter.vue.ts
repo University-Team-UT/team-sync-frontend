@@ -1,4 +1,3 @@
 export const UppercaseFirstLetter = (word: string) => {
-	const letters = word.split('')
-	console.log(letters[0].toUpperCase + letters[1])
+	return word.charAt(0).toUpperCase() + word.slice(1)
 }
