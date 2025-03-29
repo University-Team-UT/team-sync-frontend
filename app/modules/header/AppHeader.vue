@@ -10,7 +10,7 @@ const { t } = useI18n()
 
 <template>
 	<header
-		class="h-16 bg-root-800 ml-62 w-[calc(100%-248px)] items-center justify-between fixed flex p-4"
+		class="h-16 bg-root-800 ml-62 w-[calc(100%-248px)] items-center justify-between fixed flex p-4 border-b border-root-900 z-10"
 	>
 		<SearchInput class="justify-self-center items-center" />
 		<div class="flex items-center gap-2 justify-self-end">
