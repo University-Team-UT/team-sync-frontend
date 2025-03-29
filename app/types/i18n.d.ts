@@ -39,11 +39,11 @@ declare module 'vue-i18n' {
 				team: string
 				guest: string
 				tooltip: string
-			}
-			footer: {
 				mail: string
 				role: string
 				more: string
+			}
+			footer: {
 				cancel: string
 				send: string
 			}

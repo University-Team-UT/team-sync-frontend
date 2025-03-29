@@ -12,6 +12,9 @@ export default defineI18nLocale(() => ({
 		tabs: {
 			team: 'Участник команды',
 			guest: 'Гости',
+			mail: 'Почта...',
+			role: 'Участник',
+			more: 'Добавить ещё',
 
 			content: {
 				title: 'Ссылка для приглашения',
@@ -20,12 +23,10 @@ export default defineI18nLocale(() => ({
 			}
 		},
 		footer: {
-			mail: 'Почта...',
-			role: 'Участник',
-			more: 'Добавить ещё',
 			cancel: 'Отмена',
 			send: 'Пригласить людей'
-		}
+		},
+		baseRoles: {}
 	},
 	auth: {
 		index: 'Войти или зарегистрироваться с',

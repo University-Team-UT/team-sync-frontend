@@ -37,6 +37,9 @@ export default defineI18nLocale(() => ({
 		tabs: {
 			team: 'Team member',
 			guest: 'Guests',
+			mail: 'Mail...',
+			role: 'Participant',
+			more: 'Add more',
 			content: {
 				title: 'Invite link',
 				tooltip:
@@ -45,9 +48,6 @@ export default defineI18nLocale(() => ({
 		},
 
 		footer: {
-			mail: 'Mail...',
-			role: 'Participant',
-			more: 'Add more',
 			cancel: 'Cancel',
 			send: 'Invite people'
 		}

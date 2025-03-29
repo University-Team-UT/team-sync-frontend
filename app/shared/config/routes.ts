@@ -1,5 +1,6 @@
 export const ROUTES = {
 	AUTH: '/auth',
+	INDEX: '/',
 	SETTINGS: '/settings'
 }
 

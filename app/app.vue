@@ -3,6 +3,12 @@ import * as locales from '@nuxt/ui/locale'
 
 const { locale } = useI18n()
 
+useHead({
+	titleTemplate: titleChunk => {
+		return titleChunk ? `${titleChunk} | TeamSync` : 'TeamSync'
+	}
+})
+
 const lang = computed(() => locales[locale.value].code)
 const dir = computed(() => locales[locale.value].dir)
 
