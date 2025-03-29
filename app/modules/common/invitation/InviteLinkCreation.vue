@@ -1,5 +1,17 @@
 <script setup lang="ts">
 const { t } = useI18n()
+
+const value = ref('')
+const copied = ref(false)
+
+function copy() {
+	navigator.clipboard.writeText(value.value)
+	copied.value = true
+
+	setTimeout(() => {
+		copied.value = false
+	}, 2000)
+}
 </script>
 
 <template>
@@ -29,16 +41,23 @@ const { t } = useI18n()
 		<USwitch default-value size="sm" />
 	</div>
 	<div class="flex gap-5 justify-between">
-		<UButtonGroup class="w-full">
-			<UInput
-				color="neutral"
-				variant="soft"
-				:placeholder="t('invite.link')"
-				class="w-full"
-			/>
-
-			<UButton color="neutral" variant="soft" icon="lucide-files" />
-		</UButtonGroup>
+		<UInput
+			v-model="value"
+			:ui="{ trailing: 'pr-0.5' }"
+			color="neutral"
+			variant="soft"
+			:placeholder="t('invite.link')"
+			class="w-full"
+			><template v-if="value?.length" #trailing
+				><UButton
+					:icon="copied ? 'i-lucide-copy-check' : 'i-lucide-copy'"
+					aria-label="Copy to clipboard"
+					color="neutral"
+					variant="ghost"
+					class="hover:bg-transparent hover:text-primary-400"
+					@click="copy"
+			/></template>
+		</UInput>
 		<UButton color="primary" class="font-bold self-center px-7" size="sm">{{
 			t('invite.copy')
 		}}</UButton>

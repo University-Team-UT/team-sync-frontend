@@ -27,6 +27,7 @@ const roleItems = ref<IRoleItemProps[]>([
 <template>
 	<div class="flex gap-8">
 		<UInput
+			id="email"
 			:placeholder="t('invite.tabs.mail')"
 			size="lg"
 			class="w-full"
