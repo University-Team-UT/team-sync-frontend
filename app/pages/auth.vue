@@ -2,6 +2,10 @@
 import AuthForm from '~/modules/auth/components/AuthForm.vue'
 import type { PageTabType } from '~/modules/auth/types'
 
+definePageMeta({
+	layout: 'auth'
+})
+
 useHead({
 	title: 'Auth'
 })

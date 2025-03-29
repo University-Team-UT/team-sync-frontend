@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import type { TabsItem } from '@nuxt/ui'
 
+definePageMeta({
+	layout: 'settings'
+})
+
 const items = ref<TabsItem[]>([
 	{
 		label: '24 часа'
@@ -13,7 +17,7 @@ const items = ref<TabsItem[]>([
 
 <template>
 	<div
-		class="flex flex-col bg-root-950 h-auto rounded-xl w-150 p-5 relative my-5 ml-5"
+		class="flex flex-col bg-root-900 h-auto rounded-xl w-150 p-5 relative my-5 ml-5"
 	>
 		<div class="flex flex-col mb-2">
 			<span class="text-2xl"> Выбор внешнего вида </span>
@@ -38,7 +42,7 @@ const items = ref<TabsItem[]>([
 				</div>
 			</div>
 			<div class="flex gap-2">
-				<SettingsTheme />
+				<!-- <SettingsTheme /> -->
 			</div>
 		</div>
 	</div>

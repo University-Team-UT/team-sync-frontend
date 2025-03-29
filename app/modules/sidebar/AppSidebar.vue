@@ -7,9 +7,9 @@ import SidebarItem from './SidebarItem.vue'
 import SidebarProject from './SidebarProject.vue'
 
 const slots = defineSlots<{
-	topBar?: () => any
-	baseElements?: (props: { title?: string }) => any
-	bottomBar?: () => any
+	topBar?: (props: { isCollapsed: boolean }) => any
+	baseElements?: (props: { title?: string; isCollapsed: boolean }) => any
+	bottomBar?: (props: { isCollapsed: boolean }) => any
 }>()
 const { isMain = false } = defineProps<{ isMain?: boolean }>()
 const { isCollapsed, toggle } = useSidebar()
@@ -50,12 +50,16 @@ const { isCollapsed, toggle } = useSidebar()
 				/>
 			</div>
 			<section class="flex flex-col px-2 gap-2">
-				<slot v-if="slots.topBar" name="topBar" />
+				<slot v-if="slots.topBar" :is-collapsed="isCollapsed" name="topBar" />
 				<div v-else class="">
 					<SearchInput />
 				</div>
 				<div>
-					<slot v-if="slots.baseElements" name="baseElements" />
+					<slot
+						v-if="slots.baseElements"
+						name="baseElements"
+						:is-collapsed="isCollapsed"
+					/>
 					<div v-else class="flex flex-col">
 						<SidebarItem
 							:is-collapsed="isCollapsed"
@@ -74,7 +78,7 @@ const { isCollapsed, toggle } = useSidebar()
 						/>
 					</div>
 				</div>
-				<div v-if="!isMain" class="w-full">
+				<div v-if="isMain" class="w-full">
 					<div class="flex justify-between px-1 items-center w-full">
 						<h2 v-if="!isCollapsed" class="text-sm font-bold">Проекты</h2>
 						<UButton
@@ -94,7 +98,11 @@ const { isCollapsed, toggle } = useSidebar()
 				</div>
 			</section>
 			<section class="mt-auto mb-5 w-full">
-				<slot v-if="slots.bottomBar" name="bottomBar" />
+				<slot
+					v-if="slots.bottomBar"
+					name="bottomBar"
+					:is-collapsed="isCollapsed"
+				/>
 				<div v-else class="w-full px-2">
 					<SidebarItem
 						:is-collapsed="isCollapsed"

@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import type Input from '@nuxt/ui/runtime/components/Input.vue'
 
+definePageMeta({
+	layout: 'settings'
+})
+
 const items = ref([
 	{
 		label: 'Русский',
@@ -21,7 +25,7 @@ const editToggle = () => {
 
 <template>
 	<div
-		class="flex flex-col bg-root-950 h-auto rounded-xl w-150 p-5 relative my-5 ml-5"
+		class="flex flex-col bg-root-900 h-auto rounded-xl w-150 p-5 relative my-5 ml-5"
 	>
 		<div class="flex flex-col gap-2">
 			<span class="text-2xl"> Профиль </span>

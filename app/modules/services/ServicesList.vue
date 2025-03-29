@@ -20,6 +20,9 @@ const setIsOpen = (value: boolean) => {
 <template>
 	<UPopover
 		:open="isOpen"
+		:ui="{
+			content: 'bg-root-900'
+		}"
 		:content="{
 			align: 'end',
 			side: 'bottom',

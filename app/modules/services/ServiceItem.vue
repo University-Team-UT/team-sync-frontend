@@ -14,7 +14,7 @@ const onClickService = () => {
 </script>
 
 <template>
-	<div class="group bg-root-700 rounded-lg relative p-4">
+	<div class="group bg-root-800 rounded-lg relative p-4">
 		<UButton
 			icon="lucide:pin"
 			size="sm"
@@ -31,6 +31,7 @@ const onClickService = () => {
 			<UButton
 				class="hover:text-primary-400 gap-1 flex flex-col p-0 text-xs"
 				:icon="item.icon"
+				:to="item.link"
 				size="lg"
 				color="neutral"
 				variant="link"

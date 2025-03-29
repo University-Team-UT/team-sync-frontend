@@ -69,14 +69,7 @@ const items = ref<DropdownMenuItem[][]>([
 	>
 		<slot />
 		<template #theme-trailing>
-			<USwitch
-				:ui="{
-					base: 'cursor-pointer'
-				}"
-				unchecked-icon="lucide:sun"
-				checked-icon="lucide:moon"
-				default-value
-			/>
+			<ColorModeButton />
 		</template>
 		<template #profile-leading>
 			<div class="w-full flex items-center gap-2">

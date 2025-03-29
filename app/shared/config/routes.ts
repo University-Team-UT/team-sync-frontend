@@ -2,7 +2,8 @@ export const ROUTES = {
 	AUTH: '/auth',
 	INDEX: '/',
 	SETTINGS: {
-		PROFILE: '/settings/profile'
+		PROFILE: '/settings/profile',
+		APPEARANCE: '/settings/appearance'
 	}
 }
 

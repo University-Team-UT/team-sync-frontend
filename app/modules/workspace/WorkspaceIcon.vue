@@ -15,8 +15,8 @@ defineProps<Props>()
 <template>
 	<div
 		:style="{
-			height: `${size || 42}px`,
-			width: `${size || 42}px`,
+			height: `${size || 38}px`,
+			width: `${size || 38}px`,
 			backgroundColor: bgColor
 		}"
 		:class="[
@@ -29,7 +29,7 @@ defineProps<Props>()
 			class="w-full h-full object-cover"
 		/>
 
-		<UIcon v-else-if="icon" :name="icon" :size="size ? size / 2 : 20" />
+		<UIcon v-else-if="icon" :name="icon" :size="size ? size / 2 : 18" />
 
 		<p v-else-if="letters" class="text-white font-medium text-lg">
 			{{ letters }}
