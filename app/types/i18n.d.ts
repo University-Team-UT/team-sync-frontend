@@ -14,11 +14,20 @@ declare module 'vue-i18n' {
 			or: string
 			inputs: {
 				email: string
+				password: {
+					enter: string
+					repeat: string
+				}
 			}
 			buttons: {
 				continue: string
 				help: string
 			}
+			alert: {
+				title: string
+				description: string
+			}
+			bottom: string
 		}
 		invite: {
 			index: string

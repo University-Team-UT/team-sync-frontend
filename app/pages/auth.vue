@@ -1,29 +1,71 @@
 <script lang="ts" setup>
 import AuthForm from '~/modules/auth/components/AuthForm.vue'
+import type { PageTabType } from '~/modules/auth/types'
+
+useHead({
+	title: 'Auth'
+})
+
+const currentPageTab = ref<PageTabType>('start')
+const router = useRouter()
+
+const setPageTab = (tab: PageTabType) => {
+	currentPageTab.value = tab
+	router.push({ query: { step: tab } })
+}
+
+onMounted(() => {
+	if (router.currentRoute.value.query.step) {
+		currentPageTab.value = router.currentRoute.value.query.step as PageTabType
+	}
+})
 
 //TODO input поменять
 </script>
 
 <template>
 	<div
-		class="fixed inset-0 bg-[url(/assets/images/background-image.png)] h-screen bg-center bg-cover bg-no-repeat"
+		class="bg-[url(/assets/images/background-image.png)] bg-center bg-cover bg-no-repeat h-screen fixed inset-0"
 	>
-		<div class="absolute -z-10 inset-0 bg-black/80 backdrop-blur-md" />
+		<div class="bg-black/80 -z-10 absolute backdrop-blur-md inset-0" />
 
 		<div class="grid grid-cols-[450px_1fr] h-[calc(100vh-80px)] m-10">
 			<div
-				class="w-full flex relative flex-col h-[calc(100vh-80px)] bg-root-950 rounded-l-xl px-20 text-nowrap"
+				class="flex flex-col bg-root-950 h-[calc(100vh-80px)] rounded-l-xl text-nowrap w-full px-20 relative"
 			>
-				<div class="absolute top-5 right-5">
-					<LocaleSwitchButton />
+				<div class="absolute right-5 top-5">
+					<IconLanguageSwitch />
 				</div>
-				<div class="my-auto">
-					<AuthForm />
+				<div class="h-full my-auto">
+					<AuthForm
+						v-if="currentPageTab === 'start'"
+						@set-page-tab="setPageTab"
+					/>
+					<AuthContinue
+						v-else-if="currentPageTab === 'continue'"
+						@set-page-tab="setPageTab"
+					/>
 				</div>
 			</div>
-			<div class="bg-red-950 w-full h-"></div>
+			<div class="rounded-r-xl">
+				<img
+					src="/assets/images/background-image.png"
+					class="h-full rounded-r-xl object-cover"
+					alt="auth-background"
+				/>
+			</div>
 		</div>
 	</div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
+}
+</style>

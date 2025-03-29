@@ -21,6 +21,12 @@ useHead({
 		dir
 	}
 })
+
+useHead({
+	titleTemplate: titleChunk => {
+		return titleChunk ? `${titleChunk} - TeamSync` : 'TeamSync'
+	}
+})
 </script>
 
 <template>
