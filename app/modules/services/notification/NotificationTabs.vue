@@ -29,7 +29,7 @@ const changeTab = (tab: iTab) => {
 			>
 				<div
 					:class="[
-						'flex hover:cursor-pointer transition-colors duration-200 hover:bg-root-700  w-full rounded-lg p-1 justify-center',
+						'flex hover:cursor-pointer select-none transition-colors duration-200 hover:bg-root-700  w-full rounded-lg p-1 justify-center',
 						{
 							'bg-root-700 text-primary-400': selectedTab === tab.name
 						}

@@ -3,4 +3,5 @@ export interface IServiceItem {
 	text: string
 	isPinned?: boolean
 	onServiceClick?: () => void
+	link?: string
 }

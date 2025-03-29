@@ -5,11 +5,11 @@ const routes = getAllValues(ROUTES)
 </script>
 
 <template>
-	<div class="fixed left-5 bottom-5 z-1000">
+	<div class="fixed right-5 bottom-5 z-1000">
 		<UPopover placement="bottom">
 			<UButton
-				variant="soft"
-				class="text-white rounded-full"
+				variant="solid"
+				class="text-white bg-neutral-950 rounded-full"
 				icon="lucide:align-vertical-space-around"
 			/>
 			<template #content>

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import ServicesList from './ServicesList.vue'
 import type { IServiceItem } from './types'
+import { useServiceStore } from '~/shared/stores/ServiceStore'
+
+const store = useServiceStore()
 
 const headerMenuItems: IServiceItem[] = [
 	{
@@ -16,7 +19,10 @@ const headerMenuItems: IServiceItem[] = [
 	{
 		icon: 'lucide:bell-ring',
 		text: 'Notifications',
-		isPinned: true
+		isPinned: true,
+		onServiceClick: () => {
+			store.notifications.toggleNotifications()
+		}
 	},
 	{
 		icon: 'lucide:folders',

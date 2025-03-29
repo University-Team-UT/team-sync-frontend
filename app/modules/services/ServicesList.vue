@@ -27,15 +27,13 @@ const setIsOpen = (value: boolean) => {
 		}"
 		@update:open="setIsOpen"
 	>
-		<UTooltip text="Mini-services">
-			<UButton
-				class="hover:text-primary-400"
-				icon="lucide:chart-scatter"
-				size="lg"
-				color="neutral"
-				variant="link"
-			/>
-		</UTooltip>
+		<UButton
+			class="hover:text-primary-400"
+			icon="lucide:chart-scatter"
+			size="lg"
+			color="neutral"
+			variant="link"
+		/>
 
 		<template #content>
 			<div class="grid grid-cols-3 gap-4 p-3">

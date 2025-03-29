@@ -1,36 +1,23 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 import NotificationTabs from './NotificationTabs.vue'
+import { useServiceStore } from '~/shared/stores/ServiceStore'
 
-const isVisible = ref(false)
-
-const toggleBlock = () => {
-	isVisible.value = !isVisible.value
-}
-
-const closeBlock = () => {
-	isVisible.value = false
-}
+const store = useServiceStore()
 </script>
 
 <template>
 	<div class="flex flex-col items-center relative">
-		<button
-			class="p-3 bg-blue-500 text-white rounded-md shadow-md transition text-xs z-20"
-			@click="toggleBlock"
-		>
-			Показать
-		</button>
-
 		<transition name="fade">
-			<div v-if="isVisible">
-				<div class="fixed inset-0" @click="closeBlock" />
+			<div v-if="store.services.notification">
 				<div
-					class="fixed flex flex-col top-17 right-2 p-4 bg-root-700 rounded-lg shadow-lg w-160 h-[calc(100%-72px)] gap-4 z-10"
+					class="fixed inset-0 z-20"
+					@click="store.notifications.closeNotifications"
+				/>
+				<div
+					class="fixed flex flex-col top-17 right-2 p-4 bg-root-700 rounded-lg shadow-lg w-160 h-[calc(100%-72px)] gap-4 z-30"
 				>
-					<div class="flex w-full justify-between items-center">
-						<div class="text-xl">Notifications</div>
+					<section class="flex w-full justify-between items-center">
+						<h2 class="text-xl select-none">Notifications</h2>
 						<div class="flex gap-2">
 							<UModal>
 								<UButton
@@ -58,7 +45,7 @@ const closeBlock = () => {
 								variant="solid"
 							/>
 						</div>
-					</div>
+					</section>
 
 					<div class="flex-col gap-4 flex">
 						<USeparator class="w-full" />
