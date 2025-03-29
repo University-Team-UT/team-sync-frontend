@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import * as locales from '@nuxt/ui/locale'
 
+import CollapseProvider from './shared/providers/CollapseProvider.vue'
+
 const { locale } = useI18n()
 
 useHead({
@@ -28,8 +30,10 @@ useHead({
 		:locale="locales[locale]"
 	>
 		<AppRouterTest />
-		<NuxtLayout>
-			<NuxtPage />
-		</NuxtLayout>
+		<CollapseProvider>
+			<NuxtLayout>
+				<NuxtPage />
+			</NuxtLayout>
+		</CollapseProvider>
 	</UApp>
 </template>

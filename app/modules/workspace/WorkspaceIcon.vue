@@ -1,6 +1,8 @@
 <script setup lang="ts">
 type Props = {
 	size?: number
+	bgColor?: string
+	class?: string
 } & (
 	| { imageSrc: string; icon?: never; letters?: never }
 	| { icon: string; imageSrc?: never; letters?: never }
@@ -14,9 +16,12 @@ defineProps<Props>()
 	<div
 		:style="{
 			height: `${size || 42}px`,
-			width: `${size || 42}px`
+			width: `${size || 42}px`,
+			backgroundColor: bgColor
 		}"
-		class="rounded-xl flex items-center justify-center bg-root-700 overflow-hidden"
+		:class="[
+			'rounded-lg flex items-center justify-center  overflow-hidden bg-root-700'
+		]"
 	>
 		<NuxtImg
 			v-if="imageSrc"
