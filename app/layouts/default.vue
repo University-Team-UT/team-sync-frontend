@@ -1,16 +1,22 @@
 <script setup lang="ts">
 import AppHeader from '~/modules/header/AppHeader.vue'
+import AppSidebar from '~/modules/sidebar/AppSidebar.vue'
+
+const { isCollapsed } = useSidebar()
 </script>
 
 <template>
 	<div class="flex">
-		<aside class="bg-green-400 fixed inset-y-0 w-62">1</aside>
+		<AppSidebar />
 		<AppHeader />
 
-		<div class="flex flex-col mt-16 ml-62 w-full">
-			<main>
-				<slot />
-			</main>
-		</div>
+		<main
+			:class="[
+				'flex flex-col mt-16  w-full bg-root-800 h-[calc(100svh-64px)]',
+				isCollapsed ? 'ml-14' : 'ml-62'
+			]"
+		>
+			<slot />
+		</main>
 	</div>
 </template>

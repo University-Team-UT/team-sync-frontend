@@ -1,16 +1,11 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import ServiceNotification from '~/modules/services/notification/ServiceNotification.vue'
-
-useHead({
-	title: 'Главная'
-})
 </script>
 
 <template>
 	<div>
-		<div>index page</div>
+		<slot />
 		<ServiceNotification />
-		<UButton to="/test">to tests</UButton>
 	</div>
 </template>
 
