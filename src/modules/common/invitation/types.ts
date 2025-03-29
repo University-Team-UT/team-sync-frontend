@@ -1,4 +1,4 @@
-import type { BaseRoles } from '~/types/common.types'
+import type { BaseRoles } from '~~/src/types/common.types'
 
 export interface IRoleItemProps {
 	role: BaseRoles

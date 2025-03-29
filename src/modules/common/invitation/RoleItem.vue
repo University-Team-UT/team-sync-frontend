@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { getKeyByUserRole } from '~~/src/shared/lib/roles.util'
+
 import type { IRoleItemProps } from './types'
-import { getKeyByUserRole } from '~/shared/lib/roles.util'
 
 defineProps<{ item: IRoleItemProps }>()
 

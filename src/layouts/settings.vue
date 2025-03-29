@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { ROUTES } from '~~/src/shared/config/routes'
+
 import AppSidebar from '~/modules/sidebar/AppSidebar.vue'
 import SidebarItem from '~/modules/sidebar/SidebarItem.vue'
 import DefaultLayout from '~/shared/components/DefaultLayout.vue'
-import { ROUTES } from '~/shared/config/routes'
 </script>
 
 <template>

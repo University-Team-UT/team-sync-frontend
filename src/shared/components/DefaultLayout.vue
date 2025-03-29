@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AppHeader from '~~/src/modules/header/AppHeader.vue'
+import AppHeader from '~/modules/header/AppHeader.vue'
 
 const { isCollapsed } = useSidebar()
 </script>

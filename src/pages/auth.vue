@@ -1,6 +1,7 @@
 <script lang="ts" setup>
+import type { PageTabType } from '~~/src/modules/auth/types'
+
 import AuthForm from '~/modules/auth/components/AuthForm.vue'
-import type { PageTabType } from '~/modules/auth/types'
 
 definePageMeta({
 	layout: 'auth'

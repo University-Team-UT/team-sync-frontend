@@ -1,4 +1,4 @@
-import { BaseRoles } from '~/types/common.types'
+import { BaseRoles } from '~~/src/types/common.types'
 
 export const getKeyByUserRole = (role: BaseRoles) => {
 	const roleBadgeMap = new Map<BaseRoles, { i18nKey: string }>([

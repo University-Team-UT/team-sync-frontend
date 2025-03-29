@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { ROUTES } from '~~/src/shared/config/routes'
+import { useServiceStore } from '~~/src/shared/stores/ServiceStore'
+
 import ServicesList from './ServicesList.vue'
 import type { IServiceItem } from './types'
-import { ROUTES } from '~/shared/config/routes'
-import { useServiceStore } from '~/shared/stores/ServiceStore'
 
 const store = useServiceStore()
 

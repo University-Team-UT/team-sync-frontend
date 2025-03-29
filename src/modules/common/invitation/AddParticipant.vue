@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { BaseRoles } from '~~/src/types/common.types'
+
 import RoleItem from './RoleItem.vue'
 import type { IRoleItemProps } from './types'
-import { BaseRoles } from '~/types/common.types'
 
 const { t } = useI18n()
 

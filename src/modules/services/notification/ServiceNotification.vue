@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import { useServiceStore } from '~~/src/shared/stores/ServiceStore'
+
 import NotificationTabs from './NotificationTabs.vue'
-import { useServiceStore } from '~/shared/stores/ServiceStore'
 
 const store = useServiceStore()
 </script>
