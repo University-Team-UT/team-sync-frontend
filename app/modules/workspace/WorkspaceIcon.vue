@@ -1,15 +1,11 @@
 <script setup lang="ts">
-import type { TripleExclusiveProps } from './types'
-
-//! USE ONLY ONE OF THEM
-
-type Props = TripleExclusiveProps<
-	{ letters: string },
-	{ imageSrc: string },
-	{ icon: string }
-> & {
+type Props = {
 	size?: number
-}
+} & (
+	| { imageSrc: string; icon?: never; letters?: never }
+	| { icon: string; imageSrc?: never; letters?: never }
+	| { letters: string; imageSrc?: never; icon?: never }
+)
 
 defineProps<Props>()
 </script>
@@ -20,10 +16,18 @@ defineProps<Props>()
 			height: `${size || 42}px`,
 			width: `${size || 42}px`
 		}"
-		class="rounded-xl flex items-center justify-center bg-root-700"
+		class="rounded-xl flex items-center justify-center bg-root-700 overflow-hidden"
 	>
-		<UIcon v-if="icon" :name="icon" :size="size ? size / 2 : 20" />
-		<p v-else-if="letters">{{ letters }}</p>
-		<NuxtImg v-else-if="imageSrc" :src="imageSrc" />" />
+		<NuxtImg
+			v-if="imageSrc"
+			:src="imageSrc"
+			class="w-full h-full object-cover"
+		/>
+
+		<UIcon v-else-if="icon" :name="icon" :size="size ? size / 2 : 20" />
+
+		<p v-else-if="letters" class="text-white font-medium text-lg">
+			{{ letters }}
+		</p>
 	</div>
 </template>
