@@ -15,9 +15,9 @@ const routes = getAllValues(ROUTES)
 			<template #content>
 				<div class="p-4 flex flex-col gap-1">
 					<div v-for="route in routes" :key="route">
-						<NuxtLink :to="route" class="hover:text-primary-400">{{
+						<NuxtLinkLocale :to="route" class="hover:text-primary-400">{{
 							route
-						}}</NuxtLink>
+						}}</NuxtLinkLocale>
 					</div>
 				</div>
 			</template>

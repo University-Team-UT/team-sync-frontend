@@ -28,17 +28,18 @@ const onClickService = () => {
 		/>
 
 		<div class="flex flex-col items-center hover:text-primary-400">
-			<UButton
-				class="hover:text-primary-400 gap-1 flex flex-col p-0 text-xs"
-				:icon="item.icon"
-				:to="item.link"
-				size="lg"
-				color="neutral"
-				variant="link"
-				@click="onClickService"
-			>
-				{{ item.text }}</UButton
-			>
+			<NuxtLinkLocale :to="item.link">
+				<UButton
+					class="hover:text-primary-400 gap-1 flex flex-col p-0 text-xs"
+					:icon="item.icon"
+					size="lg"
+					color="neutral"
+					variant="link"
+					@click="onClickService"
+				>
+					{{ item.text }}</UButton
+				>
+			</NuxtLinkLocale>
 		</div>
 	</div>
 </template>
