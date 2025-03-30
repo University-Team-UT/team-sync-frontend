@@ -37,11 +37,20 @@ export default defineI18nLocale(() => ({
 		},
 		or: 'Или',
 		inputs: {
-			email: 'Введите ваш Email'
+			email: 'Введите ваш Email',
+			password: {
+				enter: 'Введите пароль',
+				repeat: 'Повторите пароль'
+			}
 		},
 		buttons: {
 			continue: 'Продолжить',
 			help: 'Нужна помощь?'
-		}
+		},
+		alert: {
+			title: 'Продолжить с Почтой',
+			description: 'Создайте аккаунт через электронную почту'
+		},
+		bottom: 'Или продолжить другим путём'
 	}
 }))

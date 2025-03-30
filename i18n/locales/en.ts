@@ -9,12 +9,21 @@ export default defineI18nLocale(() => ({
 		},
 		or: 'Or',
 		inputs: {
-			email: 'Enter your email'
+			email: 'Enter your email',
+			password: {
+				enter: 'Enter password',
+				repeat: 'Repeat password'
+			}
 		},
 		buttons: {
 			continue: 'Continue',
 			help: 'Need help?'
-		}
+		},
+		alert: {
+			title: 'Continue with Email',
+			description: 'Create an account via email'
+		},
+		bottom: 'Or continue another way'
 	},
 	search: 'Search',
 	invite: {
