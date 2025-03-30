@@ -15,7 +15,7 @@ const store = useServiceStore()
 					@click="store.notifications.closeNotifications"
 				/>
 				<div
-					class="fixed flex flex-col top-17 right-2 p-4 bg-root-700 rounded-lg shadow-lg w-160 h-[calc(100%-72px)] gap-4 z-30"
+					class="fixed flex flex-col top-17 right-2 p-4 bg-root-700 rounded-lg shadow w-160 h-[calc(100%-72px)] gap-4 z-30"
 				>
 					<section class="flex w-full justify-between items-center">
 						<h2 class="text-xl select-none">Notifications</h2>
@@ -50,17 +50,9 @@ const store = useServiceStore()
 
 					<div class="flex-col gap-4 flex">
 						<USeparator class="w-full" />
+
 						<div class="flex w-full justify-between gap-2 items-center">
 							<NotificationTabs />
-
-							<UButton
-								:ui="{
-									base: 'bg-root-800/50  hover:bg-root-900 rounded-lg text-root-400 text-xs'
-								}"
-								icon="lucide:ellipsis"
-								size="lg"
-								class="self-start"
-							/>
 						</div>
 					</div>
 				</div>

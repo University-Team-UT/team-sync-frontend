@@ -49,7 +49,7 @@ const { isCollapsed, toggle } = useSidebar()
 					@click="toggle"
 				/>
 			</div>
-			<section class="flex flex-col px-2 gap-2">
+			<section class="flex flex-col px-2 gap-2 mt-2">
 				<slot v-if="slots.topBar" :is-collapsed="isCollapsed" name="topBar" />
 				<div v-else class="">
 					<SearchInput />

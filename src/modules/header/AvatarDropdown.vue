@@ -23,6 +23,7 @@ const items = ref<DropdownMenuItem[][]>([
 		{
 			label: 'Dark-theme',
 			icon: 'lucide:moon',
+			type: 'label',
 			slot: 'theme' as const
 		}
 	],
