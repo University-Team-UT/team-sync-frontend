@@ -78,7 +78,7 @@ const editToggle = () => {
 			/>
 		</div>
 		<div class="flex flex-col gap-2">
-			<span>Организации</span>
+			<span>Рабочее пространство</span>
 
 			<div
 				class="flex bg-root-900 rounded-[0.5rem] items-center p-2 transition-colors duration-200 ease-in-out gap-2 self-start justify-between w-70"
@@ -87,8 +87,8 @@ const editToggle = () => {
 					<UIcon name="lucide:school" class="size-5" />
 					<Input
 						:disabled="isEditing"
-						class="text-gray-300 text-sm outline-none disabled:hover:bg-root-900 disabled:text-neutral-500 transition-colors duration-200 ease-in-out"
-						placeholder="Название организации"
+						class="text-gray-300 text-sm outline-none disabled:hover:bg-root-900 w-59 disabled:text-neutral-500 transition-colors duration-200 ease-in-out"
+						placeholder="Название рабочего пространства"
 					>
 					</Input>
 				</div>

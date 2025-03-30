@@ -31,6 +31,12 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 						icon="lucide:user"
 						text="Профиль"
 					/>
+					<SidebarItem
+						:to="ROUTES.SETTINGS.SECURITY"
+						:is-collapsed="isCollapsed"
+						icon="lucide:lock-keyhole"
+						text="Безопасность"
+					/>
 				</template>
 				<template #bottomBar></template>
 			</AppSidebar>
