@@ -57,15 +57,16 @@ const headerMenuItems: IServiceItem[] = [
 			:key="item.icon"
 			:text="item.text"
 		>
-			<UButton
-				v-show="item.isPinned"
-				class="hover:text-primary-400"
-				:icon="item.icon"
-				size="lg"
-				:to="item.link"
-				color="neutral"
-				variant="link"
-			/>
+			<NuxtLinkLocale :to="item.link">
+				<UButton
+					v-show="item.isPinned"
+					class="hover:text-primary-400"
+					:icon="item.icon"
+					size="lg"
+					color="neutral"
+					variant="link"
+				/>
+			</NuxtLinkLocale>
 		</UTooltip>
 		<ServicesList :header-menu-items="headerMenuItems" />
 	</div>

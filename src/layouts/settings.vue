@@ -11,12 +11,13 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 		<template #sidebar>
 			<AppSidebar>
 				<template #topBar="{ isCollapsed }">
-					<UButton
-						:to="ROUTES.INDEX"
-						icon="lucide:arrow-left"
-						class="justify-center"
-						:label="!isCollapsed ? ('Назад' as string) : ''"
-					/>
+					<NuxtLinkLocale :to="ROUTES.INDEX">
+						<UButton
+							icon="lucide:arrow-left"
+							class="justify-center"
+							:label="!isCollapsed ? ('Назад' as string) : ''"
+						/>
+					</NuxtLinkLocale>
 				</template>
 				<template #baseElements="{ isCollapsed }">
 					<SidebarItem
