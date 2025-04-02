@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-<<<<<<< HEAD:app/pages/settings/index.vue
-import WorkspaceSelector from '~/modules/workspace/WorkspaceSelector.vue'
-=======
 import type { TabsItem } from '@nuxt/ui'
 
 definePageMeta({
@@ -16,32 +13,25 @@ const items = ref<TabsItem[]>([
 		label: '12 часов'
 	}
 ])
->>>>>>> origin/master:src/pages/settings/appearance.vue
 </script>
 
 <template>
 	<div
-<<<<<<< HEAD:app/pages/settings/index.vue
-		class="flex flex-col bg-root-950 h-auto rounded-xl w-200 p-5 relative my-5 ml-5"
-=======
 		class="flex flex-col bg-root-900 h-auto rounded-xl w-150 p-5 relative my-5 ml-5"
->>>>>>> origin/master:src/pages/settings/appearance.vue
 	>
-		<div class="flex flex-col mb-4">
-			<span class="text-2xl"> Настройки уведомлений </span>
+		<div class="flex flex-col mb-2">
+			<span class="text-2xl"> Выбор внешнего вида </span>
 		</div>
-		<div class="flex flex-col gap-6">
-			<span class="text-xl">Выберите рабочее пространство</span>
-			<WorkspaceSelector />
+		<div class="flex flex-col gap-2 mb-2">
+			<span class="text-xl">Формат времени</span>
+			<UTabs
+				orientation="vertical"
+				variant="pill"
+				:content="false"
+				:items="items"
+				class="w-full"
+			/>
 		</div>
-<<<<<<< HEAD:app/pages/settings/index.vue
-		<div class="flex mt-15">
-			<div
-				class="flex flex-col bg-root-900 rounded-xl p-5 text-wrap items-center text-center"
-			>
-				<UIcon name="lucide:bell-ring" class="size-9" color="primary" />
-				<span>Центр <br />уведомлений</span>
-=======
 		<div class="flex flex-col gap-2 mb-2">
 			<span class="text-xl">Выбор цветовой темы</span>
 			<div class="flex-col border border-gray-500 rounded-sm self-start">
@@ -53,7 +43,6 @@ const items = ref<TabsItem[]>([
 			</div>
 			<div class="flex gap-2">
 				<!-- <SettingsTheme /> -->
->>>>>>> origin/master:src/pages/settings/appearance.vue
 			</div>
 		</div>
 	</div>

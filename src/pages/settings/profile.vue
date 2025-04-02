@@ -79,7 +79,6 @@ const editToggle = () => {
 		</div>
 		<div class="flex flex-col gap-2">
 			<span>Рабочее пространство</span>
-			<span>Рабочее пространство</span>
 
 			<div
 				class="flex bg-root-900 rounded-[0.5rem] items-center p-2 transition-colors duration-200 ease-in-out gap-2 self-start justify-between w-70"
