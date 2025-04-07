@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import NotificationControlSettings from './NotificationControlSettings.vue'
 import { TAB_TYPE } from './notifications.types'
 import type { iTab } from './notifications.types'
 import NotificationTabsAll from './NotificationTabsAll.vue'
-import NotificationTabsArchive from './NotificationTabsArchive.vue'
+import NotificationTabsMentions from './NotificationTabsMentions.vue'
 import NotificationTabsUnread from './NotificationTabsUnread.vue'
 
 const tabs = ref<iTab[]>([
@@ -39,22 +40,15 @@ const changeTab = (tab: iTab) => {
 					</div>
 				</div>
 			</div>
-			<UButton
-				:ui="{
-					base: 'bg-root-800/50  hover:bg-root-900 rounded-lg text-root-400 text-xs'
-				}"
-				icon="lucide:ellipsis"
-				size="lg"
-				class="self-start"
-			/>
+			<NotificationControlSettings />
 		</div>
 
 		<div v-if="selectedTab.name === TAB_TYPE.ALL"><NotificationTabsAll /></div>
 		<div v-else-if="selectedTab.name === TAB_TYPE.UNREAD">
 			<NotificationTabsUnread />
 		</div>
-		<div v-else-if="selectedTab.name === TAB_TYPE.ARCHIVE">
-			<NotificationTabsArchive />
+		<div v-else-if="selectedTab.name === TAB_TYPE.MENTIONS">
+			<NotificationTabsMentions />
 		</div>
 	</div>
 </template>

@@ -14,5 +14,6 @@ export interface iTab {
 export enum TAB_TYPE {
 	ALL = 'All',
 	UNREAD = 'Unread',
-	ARCHIVE = 'Archive'
+	ARCHIVE = 'Archive',
+	MENTIONS = 'Mentions'
 }

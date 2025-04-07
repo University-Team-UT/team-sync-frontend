@@ -2,6 +2,7 @@
 import { useServiceStore } from '~~/src/shared/stores/ServiceStore'
 
 import NotificationTabs from './NotificationTabs.vue'
+import NotificationTelegram from './NotificationTelegram.vue'
 
 const store = useServiceStore()
 </script>
@@ -20,23 +21,7 @@ const store = useServiceStore()
 					<section class="flex w-full justify-between items-center">
 						<h2 class="text-xl select-none">Notifications</h2>
 						<div class="flex gap-2">
-							<UModal>
-								<UButton
-									:ui="{
-										base: 'bg-root-800/50  hover:bg-root-900 rounded-lg text-root-400 text-xs'
-									}"
-									:avatar="{
-										src: 'https://api.iconify.design/cib:telegram.svg?color=%2327a7e7'
-									}"
-									label="Connect Telegram"
-									size="lg"
-									class="px-3 py-2"
-								/>
-
-								<template #content>
-									<Placeholder class="h-48 m-4" />
-								</template>
-							</UModal>
+							<NotificationTelegram />
 							<UButton
 								:ui="{
 									base: 'bg-root-800/50  hover:bg-root-900 rounded-lg text-root-400 text-xs'
