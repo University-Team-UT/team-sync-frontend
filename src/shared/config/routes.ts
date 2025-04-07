@@ -3,7 +3,9 @@ export const ROUTES = {
 	INDEX: '/',
 	SETTINGS: {
 		PROFILE: '/settings/profile',
-		APPEARANCE: '/settings/appearance'
+		APPEARANCE: '/settings/appearance',
+		NOTIFICATIONS: '/settings/notifications',
+		SECURITY: '/settings/security'
 	}
 }
 
