@@ -4,6 +4,7 @@ export const ROUTES = {
 	SETTINGS: {
 		PROFILE: '/settings/profile',
 		APPEARANCE: '/settings/appearance',
+		NOTIFICATIONS: '/settings/notifications',
 		SECURITY: '/settings/security'
 	}
 }
