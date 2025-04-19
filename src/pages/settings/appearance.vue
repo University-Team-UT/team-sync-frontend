@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import type { TabsItem } from '@nuxt/ui'
 
+import ThemePicker from '~/modules/settings/theme/ThemePicker.vue'
+
 definePageMeta({
 	layout: 'settings'
 })
@@ -32,18 +34,10 @@ const items = ref<TabsItem[]>([
 				class="w-full"
 			/>
 		</div>
-		<div class="flex flex-col gap-2 mb-2">
-			<span class="text-xl">Выбор цветовой темы</span>
-			<div class="flex-col border border-gray-500 rounded-sm self-start">
-				<img src="/public/img/theme-1.png" alt="theme" />
-				<div class="flex py-2 px-5 gap-2 items-center">
-					<Icon name="lucide:paint-roller" class="size-5" />
-					<span>Чёрный-минск</span>
-				</div>
-			</div>
-			<div class="flex gap-2">
-				<!-- <SettingsTheme /> -->
-			</div>
+		<ThemePicker />
+
+		<div class="flex gap-2">
+			<!-- <SettingsTheme /> -->
 		</div>
 	</div>
 </template>
