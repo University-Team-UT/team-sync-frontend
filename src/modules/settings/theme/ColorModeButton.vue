@@ -1,14 +1,7 @@
-<script setup>
-const colorMode = useColorMode()
+<script setup lang="ts">
+import { useColorTheme } from '~/modules/settings/theme/composables/useColorTheme'
 
-const isDark = computed({
-	get() {
-		return colorMode.value === 'dark'
-	},
-	set() {
-		colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
-	}
-})
+const { colorMode, isDark } = useColorTheme()
 </script>
 
 <template>
