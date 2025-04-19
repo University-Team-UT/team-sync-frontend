@@ -14,7 +14,7 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 					<NuxtLinkLocale :to="ROUTES.INDEX">
 						<UButton
 							icon="lucide:arrow-left"
-							class="justify-center"
+							class="justify-center w-full"
 							:label="!isCollapsed ? ('Назад' as string) : ''"
 						/>
 					</NuxtLinkLocale>

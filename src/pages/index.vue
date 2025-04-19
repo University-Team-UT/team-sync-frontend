@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import TaskMain from '~/modules/dashboard/TaskMain.vue'
 import ServiceNotification from '~/modules/services/notification/ServiceNotification.vue'
 
 useHead({
@@ -8,9 +9,9 @@ useHead({
 
 <template>
 	<div>
-		<div>index page</div>
 		<ServiceNotification />
-		<UButton to="/test">to tests</UButton>
+		<!-- <UButton to="/test">to tests</UButton> -->
+		<TaskMain />
 	</div>
 </template>
 

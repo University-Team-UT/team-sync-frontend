@@ -59,7 +59,7 @@ const headerMenuItems: IServiceItem[] = [
 		>
 			<NuxtLinkLocale :to="item.link">
 				<UButton
-					v-show="item.isPinned"
+					v-if="item.isPinned"
 					class="hover:text-primary-400"
 					:icon="item.icon"
 					size="lg"
