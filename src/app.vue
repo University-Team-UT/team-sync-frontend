@@ -3,6 +3,7 @@ import * as locales from '@nuxt/ui/locale'
 
 import CollapseProvider from './shared/providers/CollapseProvider.vue'
 import ServicesProvide from './shared/providers/ServicesProvide.vue'
+import ThemeProvider from './shared/providers/ThemeProvider.vue'
 
 const { locale } = useI18n()
 
@@ -33,9 +34,11 @@ useHead({
 		<AppRouterTest />
 		<CollapseProvider>
 			<ServicesProvide>
-				<NuxtLayout>
-					<NuxtPage />
-				</NuxtLayout>
+				<ThemeProvider>
+					<NuxtLayout>
+						<NuxtPage />
+					</NuxtLayout>
+				</ThemeProvider>
 			</ServicesProvide>
 		</CollapseProvider>
 	</UApp>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 
+import ColorModeButton from '../settings/theme/ColorModeButton.vue'
+
 import LanguageSwitchButtonGroup from './LanguageSwitchButtonGroup.vue'
 import AvatarPic from '~/shared/components/AvatarPic.vue'
 

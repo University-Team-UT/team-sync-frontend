@@ -8,12 +8,13 @@ export type ServiceNotification = {
 	onServiceClick?: () => void
 	link?: string
 }
-export interface iTab {
-	name: TAB_TYPE
-}
 export enum TAB_TYPE {
 	ALL = 'All',
 	UNREAD = 'Unread',
 	ARCHIVE = 'Archive',
 	MENTIONS = 'Mentions'
+}
+export interface iTab {
+	name: string
+	type: TAB_TYPE
 }
