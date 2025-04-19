@@ -2,6 +2,10 @@
 import NotificationCard from '~/modules/settings/NotificationCard.vue'
 import SoundEffect from '~/modules/settings/SoundEffect.vue'
 import WorkspaceSelector from '~/modules/workspace/WorkspaceSelector.vue'
+
+definePageMeta({
+	layout: 'settings'
+})
 </script>
 
 <template>

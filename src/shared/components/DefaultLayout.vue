@@ -11,7 +11,7 @@ const { isCollapsed } = useSidebar()
 
 		<main
 			:class="[
-				'flex flex-col mt-16  w-full bg-root-800 h-[calc(100svh-64px)]',
+				'flex flex-col mt-16  w-full bg-root-800 min-h-screen',
 				isCollapsed ? 'ml-14' : 'ml-62'
 			]"
 		>
