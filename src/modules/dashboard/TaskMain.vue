@@ -3,7 +3,7 @@ import CurrentTask from './ColumnTask.vue'
 </script>
 
 <template>
-	<div class="flex flex-col gap-14 p-4">
+	<div class="flex flex-col gap-10 p-4">
 		<header class="flex gap-14 items-center">
 			<div class="flex gap-3 items-center">
 				<div
