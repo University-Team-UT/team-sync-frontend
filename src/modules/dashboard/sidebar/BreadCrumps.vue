@@ -1,10 +1,7 @@
 <script setup lang="ts">
 const BreadCrumps = [
 	{ id: '0', name: 'lucide:plus', title: 'Подзадача' },
-	{ id: '1', name: 'lucide:plus', title: 'Файл' },
-	{ id: '2', name: 'lucide:plus', title: 'Связь' },
-	{ id: '3', name: 'lucide:plus', title: 'Время' },
-	{ id: '4', name: 'lucide:table-of-contents', title: 'История' }
+	{ id: '1', name: 'lucide:plus', title: 'Время' }
 ]
 </script>
 
