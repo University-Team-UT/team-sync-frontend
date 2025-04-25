@@ -6,6 +6,9 @@ export const ROUTES = {
 		APPEARANCE: '/settings/appearance',
 		NOTIFICATIONS: '/settings/notifications',
 		SECURITY: '/settings/security'
+	},
+	WORKSPACE: {
+		MAIN: '/workspace/main'
 	}
 }
 

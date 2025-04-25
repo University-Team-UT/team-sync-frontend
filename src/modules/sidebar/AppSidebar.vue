@@ -60,9 +60,8 @@ const { isCollapsed, toggle } = useSidebar()
 								<UIcon name="lucide:check" class="bg-primary-400 size-5" />
 							</div>
 							<div class="flex flex-col bg-root-900 gap-1 py-2">
-								<NuxtLinkLocale to="/">
+								<NuxtLinkLocale :to="ROUTES.WORKSPACE.MAIN">
 									<UButton
-										:to="ROUTES.SETTINGS.APPEARANCE"
 										class="bg-transparent hover:text-primary-400 w-full text-md px-10"
 										variant="link"
 										color="neutral"
