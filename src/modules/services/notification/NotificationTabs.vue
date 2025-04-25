@@ -7,14 +7,14 @@ import NotificationTabsMentions from './NotificationTabsMentions.vue'
 import NotificationTabsUnread from './NotificationTabsUnread.vue'
 
 const tabs = ref<iTab[]>([
-	{ name: TAB_TYPE.ALL },
-	{ name: TAB_TYPE.UNREAD },
-	{ name: TAB_TYPE.ARCHIVE }
+	{ name: '2', type: TAB_TYPE.ALL },
+	{ name: '2', type: TAB_TYPE.UNREAD },
+	{ name: '3', type: TAB_TYPE.ARCHIVE }
 ])
-const selectedTab = ref<iTab>({ name: TAB_TYPE.ALL })
+const selectedTab = ref<TAB_TYPE>(TAB_TYPE.ALL)
 
 const changeTab = (tab: iTab) => {
-	selectedTab.value.name = tab.name
+	selectedTab.value = tab.type
 }
 </script>
 
@@ -32,7 +32,7 @@ const changeTab = (tab: iTab) => {
 						:class="[
 							'flex hover:cursor-pointer select-none transition-colors duration-200 hover:bg-root-700  w-full rounded-lg p-1 justify-center',
 							{
-								'bg-root-700 text-primary-400': selectedTab.name === tab.name
+								'bg-root-700 text-primary-400': selectedTab === tab.type
 							}
 						]"
 					>
@@ -42,9 +42,8 @@ const changeTab = (tab: iTab) => {
 			</div>
 			<NotificationControlSettings />
 		</div>
-
-		<div v-if="selectedTab.name === TAB_TYPE.ALL"><NotificationTabsAll /></div>
-		<div v-else-if="selectedTab.name === TAB_TYPE.UNREAD">
+		<div v-if="selectedTab === TAB_TYPE.ALL"><NotificationTabsAll /></div>
+		<div v-else-if="selectedTab === TAB_TYPE.UNREAD">
 			<NotificationTabsUnread />
 		</div>
 		<div v-else-if="selectedTab.name === TAB_TYPE.MENTIONS">
