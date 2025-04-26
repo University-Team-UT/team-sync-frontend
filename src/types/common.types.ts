@@ -6,7 +6,14 @@ export enum BaseRoles {
 }
 
 export interface IUser {
-	id: string | null
-	email: string | null
-	displayName: string | null
+	id: string | undefined
+	email: string | undefined
+	displayName: string | undefined
+}
+
+export interface IUserAccount {
+	telegramUsername: string | undefined
+	about: string | undefined
+	email: string | undefined
+	displayName: string | undefined
 }

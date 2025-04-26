@@ -4,6 +4,7 @@ const props = defineProps<{
 	text?: string
 	to?: string
 	isCollapsed: boolean
+	isActive?: boolean
 }>()
 
 const buttonText = computed(() => (!props.isCollapsed ? props.text : ''))
@@ -13,8 +14,9 @@ const buttonText = computed(() => (!props.isCollapsed ? props.text : ''))
 	<NuxtLinkLocale :to="to">
 		<UButton
 			:class="[
-				'bg-transparent hover:bg-root-800 w-full',
-				isCollapsed && 'justify-center'
+				' hover:bg-root-800 w-full',
+				isCollapsed && 'justify-center',
+				isActive ? '' : 'bg-transparent'
 			]"
 			variant="soft"
 			color="neutral"

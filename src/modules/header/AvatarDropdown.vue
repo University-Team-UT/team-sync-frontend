@@ -5,6 +5,9 @@ import ColorModeButton from '../settings/theme/ColorModeButton.vue'
 
 import LanguageSwitchButtonGroup from './LanguageSwitchButtonGroup.vue'
 import AvatarPic from '~/shared/components/AvatarPic.vue'
+import { useAuthStore } from '~/shared/stores/AuthStore'
+
+const { handleLogout } = useAuthStore()
 
 const items = ref<DropdownMenuItem[][]>([
 	[
@@ -20,7 +23,10 @@ const items = ref<DropdownMenuItem[][]>([
 		},
 		{
 			label: 'Log out',
-			icon: 'lucide:door-open'
+			icon: 'lucide:door-open',
+			onSelect: () => {
+				handleLogout()
+			}
 		},
 		{
 			label: 'Dark-theme',

@@ -5,7 +5,8 @@ export const ROUTES = {
 		PROFILE: '/settings/profile',
 		APPEARANCE: '/settings/appearance',
 		NOTIFICATIONS: '/settings/notifications',
-		SECURITY: '/settings/security'
+		SECURITY: '/settings/security',
+		WORKSPACES: '/settings/workspaces'
 	},
 	WORKSPACE: {
 		MAIN: '/workspace/main'
