@@ -15,7 +15,10 @@ const { isDark, setTheme, currentTheme } = useColorTheme()
 
 		<span class="text-xl">Выбор цветовой темы</span>
 		<div class="flex-col border border-gray-500 rounded-sm self-start">
-			<NuxtImg src="/themes/base.png" alt="theme" />
+			<NuxtImg
+				:src="currentTheme?.images[isDark ? 'dark' : 'light']"
+				alt="theme"
+			/>
 			<div class="flex py-2 px-5 gap-2 items-center">
 				<Icon name="lucide:paint-roller" class="size-5" />
 				<span>{{ currentTheme?.title }}</span>
