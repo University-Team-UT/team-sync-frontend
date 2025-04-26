@@ -8,6 +8,7 @@ export const ROUTES = {
 		SECURITY: '/settings/security',
 		WORKSPACES: '/settings/workspaces'
 	},
+	GETSTARTED: '/get-started',
 	WORKSPACE: (id: string) => ({
 		BASE: `/w/${id}`,
 		SETTINGS: `/w/${id}/settings`,

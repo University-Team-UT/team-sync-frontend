@@ -16,12 +16,7 @@ const value = ref(3)
 				class="flex py-2 px-4 justify-between rounded-t-sm bg-root-700 items-center"
 			>
 				<span>Дизайн</span>
-				<UButton
-					icon="lucide:settings-2"
-					size="md"
-					color="primary"
-					variant="link"
-				/>
+
 				<!-- кнопка добавить задачу -->
 			</div>
 			<UButton
@@ -39,7 +34,7 @@ const value = ref(3)
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
 						repudiandae cum? Amet expedita repellendus non eum impedit itaque
 						magni cum voluptates veniam voluptatibus, voluptatem numquam labore,
-						molestiae, quae debitis dolorum.
+						molestiae, quae debitis.
 					</div>
 				</div>
 
