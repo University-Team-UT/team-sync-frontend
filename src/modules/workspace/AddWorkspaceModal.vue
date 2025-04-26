@@ -62,7 +62,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 		<UButton
 			label="Создать пространство"
 			color="primary"
-			class="flex justify-center text-white p-2 w-full m-5"
+			class="flex justify-center p-2 w-full m-5"
 		></UButton>
 
 		<template #header>

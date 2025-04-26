@@ -6,7 +6,7 @@ definePageMeta({
 </script>
 
 <template>
-	<div>bababa</div>
+	<div>tatatatat</div>
 </template>
 
 <style scoped></style>

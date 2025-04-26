@@ -32,9 +32,12 @@ const appStore = useAppStore()
 					:user-role="appStore.currentWorkspace?.userRole"
 					is-current
 				/>
-				<div class="flex flex-col bg-root-900 gap-1 py-2">
+				<div
+					v-if="appStore.currentWorkspace"
+					class="flex flex-col bg-root-900 gap-1 py-2"
+				>
 					<NuxtLink
-						:to="ROUTES.WORKSPACE(appStore.currentWorkspace!.id).SETTINGS"
+						:to="ROUTES.WORKSPACE(appStore.currentWorkspace.id).SETTINGS"
 					>
 						<UButton
 							class="bg-transparent hover:text-primary-400 w-full text-md px-10"
@@ -56,8 +59,10 @@ const appStore = useAppStore()
 					</InvitationModal>
 				</div>
 				<NuxtLink
-					v-for="item in workspaceStore.workspaces.filter(
-						item => item.id !== appStore.currentWorkspace?.id
+					v-for="item in workspaceStore.workspaces.filter(item =>
+						appStore.currentWorkspace
+							? item.id !== appStore.currentWorkspace.id
+							: true
 					)"
 					:key="item.id"
 					:to="ROUTES.WORKSPACE(item.id).BASE"
