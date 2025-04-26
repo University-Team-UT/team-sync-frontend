@@ -2,13 +2,15 @@ import Cookies from 'js-cookie'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
+import { ROUTES } from '../config/routes'
+
 import { AuthService } from '~/modules/auth/api/auth.service'
 import type { IUser } from '~/types/common.types'
 
 export const initialUser: IUser = {
-	id: null,
-	displayName: null,
-	email: null
+	id: undefined,
+	displayName: undefined,
+	email: undefined
 }
 
 export const useAuthStore = defineStore('auth', () => {
@@ -18,6 +20,8 @@ export const useAuthStore = defineStore('auth', () => {
 	const isLoading = ref<boolean>(true)
 
 	const userId = computed(() => user.value.id)
+
+	const router = useRouter()
 	const initializeAuth = () => {
 		const token = Cookies.get('accessToken')
 		const storedUser = localStorage.getItem('user')
@@ -58,6 +62,7 @@ export const useAuthStore = defineStore('auth', () => {
 		AuthService.logout()
 		setAuthData(initialUser, '')
 		cb?.()
+		router.replace(ROUTES.AUTH)
 	}
 	return {
 		user,

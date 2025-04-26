@@ -5,7 +5,7 @@ export const API = {
 		CHANGE_PASSWORD: '/auth/change-password'
 	},
 	ACCOUNT: {
-		GET_ACCOUNT: '/account/get-account',
+		GET_ACCOUNT: '/account',
 		UPDATE_ACCOUNT: '/account/update-account',
 		DELETE_ACCOUNT: '/account/delete-account'
 	},
