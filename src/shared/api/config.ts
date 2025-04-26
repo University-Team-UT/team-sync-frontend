@@ -10,10 +10,10 @@ export const API = {
 		DELETE_ACCOUNT: '/account/delete-account'
 	},
 	WORKBENCH: {
-		GET_WORKBENCH: '/workbench/get-workbench',
-		CREATE_WORKBENCH: '/workbench/create-workbench',
-		UPDATE_WORKBENCH: '/workbench/update-workbench',
-		DELETE_WORKBENCH: (id: string) => `/workbench/delete-workbench/${id}`
+		GET_WORKBENCH: '/workbench',
+		CREATE_WORKBENCH: '/workbench/create',
+		UPDATE_WORKBENCH: '/workbench/update',
+		DELETE_WORKBENCH: (id: string) => `/workbench/delete/${id}`
 	},
 	MEMBERS: {
 		GET_MEMBERS: '/members',

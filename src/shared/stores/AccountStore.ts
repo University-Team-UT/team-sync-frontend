@@ -15,7 +15,6 @@ export const useAccountStore = defineStore('AccountStore', () => {
 
 	const updateAccount = (newAccount: IUserAccount) => {
 		account.value = newAccount
-		localStorage.setItem('account', JSON.stringify(newAccount))
 	}
 
 	const { data, fetch } = useQuery({

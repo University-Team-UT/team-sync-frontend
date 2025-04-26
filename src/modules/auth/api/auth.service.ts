@@ -27,18 +27,6 @@ export const AuthService = {
 		if (response.data.accessToken) saveToStorage(response.data)
 		return response.data
 	},
-	async changePassword(oldPassword: string, newPassword: string) {
-		const { $publicApi } = useNuxtApp()
-		const response = await $publicApi.post<IAuthData>(
-			API.AUTH.CHANGE_PASSWORD,
-			{
-				oldPassword,
-				newPassword
-			}
-		)
-		if (response.data.accessToken) saveToStorage(response.data)
-		return response.data
-	},
 
 	logout() {
 		removeTokenFromStorage()

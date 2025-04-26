@@ -60,9 +60,9 @@ export const useAuthStore = defineStore('auth', () => {
 
 	const logout = (cb?: () => void) => {
 		AuthService.logout()
-		setAuthData(initialUser, '')
+		setAuthData(null, '')
 		cb?.()
-		router.replace(ROUTES.AUTH)
+		router.push(ROUTES.AUTH)
 	}
 	return {
 		user,

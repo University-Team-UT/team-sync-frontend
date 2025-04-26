@@ -21,5 +21,12 @@ export const AccountService = {
 		return $privateApi.delete(API.ACCOUNT.DELETE_ACCOUNT, {
 			params: { password }
 		})
+	},
+	async changePassword(oldPassword: string, newPassword: string) {
+		const { $privateApi } = useNuxtApp()
+		return await $privateApi.post(API.AUTH.CHANGE_PASSWORD, {
+			oldPassword,
+			newPassword
+		})
 	}
 }

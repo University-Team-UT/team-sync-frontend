@@ -8,9 +8,11 @@ export const ROUTES = {
 		SECURITY: '/settings/security',
 		WORKSPACES: '/settings/workspaces'
 	},
-	WORKSPACE: {
-		MAIN: '/workspace/main'
-	}
+	WORKSPACE: (id: string) => ({
+		BASE: `/w/${id}`,
+		SETTINGS: `/w/${id}/settings`,
+		MEMBERS: `/w/${id}/members`
+	})
 }
 
 export const ROUTE_VALUES = getAllValues(ROUTES)

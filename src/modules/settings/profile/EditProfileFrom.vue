@@ -6,11 +6,13 @@ import { AccountService, type UpdateAccountDto } from './api/account.service'
 import { useAccountStore } from '~/shared/stores/AccountStore'
 import type { IUserAccount } from '~/types/common.types'
 
+const nullToEmptyString = (val: unknown) => (val === null ? '' : val)
+
 const schema = z.object({
-	about: z.string().optional(),
-	displayName: z.string(),
-	email: z.string().email(),
-	telegramUsername: z.string().optional()
+	about: z.preprocess(nullToEmptyString, z.string().optional()),
+	displayName: z.preprocess(nullToEmptyString, z.string()),
+	email: z.preprocess(nullToEmptyString, z.string().email()),
+	telegramUsername: z.preprocess(nullToEmptyString, z.string().optional())
 })
 
 type Schema = z.output<typeof schema>
@@ -23,6 +25,14 @@ const state = reactive<Schema>({
 	displayName: accountStore.account.displayName!,
 	telegramUsername: accountStore.account.telegramUsername
 })
+
+watch(
+	() => accountStore.account,
+	() => {
+		state.about = accountStore.account.about
+		state.telegramUsername = accountStore.account.telegramUsername
+	}
+)
 const toast = useToast()
 
 const { isLoading, mutate } = useMutation({
@@ -44,6 +54,19 @@ const { isLoading, mutate } = useMutation({
 async function onSubmit(event: FormSubmitEvent<Schema>) {
 	mutate(event.data)
 }
+
+const formattedUsername = computed({
+	get() {
+		return state.telegramUsername
+	},
+	set(value) {
+		if (!state.telegramUsername?.startsWith('@')) {
+			state.telegramUsername = '@' + state.telegramUsername?.replace(/^@+/, '')
+		} else {
+			state.telegramUsername = value
+		}
+	}
+})
 
 // const isChanged = computed(
 // 	() =>
@@ -92,7 +115,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
 		<UFormField label="Telegram Username" name="telegramUsername">
 			<UInput
-				v-model="state.telegramUsername"
+				v-model="formattedUsername"
 				placeholder="Введите ваш Telegram Username"
 				variant="soft"
 				color="alt"
@@ -101,9 +124,9 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 		</UFormField>
 
 		<div class="flex items-center w-full">
-			<span v-if="isChanged" class="text-gray-500 text-sm mr-auto"
+			<!-- <span v-if="isChanged" class="text-gray-500 text-sm mr-auto"
 				>Есть несохраненные изменения</span
-			>
+			> -->
 			<UButton
 				type="submit"
 				:loading="isLoading"
