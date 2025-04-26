@@ -26,6 +26,7 @@ const appStore = useAppStore()
 		<template #content>
 			<div class="flex flex-col w-100 rounded-lg bg-root-800">
 				<WorkspaceCard
+					v-if="appStore.currentWorkspace"
 					:title="appStore.currentWorkspace!.title"
 					:members-count="appStore.currentWorkspace?.membersCount"
 					:user-role="appStore.currentWorkspace?.userRole"

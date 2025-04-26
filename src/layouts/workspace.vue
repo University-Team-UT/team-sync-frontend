@@ -21,6 +21,11 @@ const workspaceItems = computed(() => {
 			to: ROUTES.WORKSPACE(appStore.currentWorkspace.id).MEMBERS,
 			icon: 'lucide:users',
 			text: 'Участники'
+		},
+		{
+			to: ROUTES.WORKSPACE(appStore.currentWorkspace.id).TAGS,
+			icon: 'lucide:tag',
+			text: 'Тэги'
 		}
 	]
 })
@@ -51,18 +56,6 @@ const route = useRoute()
 						:icon="item.icon"
 						:text="item.text"
 						:is-active="route.path === item.to"
-					/>
-					<SidebarItem
-						:to="ROUTES.WORKSPACE.MEMBERS"
-						:is-collapsed="isCollapsed"
-						icon="lucide:users"
-						text="Люди"
-					/>
-					<SidebarItem
-						:to="ROUTES.WORKSPACE.TAGS"
-						:is-collapsed="isCollapsed"
-						icon="lucide:tag"
-						text="Теги"
 					/>
 				</template>
 				<template #bottomBar></template>
