@@ -4,6 +4,27 @@ import { ROUTES } from '~~/src/shared/config/routes'
 import AppSidebar from '~/modules/sidebar/AppSidebar.vue'
 import SidebarItem from '~/modules/sidebar/SidebarItem.vue'
 import DefaultLayout from '~/shared/components/DefaultLayout.vue'
+import { useAppStore } from '~/shared/stores/AppStore'
+
+const appStore = useAppStore()
+
+const workspaceItems = computed(() => {
+	if (!appStore.currentWorkspace) return []
+
+	return [
+		{
+			to: ROUTES.WORKSPACE(appStore.currentWorkspace.id).SETTINGS,
+			icon: 'lucide:settings',
+			text: 'Основные'
+		},
+		{
+			to: ROUTES.WORKSPACE(appStore.currentWorkspace.id).MEMBERS,
+			icon: 'lucide:users',
+			text: 'Участники'
+		}
+	]
+})
+const route = useRoute()
 </script>
 
 <template>
@@ -11,7 +32,9 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 		<template #sidebar>
 			<AppSidebar>
 				<template #topBar="{ isCollapsed }">
-					<NuxtLinkLocale :to="ROUTES.INDEX">
+					<NuxtLinkLocale
+						:to="ROUTES.WORKSPACE(appStore.currentWorkspace!.id).BASE"
+					>
 						<UButton
 							icon="lucide:arrow-left"
 							class="justify-center w-full"
@@ -19,12 +42,15 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 						/>
 					</NuxtLinkLocale>
 				</template>
-				<template #baseElements="{ isCollapsed }">
+				<template v-if="workspaceItems" #baseElements="{ isCollapsed }">
 					<SidebarItem
-						:to="ROUTES.WORKSPACE.MAIN"
+						v-for="item in workspaceItems"
+						:key="item.to"
+						:to="item.to"
 						:is-collapsed="isCollapsed"
-						icon="lucide:settings"
-						text="Основные"
+						:icon="item.icon"
+						:text="item.text"
+						:is-active="route.path === item.to"
 					/>
 				</template>
 				<template #bottomBar></template>

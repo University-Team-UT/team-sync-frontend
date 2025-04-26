@@ -17,3 +17,35 @@ export interface IUserAccount {
 	email: string | undefined
 	displayName: string | undefined
 }
+
+export enum WorkbenchRole {
+	VISITOR = 'VISITOR',
+	ADMIN = 'ADMIN',
+	WORKER = 'WORKER'
+}
+
+export enum ProjectStatus {
+	ACTIVE = 'ACTIVE',
+	INACTIVE = 'INACTIVE',
+	STOPPED = 'STOPPED',
+	UNDER_DANGER = 'UNDER_DANGER'
+}
+
+export enum TaskStatus {
+	TODO = 'TODO',
+	IN_PROGRESS = 'IN_PROGRESS',
+	DONE = 'DONE'
+}
+
+export enum Priority {
+	FROZEN = 'FROZEN',
+	LOW = 'LOW',
+	MEDIUM = 'MEDIUM',
+	HIGH = 'HIGH'
+}
+
+export enum NotificationType {
+	ARCHIVED = 'ARCHIVED',
+	UNREAD = 'UNREAD',
+	READ = 'READ'
+}
