@@ -15,10 +15,12 @@ const items = ref([
 		slot: 'guest'
 	}
 ])
+const open = ref(false)
 </script>
 
 <template>
 	<UModal
+		v-model:open="open"
 		:title="t('invite.title')"
 		:description="t('invite.description')"
 		:ui="{
@@ -37,8 +39,8 @@ const items = ref([
 				</template>
 
 				<template #guest>
-					<div class="flex flex-col mt-5">		
-						<AddGuest/>
+					<div class="flex flex-col mt-5">
+						<AddGuest />
 					</div>
 				</template>
 			</UTabs>
@@ -51,6 +53,7 @@ const items = ref([
 						color="primary"
 						:label="t('invite.footer.cancel')"
 						variant="outline"
+						@click="open = false"
 					/>
 					<UButton
 						color="primary"
