@@ -1,6 +1,5 @@
 <script setup>
-const { locale, locales } = useI18n()
-const switchLocalePath = useSwitchLocalePath()
+const { locale, locales, setLocale } = useI18n()
 
 const availableLocales = computed(() => {
 	return locales.value.filter(i => i.code !== locale.value)
@@ -8,11 +7,11 @@ const availableLocales = computed(() => {
 </script>
 
 <template>
-	<NuxtLink
+	<UButton
 		v-for="locale in availableLocales"
 		:key="locale.code"
-		:to="switchLocalePath(locale.code)"
+		@click="setLocale(locale.code)"
 	>
 		{{ locale.name }}
-	</NuxtLink>
+	</UButton>
 </template>

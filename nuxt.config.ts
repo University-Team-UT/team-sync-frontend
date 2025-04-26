@@ -43,7 +43,7 @@ export default defineNuxtConfig({
 	i18n: {
 		vueI18n: 'i18n.config.ts',
 		lazy: true,
-		strategy: 'prefix',
+		strategy: 'no_prefix',
 		langDir: 'locales/',
 		defaultLocale: 'ru',
 		locales: [
@@ -108,6 +108,11 @@ export default defineNuxtConfig({
 				root: 'var(--ui-root-950)',
 				alt: 'var(--ui-root-900)'
 			}
+		}
+	},
+	runtimeConfig: {
+		public: {
+			apiUrl: process.env.NUXT_PUBLIC_API_URL
 		}
 	}
 })

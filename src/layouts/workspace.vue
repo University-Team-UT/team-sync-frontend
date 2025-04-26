@@ -21,28 +21,10 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 				</template>
 				<template #baseElements="{ isCollapsed }">
 					<SidebarItem
-						:to="ROUTES.SETTINGS.APPEARANCE"
+						:to="ROUTES.WORKSPACE.MAIN"
 						:is-collapsed="isCollapsed"
-						icon="lucide:paint-bucket"
-						text="Внешний вид"
-					/>
-					<SidebarItem
-						:to="ROUTES.SETTINGS.PROFILE"
-						:is-collapsed="isCollapsed"
-						icon="lucide:user"
-						text="Профиль"
-					/>
-					<SidebarItem
-						:to="ROUTES.SETTINGS.NOTIFICATIONS"
-						:is-collapsed="isCollapsed"
-						icon="lucide:bell"
-						text="Уведомления"
-					/>
-					<SidebarItem
-						:to="ROUTES.SETTINGS.SECURITY"
-						:is-collapsed="isCollapsed"
-						icon="lucide:lock-keyhole"
-						text="Безопасность"
+						icon="lucide:settings"
+						text="Основные"
 					/>
 				</template>
 				<template #bottomBar></template>

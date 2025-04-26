@@ -44,7 +44,7 @@ export default defineI18nLocale(() => ({
 			}
 		},
 		buttons: {
-			continue: 'Продолжить',
+			continue: 'Войти',
 			help: 'Нужна помощь?'
 		},
 		alert: {

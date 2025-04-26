@@ -1,10 +1,15 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
+import InvitationModal from '../common/invitation/InvitationModal.vue'
 import SearchInput from '../common/search/SearchInput.vue'
 import WorkspaceIcon from '../workspace/WorkspaceIcon.vue'
+import { ROUTES } from '~~/src/shared/config/routes'
 
+import AddWorkspaceModal from './AddWorkspaceModal.vue'
 import SidebarItem from './SidebarItem.vue'
 import SidebarProject from './SidebarProject.vue'
+
+const { t } = useI18n()
 
 const slots = defineSlots<{
 	topBar?: (props: { isCollapsed: boolean }) => any
@@ -24,15 +29,62 @@ const { isCollapsed, toggle } = useSidebar()
 	>
 		<div :class="['flex flex-col h-full ', isCollapsed && 'items-center']">
 			<header
-				class="flex cursor-pointer gap-2 h-16 border-b border-root-950 items-center px-2"
+				class="flex cursor-pointer h-16 border-b border-root-950 items-center px-2 justify-between"
 			>
-				<WorkspaceIcon icon="lucide:star" />
-				<div v-if="!isCollapsed" class="flex flex-col flex-1">
-					<h2 class="text-xs text-gray-400 line-clamp-1 font-bold">
-						Рабочее пространство
-					</h2>
-					<h2 class="text-sm font-semibold">Роман Семенов</h2>
-				</div>
+				<UPopover
+					:content="{
+						align: 'center',
+						side: 'bottom',
+						sideOffset: 13.5
+					}"
+					mode="click"
+					><div class="flex gap-2">
+						<WorkspaceIcon icon="lucide:star" />
+						<div v-if="!isCollapsed" class="flex flex-col flex-1">
+							<h2 class="text-xs text-gray-400 line-clamp-1 font-bold">
+								Рабочее пространство
+							</h2>
+							<h2 class="text-sm font-semibold">Роман Семенов</h2>
+						</div>
+					</div>
+					<template #content>
+						<div class="flex flex-col w-100 rounded-lg bg-root-800">
+							<div class="flex gap-2 p-2 cursor-default items-center">
+								<WorkspaceIcon icon="lucide:star" />
+								<div v-if="!isCollapsed" class="flex flex-col flex-1">
+									<h2 class="text-md line-clamp-1 font-bold">Роман Семенов</h2>
+									<h2 class="text-sm font-semibold text-gray-400">
+										1 человек • супер-админ
+									</h2>
+								</div>
+								<UIcon name="lucide:check" class="bg-primary-400 size-5" />
+							</div>
+							<div class="flex flex-col bg-root-900 gap-1 py-2">
+								<NuxtLinkLocale :to="ROUTES.WORKSPACE.MAIN">
+									<UButton
+										class="bg-transparent hover:text-primary-400 w-full text-md px-10"
+										variant="link"
+										color="neutral"
+										icon="lucide:settings"
+										>Настройки</UButton
+									>
+								</NuxtLinkLocale>
+								<InvitationModal>
+									<template #trigger>
+										<UButton
+											variant="link"
+											color="neutral"
+											icon="lucide:user-plus"
+											:label="t('invite.index')"
+											class="bg-transparent hover:text-primary-400 w-full text-md px-10"
+									/></template>
+								</InvitationModal>
+							</div>
+							<div class="flex justify-center">
+								<AddWorkspaceModal />
+							</div>
+						</div> </template
+				></UPopover>
 				<UButton
 					v-if="!isCollapsed"
 					variant="link"
@@ -41,7 +93,8 @@ const { isCollapsed, toggle } = useSidebar()
 					@click="toggle"
 				/>
 			</header>
-			<div v-if="isCollapsed" class="flex items-center justify-start px-2 py-2">
+
+			<div v-if="isCollapsed" class="flex items-center justify-start p-2">
 				<UButton
 					variant="link"
 					class="text-white hover:text-primary-400 rotate-90"
