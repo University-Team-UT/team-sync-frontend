@@ -8,7 +8,9 @@ export const ROUTES = {
 		SECURITY: '/settings/security'
 	},
 	WORKSPACE: {
-		MAIN: '/workspace/main'
+		MAIN: '/workspace/main',
+		MEMBERS: '/workspace/members',
+		TAGS: '/workspace/tags'
 	}
 }
 

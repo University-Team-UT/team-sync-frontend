@@ -1,4 +1,3 @@
-import WorkspaceIcon from '~/modules/workspace/WorkspaceIcon.vue';
 <script lang="ts" setup>
 import WorkspaceIcon from '~/modules/workspace/WorkspaceIcon.vue'
 
@@ -45,7 +44,7 @@ definePageMeta({
 		<div
 			class="flex flex-col bg-root-950 h-auto rounded-xl w-150 py-8 px-5 my-5 ml-5"
 		>
-			<div class="flex mx-2 justify-between items-center">
+			<div class="flex justify-between items-center">
 				<span class="text-2xl"> Удаление рабочего пространства </span>
 				<UButton
 					class="flex items-center text-white py-2.5 px-7"

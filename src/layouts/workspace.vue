@@ -26,6 +26,18 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 						icon="lucide:settings"
 						text="Основные"
 					/>
+					<SidebarItem
+						:to="ROUTES.WORKSPACE.MEMBERS"
+						:is-collapsed="isCollapsed"
+						icon="lucide:users"
+						text="Люди"
+					/>
+					<SidebarItem
+						:to="ROUTES.WORKSPACE.TAGS"
+						:is-collapsed="isCollapsed"
+						icon="lucide:tag"
+						text="Теги"
+					/>
 				</template>
 				<template #bottomBar></template>
 			</AppSidebar>
