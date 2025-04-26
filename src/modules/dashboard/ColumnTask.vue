@@ -7,9 +7,9 @@ const value = ref(3)
 </script>
 
 <template>
-	<UDrawer direction="right" :overlay="false">
+	<UDrawer direction="right" :overlay="false" handle-only>
 		<div
-			class="flex flex-col border-t-2 rounded-t-sm border-primary-400 w-1/6 gap-4"
+			class="flex flex-col border-t-2 rounded-t-sm border-primary-400 w-1/6 gap-4 scroll-auto"
 		>
 			<!-- Заголовки задач -->
 			<div

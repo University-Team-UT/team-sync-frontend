@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import AccordionSidebar from './sidebar/AccordionSidebar.vue'
 import BreadCrumps from './sidebar/BreadCrumps.vue'
+import CommentSidebar from './sidebar/CommentSidebar.vue'
 import TaskDescription from './sidebar/TaskDescription.vue'
 import TaskInfo from './sidebar/TaskInfo.vue'
 </script>
 
 <template>
-	<div class="min-w-180 max-w-180 min-h-full size-full m-4">
+	<div class="max-w-180 m-4 overflow-y-auto scroll-smooth">
 		<div class="flex flex-col gap-4">
 			<header class="flex p-2"></header>
 			<USeparator />
@@ -35,6 +36,7 @@ import TaskInfo from './sidebar/TaskInfo.vue'
 				<TaskDescription />
 				<USeparator />
 				<AccordionSidebar />
+				<USeparator />
 				<CommentSidebar />
 			</section>
 		</div>
