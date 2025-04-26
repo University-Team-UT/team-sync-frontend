@@ -11,7 +11,8 @@ export const ROUTES = {
 	WORKSPACE: (id: string) => ({
 		BASE: `/w/${id}`,
 		SETTINGS: `/w/${id}/settings`,
-		MEMBERS: `/w/${id}/members`
+		MEMBERS: `/w/${id}/members`,
+		TAGS: `w/${id}/tags`
 	})
 }
 
