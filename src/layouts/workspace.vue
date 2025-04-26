@@ -8,6 +8,8 @@ import { useAppStore } from '~/shared/stores/AppStore'
 
 const appStore = useAppStore()
 
+useSyncCurrentWorkspace()
+
 const workspaceItems = computed(() => {
 	if (!appStore.currentWorkspace) return []
 
@@ -38,7 +40,8 @@ const route = useRoute()
 			<AppSidebar>
 				<template #topBar="{ isCollapsed }">
 					<NuxtLinkLocale
-						:to="ROUTES.WORKSPACE(appStore.currentWorkspace!.id).BASE"
+						v-if="appStore.currentWorkspace"
+						:to="ROUTES.WORKSPACE(appStore.currentWorkspace?.id).BASE"
 					>
 						<UButton
 							icon="lucide:arrow-left"
@@ -61,6 +64,11 @@ const route = useRoute()
 				<template #bottomBar></template>
 			</AppSidebar>
 		</template>
-		<slot />
+		<template v-if="appStore.currentWorkspace">
+			<slot />
+		</template>
+		<template v-else>
+			<div class="p-4">Загрузка рабочего пространства...</div>
+		</template>
 	</DefaultLayout>
 </template>

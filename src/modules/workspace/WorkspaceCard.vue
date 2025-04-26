@@ -29,7 +29,11 @@ const { t } = useI18n()
 				>
 			</h2>
 		</div>
-		<UIcon v-if="isCurrent" name="lucide:check" class="bg-primary-400 size-5" />
+		<UIcon
+			v-if="isCurrent"
+			name="lucide:check"
+			class="text-primary-400 size-5"
+		/>
 	</div>
 </template>
 
