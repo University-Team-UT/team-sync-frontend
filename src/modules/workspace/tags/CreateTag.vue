@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AppTag from './AppTag.vue'
 import ColorCircle from './ColorCircle.vue'
 import { tagsColors } from './lib/tagsColors'
 import type { TagColor } from './types'
@@ -16,7 +17,7 @@ const input = ref<string>('')
 			@click="isCreating = true"
 			>Создать тэг</UButton
 		>
-		<div v-if="!isCreating" class="items-center flex justify-between">
+		<div v-if="!isCreating" class="items-center gap-4 flex justify-between">
 			<UPopover
 				:content="{
 					align: 'start'
@@ -44,7 +45,18 @@ const input = ref<string>('')
 					</div>
 				</template>
 			</UPopover>
-			<UInput variant="soft" v-model="input" />
+			<UInput
+				v-model="input"
+				variant="soft"
+				class="flex-1"
+				maxlength="25"
+				placeholder="Введите название для тэга"
+			/>
+			<AppTag :color="currentColor" :title="input" />
+			<div class="flex items-center gap-1">
+				<UButton icon="lucide:arrow-left" variant="soft">Отменить</UButton>
+				<UButton variant="ghost">Save</UButton>
+			</div>
 		</div>
 	</div>
 </template>

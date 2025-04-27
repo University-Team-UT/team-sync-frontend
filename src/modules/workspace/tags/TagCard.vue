@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+// defineProps()
+</script>
 
 <template>
 	<div>1</div>
