@@ -26,10 +26,10 @@ export const API = {
 		ACCEPT_INVITE: (id: string) => `/members/accept-invite/${id}`
 	},
 	PROJECT: {
-		GET_BY_WORKBENCH_ID: (id: string) => `/project/get-by-workbench-id/${id}`,
-		CREATE_PROJECT: (id: string) => `/project/create-project/${id}`,
-		UPDATE_PROJECT: (id: string) => `/project/update-project/${id}`,
-		DELETE_PROJECT: (id: string) => `/project/delete-project/${id}`
+		GET_BY_WORKBENCH_ID: (id: string) => `/projects/get-by-workbench-id/${id}`,
+		CREATE_PROJECT: (id: string) => `/projects/create/${id}`,
+		UPDATE_PROJECT: (id: string) => `/projects/update/${id}`,
+		DELETE_PROJECT: (id: string) => `/projects/delete/${id}`
 	},
 	BOARD: {
 		GET_BOARDS: (projectId: string) => `/board/${projectId}`,

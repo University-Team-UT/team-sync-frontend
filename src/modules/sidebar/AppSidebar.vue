@@ -1,11 +1,12 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import SearchInput from '../common/search/SearchInput.vue'
+import CreateProjectModal from '../projects/CreateProjectModal.vue'
+import ProjectList from '../projects/ProjectList.vue'
 import WorkspaceIcon from '../workspace/WorkspaceIcon.vue'
 import WorkspacePopover from '../workspace/WorkspacePopover.vue'
 
 import SidebarItem from './SidebarItem.vue'
-import SidebarProject from './SidebarProject.vue'
 import { useAppStore } from '~/shared/stores/AppStore'
 
 const slots = defineSlots<{
@@ -96,20 +97,19 @@ const appStore = useAppStore()
 				<div v-if="isMain" class="w-full">
 					<div class="flex justify-between px-1 items-center w-full">
 						<h2 v-if="!isCollapsed" class="text-sm font-bold">Проекты</h2>
-						<UButton
-							variant="link"
-							icon="lucide:plus"
-							:class="[
-								'text-white ',
-								isCollapsed && 'justify-center items-center self-center w-full'
-							]"
-						/>
+						<CreateProjectModal>
+							<UButton
+								variant="link"
+								icon="lucide:plus"
+								:class="[
+									'text-white ',
+									isCollapsed &&
+										'justify-center items-center self-center w-full'
+								]"
+							/>
+						</CreateProjectModal>
 					</div>
-					<SidebarProject
-						:is-collapsed="isCollapsed"
-						text="Дизайн TeamSync"
-						icon="lucide:star"
-					/>
+					<ProjectList :is-collapsed="isCollapsed" />
 				</div>
 			</section>
 			<section class="mt-auto mb-5 w-full">

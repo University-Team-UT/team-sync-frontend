@@ -6,7 +6,7 @@ defineProps<{ color: TagColor; title: string }>()
 
 <template>
 	<div
-		class="p-1 rounded-lg"
+		class="p-1 rounded-lg flex items-center cursor-default"
 		:style="{
 			backgroundColor: color.background
 		}"

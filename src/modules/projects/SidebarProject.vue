@@ -2,9 +2,10 @@
 import WorkspaceIcon from '../workspace/WorkspaceIcon.vue'
 
 defineProps<{
-	icon: string
+	icon?: string
 	text?: string
 	to?: string
+	isActive?: boolean
 	isCollapsed: boolean
 }>()
 </script>
@@ -14,24 +15,25 @@ defineProps<{
 		<UButton
 			:class="[
 				'bg-transparent  hover:bg-root-800 w-full px-1 ',
-				isCollapsed && 'justify-center'
+				isCollapsed && 'justify-center',
+				isActive && 'bg-root-800'
 			]"
 			:to="to"
 			size="lg"
 			variant="soft"
 			color="neutral"
 		>
-			<template #trailing>
+			<!-- <template #trailing>
 				<UIcon
 					v-if="!isCollapsed"
 					class="ml-auto"
 					size="20"
 					name="lucide:chevron-down"
 				/>
-			</template>
+			</template> -->
 			<p v-if="!isCollapsed" class="line-clamp-1 font-semibold">{{ text }}</p>
 			<template #leading>
-				<WorkspaceIcon :icon="icon" :size="30" />
+				<WorkspaceIcon v-if="icon" :icon="icon" :size="30" />
 			</template>
 		</UButton>
 	</div>

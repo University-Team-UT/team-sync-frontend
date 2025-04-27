@@ -18,6 +18,14 @@ export interface IUserAccount {
 	displayName: string | undefined
 }
 
+export interface IProject {
+	id: string
+	createdAt: string
+	title: string
+	status: ProjectStatus
+	workbenchId: string
+}
+
 export enum WorkbenchRole {
 	VISITOR = 'VISITOR',
 	ADMIN = 'ADMIN',

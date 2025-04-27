@@ -11,10 +11,12 @@ const { t } = useI18n()
 
 const workspaceStore = useWorkspaceStore()
 const appStore = useAppStore()
+const open = ref(false)
 </script>
 
 <template>
 	<UPopover
+		v-model:open="open"
 		:content="{
 			align: 'center',
 			side: 'bottom',
@@ -25,19 +27,22 @@ const appStore = useAppStore()
 		<slot></slot>
 		<template #content>
 			<div class="flex flex-col w-100 rounded-lg bg-root-800">
-				<WorkspaceCard
-					v-if="appStore.currentWorkspace"
-					:title="appStore.currentWorkspace!.title"
-					:members-count="appStore.currentWorkspace?.membersCount"
-					:user-role="appStore.currentWorkspace?.userRole"
-					is-current
-				/>
+				<div @click="open = false">
+					<WorkspaceCard
+						v-if="appStore.currentWorkspace"
+						:title="appStore.currentWorkspace!.title"
+						:members-count="appStore.currentWorkspace?.membersCount"
+						:user-role="appStore.currentWorkspace?.userRole"
+						is-current
+					/>
+				</div>
 				<div
 					v-if="appStore.currentWorkspace"
 					class="flex flex-col bg-root-900 gap-1 py-2"
 				>
 					<NuxtLink
 						:to="ROUTES.WORKSPACE(appStore.currentWorkspace.id).SETTINGS"
+						@click="open = false"
 					>
 						<UButton
 							class="bg-transparent hover:text-primary-400 w-full text-md px-10"
@@ -67,6 +72,7 @@ const appStore = useAppStore()
 					:key="item.id"
 					:to="ROUTES.WORKSPACE(item.id).BASE"
 					class="cursor-pointer"
+					@click="open = false"
 				>
 					<WorkspaceCard
 						:title="item.title"

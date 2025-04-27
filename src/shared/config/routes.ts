@@ -8,11 +8,14 @@ export const ROUTES = {
 		SECURITY: '/settings/security',
 		WORKSPACES: '/settings/workspaces'
 	},
-	WORKSPACE: (id: string) => ({
-		BASE: `/w/${id}`,
-		SETTINGS: `/w/${id}/settings`,
-		MEMBERS: `/w/${id}/members`,
-		TAGS: `/w/${id}/tags`
+	WORKSPACE: (workspaceId: string) => ({
+		BASE: `/w/${workspaceId}`,
+		SETTINGS: `/w/${workspaceId}/settings`,
+		MEMBERS: `/w/${workspaceId}/members`,
+		TAGS: `/w/${workspaceId}/tags`,
+		PROJECT: (projectId: string) => ({
+			BASE: `/w/${workspaceId}/p/${projectId}`
+		})
 	}),
 	INVITE: '/invite'
 }

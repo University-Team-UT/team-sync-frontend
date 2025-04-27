@@ -1,10 +1,24 @@
 <script lang="ts" setup>
+import { TagsService } from '~/modules/workspace/tags/api/tags.service'
 import CreateTag from '~/modules/workspace/tags/CreateTag.vue'
+import { tagsKey } from '~/modules/workspace/tags/lib/keys'
+import TagsList from '~/modules/workspace/tags/TagsList.vue'
+import { useAppStore } from '~/shared/stores/AppStore'
 
 useSyncCurrentWorkspace()
 definePageMeta({
 	layout: 'workspace'
 })
+const appStore = useAppStore()
+
+const { data, fetch: fetchTags } = useQuery({
+	queryFn: () =>
+		TagsService.getTagsByWorkbenchId(appStore.currentWorkspace!.id),
+
+	enabled: true
+})
+
+provide(tagsKey, fetchTags)
 </script>
 
 <template>
@@ -17,6 +31,7 @@ definePageMeta({
 			Tags created in this section are available in deals and tasks.
 		</h2>
 		<CreateTag />
+		<TagsList v-if="data" :tags="data.data" />
 	</div>
 </template>
 

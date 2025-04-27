@@ -5,41 +5,38 @@ import ColorCircle from './ColorCircle.vue'
 import { tagsKey } from './lib/keys'
 import { tagsColors } from './lib/tagsColors'
 import type { TagColor } from './types'
-import { useAppStore } from '~/shared/stores/AppStore'
 
-const appStore = useAppStore()
 const toast = useToast()
 
-const isCreating = ref<boolean>(false)
-const currentColor = ref<TagColor>(tagsColors[0])
-const input = ref<string>('')
+const props = defineProps<{ color: TagColor; title: string; id: string }>()
+
+const emit = defineEmits<{ clearId: [] }>()
+
+const currentColor = ref<TagColor>(props.color)
+const input = ref<string>(props.title)
 
 const cancelCreation = () => {
-	isCreating.value = false
-	currentColor.value = tagsColors[0]
-	input.value = ''
+	currentColor.value = props.color
+	input.value = props.title
+	emit('clearId')
 }
 
 const injected = inject(tagsKey)
 
 const { mutate, isLoading } = useMutation({
 	mutationFn: () =>
-		TagsService.createTag(
-			appStore.currentWorkspace!.id,
-			input.value,
-			currentColor.value.primary
-		),
+		TagsService.updateTag(props.id, input.value, currentColor.value.primary),
 	onSuccess: () => {
 		toast.add({
-			title: 'Создан новый тэг',
+			title: 'Тэг обновлен',
 			color: 'success'
 		})
 		injected?.()
-		cancelCreation()
+		emit('clearId')
 	},
 	onError: err => {
 		toast.add({
-			title: 'Не удалось создать тэг',
+			title: 'Не удалось обновить тэг',
 			description: `${err.message}`,
 			color: 'error'
 		})
@@ -49,13 +46,7 @@ const { mutate, isLoading } = useMutation({
 
 <template>
 	<div class="flex flex-col justify-end gap-2">
-		<UButton
-			icon="lucide:circle-plus"
-			class="self-end mt-2"
-			@click="isCreating = true"
-			>Создать тэг</UButton
-		>
-		<div v-if="isCreating" class="items-center gap-4 flex justify-between">
+		<div class="items-center gap-4 flex justify-between">
 			<UPopover
 				:content="{
 					align: 'start'
