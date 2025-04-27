@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { MembersService } from '~/modules/workspace/api/members.service'
+import { useAppStore } from '~/shared/stores/AppStore'
+import { useAuthStore } from '~/shared/stores/AuthStore'
+
 const { t } = useI18n()
 
 const value = ref('')
@@ -12,6 +16,22 @@ function copy() {
 		copied.value = false
 	}, 2000)
 }
+const switched = ref(false)
+const authStore = useAuthStore()
+const appStore = useAppStore()
+
+const { fetch, isLoading } = useQuery({
+	queryFn: () =>
+		MembersService.getInviterLink(
+			authStore.user.id as string,
+			appStore.currentWorkspace!.id
+		),
+	onSuccess(data) {
+		value.value = data.data
+	}
+})
+
+watch(switched, newVal => newVal === true && fetch())
 </script>
 
 <template>
@@ -38,14 +58,16 @@ function copy() {
 				size="sm"
 			/>
 		</UTooltip>
-		<USwitch default-value size="sm" />
+		<USwitch v-model="switched" size="sm" />
 	</div>
 	<div class="flex gap-5 justify-between">
 		<UInput
 			v-model="value"
 			:ui="{ trailing: 'pr-0.5' }"
 			color="neutral"
+			:loading="isLoading"
 			variant="soft"
+			disabled
 			:placeholder="t('invite.link')"
 			class="w-full"
 			><template v-if="value?.length" #trailing
@@ -58,9 +80,6 @@ function copy() {
 					@click="copy"
 			/></template>
 		</UInput>
-		<UButton color="primary" class="font-bold self-center px-7" size="sm">{{
-			t('invite.copy')
-		}}</UButton>
 	</div>
 </template>
 

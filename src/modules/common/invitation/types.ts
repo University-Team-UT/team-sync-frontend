@@ -1,7 +1,7 @@
-import type { BaseRoles } from '~~/src/types/common.types'
+import type { WorkbenchRole } from '~~/src/types/common.types'
 
 export interface IRoleItemProps {
-	role: BaseRoles
+	role: WorkbenchRole
 	desc: string
 	icon: string
 }

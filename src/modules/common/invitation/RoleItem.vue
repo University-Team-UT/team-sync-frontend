@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import { getKeyByUserRole } from '~~/src/shared/lib/roles.util'
+import { getKeyByWorkspaceMember } from '~~/src/shared/lib/roles.util'
 
 import type { IRoleItemProps } from './types'
 
 defineProps<{ item: IRoleItemProps }>()
+defineEmits<{ click: [] }>()
 
 const { t } = useLocale()
 </script>
 
 <template>
-	<div class="flex w-full">
+	<div @click="$emit('click')" class="flex w-full cursor-pointer">
 		<div
 			class="flex items-center self-center justify-center bg-root-800 p-6 rounded-lg"
 		>
@@ -18,7 +19,7 @@ const { t } = useLocale()
 
 		<div class="flex flex-col items-start justify-center p-2 gap-1">
 			<H1 class="text-root-100 text-sm">{{
-				t(getKeyByUserRole(item.role).i18nKey)
+				t(getKeyByWorkspaceMember(item.role).i18nKey)
 			}}</H1>
 			<p class="text-root-600 text-xs">{{ item.desc }}</p>
 		</div>
