@@ -6,6 +6,7 @@ import WorkspacePopover from '../workspace/WorkspacePopover.vue'
 
 import SidebarItem from './SidebarItem.vue'
 import SidebarProject from './SidebarProject.vue'
+import { useAppStore } from '~/shared/stores/AppStore'
 
 const slots = defineSlots<{
 	topBar?: (props: { isCollapsed: boolean }) => any
@@ -14,6 +15,8 @@ const slots = defineSlots<{
 }>()
 const { isMain = false } = defineProps<{ isMain?: boolean }>()
 const { isCollapsed, toggle } = useSidebar()
+
+const appStore = useAppStore()
 </script>
 
 <template>
@@ -34,7 +37,12 @@ const { isCollapsed, toggle } = useSidebar()
 							<h2 class="text-xs text-gray-400 line-clamp-1 font-bold">
 								Рабочее пространство
 							</h2>
-							<h2 class="text-sm font-semibold">Роман Семенов</h2>
+							<h2
+								v-if="appStore.currentWorkspace"
+								class="text-sm font-semibold"
+							>
+								{{ appStore.currentWorkspace.title }}
+							</h2>
 						</div>
 					</div>
 				</WorkspacePopover>
