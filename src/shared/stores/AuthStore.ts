@@ -30,19 +30,16 @@ export const useAuthStore = defineStore('auth', () => {
 			const NewUser = JSON.parse(storedUser)
 			setAuthData(NewUser, token)
 			isLoading.value = false
-
 			return true
 		} else {
 			isLoading.value = false
-
-			logout()
 			return false
 		}
 	}
 
-	const setAuthData = (newUser: IUser | null, token: string) => {
-		user.value = newUser === null ? initialUser : newUser
-		accessToken.value = token
+	const setAuthData = (newUser?: IUser, token?: string) => {
+		user.value = newUser === undefined ? initialUser : newUser
+		accessToken.value = token === undefined ? '' : token
 
 		if (newUser && token) {
 			Cookies.set('accessToken', token)
@@ -60,9 +57,9 @@ export const useAuthStore = defineStore('auth', () => {
 
 	const logout = (cb?: () => void) => {
 		AuthService.logout()
-		setAuthData(null, '')
-		cb?.()
 		router.push(ROUTES.AUTH)
+		setAuthData()
+		cb?.()
 	}
 	return {
 		user,

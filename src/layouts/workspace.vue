@@ -39,7 +39,7 @@ const route = useRoute()
 		<template #sidebar>
 			<AppSidebar>
 				<template #topBar="{ isCollapsed }">
-					<NuxtLinkLocale
+					<NuxtLink
 						v-if="appStore.currentWorkspace"
 						:to="ROUTES.WORKSPACE(appStore.currentWorkspace?.id).BASE"
 					>
@@ -48,7 +48,7 @@ const route = useRoute()
 							class="justify-center w-full"
 							:label="!isCollapsed ? ('Назад' as string) : ''"
 						/>
-					</NuxtLinkLocale>
+					</NuxtLink>
 				</template>
 				<template v-if="workspaceItems" #baseElements="{ isCollapsed }">
 					<SidebarItem

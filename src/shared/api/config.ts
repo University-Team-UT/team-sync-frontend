@@ -16,7 +16,8 @@ export const API = {
 		DELETE_WORKBENCH: (id: string) => `/workbench/delete/${id}`
 	},
 	MEMBERS: {
-		GET_MEMBERS: '/members',
+		GET_INVITER_LINK: (workbenchId: string) => `/members/${workbenchId}`,
+		GET_MEMBERS: (workbenchId: string) => `/members/get-members/${workbenchId}`,
 		INVITE_USERS: (memberId: string) => `members/invite-users/${memberId}`,
 		REMOVE_MEMBER: (id: string) => `/members/remove-member/${id}`,
 		EDIT_MEMBER_ROLE: (id: string) => `/members/edit-member-role/${id}`,

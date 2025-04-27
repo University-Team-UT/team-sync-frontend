@@ -11,7 +11,7 @@ const buttonText = computed(() => (!props.isCollapsed ? props.text : ''))
 </script>
 
 <template>
-	<NuxtLinkLocale :to="to">
+	<NuxtLink :to="to">
 		<UButton
 			:class="[
 				' hover:bg-root-800 w-full',
@@ -23,5 +23,5 @@ const buttonText = computed(() => (!props.isCollapsed ? props.text : ''))
 			:icon="icon"
 			>{{ buttonText }}</UButton
 		>
-	</NuxtLinkLocale>
+	</NuxtLink>
 </template>

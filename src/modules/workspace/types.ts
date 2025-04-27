@@ -1,4 +1,4 @@
-import type { WorkbenchRole } from '~/types/common.types'
+import type { IUserAccount, WorkbenchRole } from '~/types/common.types'
 
 export type TripleExclusiveProps<A, B, C> =
 	| (A & { [K in keyof (B & C)]?: never })
@@ -11,4 +11,10 @@ export interface IWorkspace {
 	description: string
 	userRole: WorkbenchRole
 	membersCount: number
+}
+
+export interface IWorkspaceMember {
+	id: string
+	role: WorkbenchRole
+	user: IUserAccount
 }
