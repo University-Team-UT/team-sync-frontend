@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ROUTES } from '~~/src/shared/config/routes'
 import { useServiceStore } from '~~/src/shared/stores/ServiceStore'
 
 import NotificationTabs from './NotificationTabs.vue'
@@ -22,14 +23,16 @@ const store = useServiceStore()
 						<h2 class="text-xl select-none">Notifications</h2>
 						<div class="flex gap-2">
 							<NotificationTelegram />
-							<UButton
-								:ui="{
-									base: 'bg-root-800/50  hover:bg-root-900 rounded-lg text-root-400 text-xs'
-								}"
-								icon="lucide:settings"
-								size="lg"
-								variant="solid"
-							/>
+
+							<NuxtLinkLocale :to="ROUTES.SETTINGS.NOTIFICATIONS"
+								><UButton
+									:ui="{
+										base: 'bg-root-800/50  hover:bg-root-900 rounded-lg text-root-400 text-xs'
+									}"
+									icon="lucide:settings"
+									size="lg"
+									variant="solid"
+							/></NuxtLinkLocale>
 						</div>
 					</section>
 

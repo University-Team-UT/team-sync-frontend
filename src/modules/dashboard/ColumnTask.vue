@@ -22,7 +22,7 @@ const value = ref(3)
 			<UButton
 				label="Добавить задачу"
 				variant="solid"
-				class="w-full bg-root-700 rounded-sm text-primary-400 px-4 py-2"
+				class="w-full bg-root-700 rounded-sm text-primary-400 px-4 py-2 hover:bg-root-700/50"
 			/>
 			<!-- Задача -->
 			<div class="flex flex-col gap-6 bg-root-700 rounded-sm px-4 py-2">

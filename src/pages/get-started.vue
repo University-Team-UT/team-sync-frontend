@@ -2,6 +2,7 @@
 import type { StepperItem } from '@nuxt/ui'
 
 import AccentColorTemplate from '~/shared/components/WelcomeTemplates/AccentColorTemplate.vue'
+import InvitationTemplate from '~/shared/components/WelcomeTemplates/InvitationTemplate.vue'
 import StartingTemplate from '~/shared/components/WelcomeTemplates/StartingTemplate.vue'
 import ThemeTemplate from '~/shared/components/WelcomeTemplates/ThemeTemplate.vue'
 import WorkspaceTemplate from '~/shared/components/WelcomeTemplates/WorkspaceTemplate.vue'
@@ -38,7 +39,7 @@ const items: StepperItem[] = [
 	}
 ]
 
-const active = ref(0)
+const active = ref(4)
 
 const nextStep = () => {
 	active.value = (active.value + 1) % items.length
@@ -64,6 +65,9 @@ const nextStep = () => {
 			</template>
 			<template #Workspace>
 				<WorkspaceTemplate @next-step="nextStep" />
+			</template>
+			<template #Invitation>
+				<InvitationTemplate @next-step="nextStep" />
 			</template>
 		</UStepper>
 	</div>

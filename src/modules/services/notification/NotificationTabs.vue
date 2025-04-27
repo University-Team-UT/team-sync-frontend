@@ -3,13 +3,13 @@ import NotificationControlSettings from './NotificationControlSettings.vue'
 import { TAB_TYPE } from './notifications.types'
 import type { iTab } from './notifications.types'
 import NotificationTabsAll from './NotificationTabsAll.vue'
-import NotificationTabsMentions from './NotificationTabsMentions.vue'
+import NotificationTabsArchive from './NotificationTabsArchive.vue'
 import NotificationTabsUnread from './NotificationTabsUnread.vue'
 
 const tabs = ref<iTab[]>([
-	{ name: '2', type: TAB_TYPE.ALL },
-	{ name: '2', type: TAB_TYPE.UNREAD },
-	{ name: '3', type: TAB_TYPE.ARCHIVE }
+	{ name: 'All', type: TAB_TYPE.ALL },
+	{ name: 'Unread', type: TAB_TYPE.UNREAD },
+	{ name: 'Archive', type: TAB_TYPE.ARCHIVE }
 ])
 const selectedTab = ref<TAB_TYPE>(TAB_TYPE.ALL)
 
@@ -46,8 +46,8 @@ const changeTab = (tab: iTab) => {
 		<div v-else-if="selectedTab === TAB_TYPE.UNREAD">
 			<NotificationTabsUnread />
 		</div>
-		<div v-else-if="selectedTab.name === TAB_TYPE.MENTIONS">
-			<NotificationTabsMentions />
+		<div v-else-if="selectedTab === TAB_TYPE.ARCHIVE">
+			<NotificationTabsArchive />
 		</div>
 	</div>
 </template>
