@@ -2,6 +2,7 @@
 import type { DropdownMenuItem } from '@nuxt/ui'
 
 import ColorModeButton from '../settings/theme/ColorModeButton.vue'
+import { ROUTES } from '~~/src/shared/config/routes'
 
 import LanguageSwitchButtonGroup from './LanguageSwitchButtonGroup.vue'
 import AvatarPic from '~/shared/components/AvatarPic.vue'
@@ -19,7 +20,8 @@ const items = ref<DropdownMenuItem[][]>([
 	[
 		{
 			label: 'Settings',
-			icon: 'i-lucide-cog'
+			icon: 'i-lucide-cog',
+			to: ROUTES.SETTINGS.PROFILE
 		},
 		{
 			label: 'Log out',

@@ -1,0 +1,116 @@
+<script setup lang="ts">
+import type { FormSubmitEvent } from '@nuxt/ui'
+import * as z from 'zod'
+
+import {
+	type CreateWorkspaceDto,
+	WorkspaceService
+} from '~/modules/workspace/api/workspace.service'
+import { useWorkspaceStore } from '~/shared/stores/WorkspaceStore'
+
+const schema = z.object({
+	title: z.string(),
+	description: z.string()
+})
+
+type Schema = z.output<typeof schema>
+
+const state = reactive<Partial<Schema>>({
+	title: '',
+	description: ''
+})
+
+const toast = useToast()
+const wStore = useWorkspaceStore()
+
+const { mutate, isLoading } = useMutation({
+	mutationFn: (data: CreateWorkspaceDto) =>
+		WorkspaceService.createWorkspace(data),
+	onSuccess: () => {
+		toast.add({
+			description: 'Рабочее пространство создано',
+			color: 'success'
+		})
+	},
+	onError: error => {
+		toast.add({
+			description: error.message,
+			color: 'error'
+		})
+	}
+})
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+	await mutate(event.data)
+	emit('nextStep')
+	state.title = ''
+	state.description = ''
+	wStore.getWorkspaces()
+}
+
+const emit = defineEmits(['nextStep'])
+</script>
+
+<template>
+	<div
+		class="flex flex-col h-130 bg-root-800 min-w-2/5 z-1000 p-10 rounded-xl items-center justify-center gap-10 relative"
+	>
+		<span class="text-2xl absolute top-8 text-center"
+			>Настрой Team<span class="text-primary-400 font-bold">Sync</span></span
+		>
+		<span class="text-xl top-18"
+			>Создайте свое первое рабочее <br />
+			пространство - место где соберешь все свои проекты</span
+		>
+		<UForm
+			:schema="schema"
+			:state="state"
+			class="flex flex-col w-6/7 space-y-4"
+			@submit="onSubmit"
+		>
+			<UFormField label="Название рабочего пространства" name="email">
+				<UInput
+					v-model="state.title"
+					placeholder="Введите название"
+					variant="subtle"
+					color="primary"
+					size="xl"
+					class="w-full"
+					:ui="{
+						base: 'resize-none bg-root-700 focus:bg-root-600  hover:bg-root-700'
+					}"
+				/>
+			</UFormField>
+
+			<UFormField label="Описание рабочего проекта" name="password">
+				<UTextarea
+					v-model="state.description"
+					placeholder="Введите описание "
+					variant="subtle"
+					:rows="4"
+					size="xl"
+					color="primary"
+					autoresize
+					class="w-full"
+					:maxrows="4"
+					:ui="{
+						base: 'resize-none bg-root-700 focus:bg-root-600  hover:bg-root-700'
+					}"
+				/>
+			</UFormField>
+			<div class="flex items-center justify-center gap-8">
+				<UButton
+					:loading="isLoading"
+					label="Продолжить"
+					color="primary"
+					size="lg"
+					variant="solid"
+					type="submit"
+					class="px-8 text-xl font-bold absolute bottom-8"
+					@click="emit('nextStep')"
+				/>
+			</div>
+		</UForm>
+	</div>
+</template>
+
+<style scoped></style>

@@ -7,27 +7,22 @@ const value = ref(3)
 </script>
 
 <template>
-	<UDrawer direction="right" :overlay="false">
+	<UDrawer direction="right" :overlay="false" handle-only>
 		<div
-			class="flex flex-col border-t-2 rounded-t-sm border-primary-400 w-1/6 gap-4"
+			class="flex flex-col border-t-2 rounded-t-sm border-primary-400 w-1/6 gap-4 scroll-auto"
 		>
 			<!-- Заголовки задач -->
 			<div
 				class="flex py-2 px-4 justify-between rounded-t-sm bg-root-700 items-center"
 			>
 				<span>Дизайн</span>
-				<UButton
-					icon="lucide:settings-2"
-					size="md"
-					color="primary"
-					variant="link"
-				/>
+
 				<!-- кнопка добавить задачу -->
 			</div>
 			<UButton
 				label="Добавить задачу"
 				variant="solid"
-				class="w-full bg-root-700 rounded-sm text-primary-400 px-4 py-2"
+				class="w-full bg-root-700 rounded-sm text-primary-400 px-4 py-2 hover:bg-root-700/50"
 			/>
 			<!-- Задача -->
 			<div class="flex flex-col gap-6 bg-root-700 rounded-sm px-4 py-2">
@@ -39,7 +34,7 @@ const value = ref(3)
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
 						repudiandae cum? Amet expedita repellendus non eum impedit itaque
 						magni cum voluptates veniam voluptatibus, voluptatem numquam labore,
-						molestiae, quae debitis dolorum.
+						molestiae, quae debitis.
 					</div>
 				</div>
 
