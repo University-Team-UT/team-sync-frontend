@@ -66,7 +66,6 @@ watch(isDragging, async () => {
 	if (isDragging.value === false) {
 		if (itemToChangePosition.id && itemToChangePosition.newPos !== null) {
 			await mutate()
-			taskStore.getColumns()
 		}
 	}
 })

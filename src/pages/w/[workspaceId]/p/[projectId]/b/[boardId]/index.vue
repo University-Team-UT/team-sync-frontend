@@ -5,6 +5,7 @@ definePageMeta({
 	layout: 'project'
 })
 useSyncCurrentProject()
+useSyncCurrentBoard()
 </script>
 
 <template>
