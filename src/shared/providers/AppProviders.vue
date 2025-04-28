@@ -7,17 +7,21 @@ import ServicesProvide from './ServicesProvide.vue'
 import ThemeProvider from './ThemeProvider.vue'
 
 useWorkspaceStore()
+const { isLoading } = useGetWorkspaceInfo()
 </script>
 
 <template>
 	<AuthProvider>
-		<CollapseProvider>
-			<ServicesProvide>
-				<ThemeProvider>
-					<slot />
-				</ThemeProvider>
-			</ServicesProvide>
-		</CollapseProvider>
+		<div v-if="!isLoading">
+			<CollapseProvider>
+				<ServicesProvide>
+					<ThemeProvider>
+						<slot />
+					</ThemeProvider>
+				</ServicesProvide>
+			</CollapseProvider>
+		</div>
+		<div v-else>ITS LOADING</div>
 	</AuthProvider>
 </template>
 

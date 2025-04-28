@@ -10,9 +10,10 @@ const route = useRoute()
 </script>
 
 <template>
-	<div class="flex flex-col gap-1">
+	<div class="flex flex-col">
 		<SidebarProject
 			v-for="item in wStore.projects"
+			:id="item.id"
 			:key="item.id"
 			:is-collapsed="isCollapsed"
 			:text="item.title"

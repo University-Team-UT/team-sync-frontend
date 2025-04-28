@@ -2,7 +2,7 @@
 import type { FormSubmitEvent } from '@nuxt/ui'
 import * as z from 'zod'
 
-import { ProjectService } from './api/project.service'
+import { BoardService } from './api/board.service'
 import { useAppStore } from '~/shared/stores/AppStore'
 import { useWorkspaceStore } from '~/shared/stores/WorkspaceStore'
 
@@ -24,12 +24,13 @@ const appStore = useAppStore()
 
 const { mutate, isLoading } = useMutation({
 	mutationFn: (title: string) =>
-		ProjectService.createProject(appStore.currentWorkspace!.id, title),
+		BoardService.createBoard(appStore.currentProject!.id, title),
 	onSuccess: () => {
 		toast.add({
-			description: 'Проект создан',
+			description: 'Доска создана',
 			color: 'success'
 		})
+		wStore.getBoards()
 	},
 	onError: error => {
 		toast.add({
@@ -49,7 +50,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 	<UModal v-model:open="open" title="Новый проект">
 		<slot></slot>
 		<template #title>
-			<span class="text-2xl">Новый проект</span>
+			<span class="text-2xl">Создать доску</span>
 		</template>
 		<template #body>
 			<UForm
@@ -61,7 +62,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 				<UFormField label="Название" name="title">
 					<UInput
 						v-model="state.title"
-						placeholder="Введите название проекта"
+						placeholder="Введите название новой доски"
 						variant="soft"
 						color="alt"
 						size="xl"

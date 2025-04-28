@@ -32,11 +32,11 @@ export const API = {
 		DELETE_PROJECT: (id: string) => `/projects/delete/${id}`
 	},
 	BOARD: {
-		GET_BOARDS: (projectId: string) => `/board/${projectId}`,
-		GET_BY_BOARD_ID: (boardId: string) => `/board/get-by-board-id/${boardId}`,
-		CREATE_BOARD: (projectId: string) => `/board/create/${projectId}`,
-		UPDATE_BOARD: (boardId: string) => `/board/update/${boardId}`,
-		DELETE_BOARD: (boardId: string) => `/board/delete/${boardId}`
+		GET_BOARDS: (projectId: string) => `/boards/${projectId}`,
+		GET_BY_BOARD_ID: (boardId: string) => `/boards/get-by-board-id/${boardId}`,
+		CREATE_BOARD: (projectId: string) => `/boards/create/${projectId}`,
+		UPDATE_BOARD: (boardId: string) => `/boards/update/${boardId}`,
+		DELETE_BOARD: (boardId: string) => `/boards/delete/${boardId}`
 	},
 	COLUMNS: {
 		GET_COLUMNS: (boardId: string) => `/columns/${boardId}`,

@@ -18,6 +18,6 @@ export const ProjectService = {
 	},
 	async deleteProject(projectId: string) {
 		const { $privateApi } = useNuxtApp()
-		return $privateApi.delete(API.PROJECT.UPDATE_PROJECT(projectId))
+		return $privateApi.delete(API.PROJECT.DELETE_PROJECT(projectId))
 	}
 }

@@ -13,11 +13,7 @@ export function useSyncCurrentProject() {
 		() => workspaceStore.projects,
 		newVal => {
 			const found = newVal.find(p => p.id === route.params.projectId)
-			if (found) {
-				console.log(found)
-
-				appStore.setCurrentProject(found)
-			}
+			appStore.setCurrentProject(found ? found : null)
 		},
 		{ immediate: true }
 	)

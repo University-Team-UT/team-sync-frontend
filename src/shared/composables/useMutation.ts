@@ -16,7 +16,7 @@ export function useMutation<T, V>({
 	const error = ref<Error | null>(null)
 	const isLoading = ref(false)
 
-	const mutate = async (variables: V) => {
+	const mutate = async (variables?: V) => {
 		isLoading.value = true
 		error.value = null
 

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ProjectBoards from '~/modules/board/projectBoards.vue'
 import AppSidebar from '~/modules/sidebar/AppSidebar.vue'
 import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 </script>
@@ -9,7 +10,7 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 			<AppSidebar :is-main="true" />
 		</template>
 		<div>
-			<div>clo clo clo</div>
+			<ProjectBoards />
 			<slot />
 		</div>
 	</DefaultLayout>

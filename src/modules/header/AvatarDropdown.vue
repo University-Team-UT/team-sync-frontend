@@ -65,6 +65,8 @@ const items = ref<DropdownMenuItem[][]>([
 		{ class: 'hover:bg-transparent', slot: 'language', type: 'label' }
 	]
 ])
+
+const auth = useAuthStore()
 </script>
 
 <template>
@@ -86,8 +88,8 @@ const items = ref<DropdownMenuItem[][]>([
 			<div class="w-full flex items-center gap-2">
 				<AvatarPic />
 				<div class="flex flex-col gap-1">
-					<b>User Name</b>
-					<span class="font-medium text-root-600">usersEmail@gmail.com</span>
+					<b>{{ auth.user.displayName }}</b>
+					<span class="font-medium text-root-600">{{ auth.user.email }}</span>
 				</div>
 			</div>
 		</template>

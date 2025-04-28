@@ -2,8 +2,7 @@
 import type { FormSubmitEvent } from '@nuxt/ui'
 import * as z from 'zod'
 
-import { ProjectService } from './api/project.service'
-import { useAppStore } from '~/shared/stores/AppStore'
+import { BoardService } from './api/board.service'
 import { useWorkspaceStore } from '~/shared/stores/WorkspaceStore'
 
 const open = ref(false)
@@ -14,22 +13,23 @@ const schema = z.object({
 
 type Schema = z.output<typeof schema>
 
+const props = defineProps<{ title: string; id: string }>()
+
 const state = reactive<Partial<Schema>>({
-	title: ''
+	title: props.title
 })
 
 const toast = useToast()
 const wStore = useWorkspaceStore()
-const appStore = useAppStore()
 
 const { mutate, isLoading } = useMutation({
-	mutationFn: (title: string) =>
-		ProjectService.createProject(appStore.currentWorkspace!.id, title),
+	mutationFn: (title: string) => BoardService.updateBoard(props.id, title),
 	onSuccess: () => {
 		toast.add({
-			description: 'Проект создан',
+			description: 'Доска обновлена',
 			color: 'success'
 		})
+		wStore.getBoards()
 	},
 	onError: error => {
 		toast.add({
@@ -42,14 +42,13 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 	await mutate(event.data.title)
 	open.value = false
 	state.title = ''
-	wStore.getProjects()
 }
 </script>
 <template>
 	<UModal v-model:open="open" title="Новый проект">
 		<slot></slot>
 		<template #title>
-			<span class="text-2xl">Новый проект</span>
+			<span class="text-2xl">Переименовать доску</span>
 		</template>
 		<template #body>
 			<UForm
@@ -61,7 +60,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 				<UFormField label="Название" name="title">
 					<UInput
 						v-model="state.title"
-						placeholder="Введите название проекта"
+						placeholder="Введите название новой доски"
 						variant="soft"
 						color="alt"
 						size="xl"
