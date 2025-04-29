@@ -11,14 +11,6 @@ const value = ref(3)
 		<div
 			class="flex flex-col border-t-2 rounded-t-sm border-primary-400 w-1/6 gap-4 scroll-auto"
 		>
-			<!-- Заголовки задач -->
-			<div
-				class="flex py-2 px-4 justify-between rounded-t-sm bg-root-700 items-center"
-			>
-				<span>Дизайн</span>
-
-				<!-- кнопка добавить задачу -->
-			</div>
 			<UButton
 				label="Добавить задачу"
 				variant="solid"
@@ -51,7 +43,6 @@ const value = ref(3)
 						/>
 					</div>
 				</div>
-				<!-- прогресс бар -->
 				<div class="grid grid-cols-[24px_1fr] w-full gap-4 items-center">
 					<UIcon name="lucide:network" class="size-6 rotate-90" />
 					<div class="flex gap-4 w-full items-center">

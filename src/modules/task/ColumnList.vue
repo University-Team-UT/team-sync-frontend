@@ -4,6 +4,7 @@ import { createSwapy, utils } from 'swapy'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
 import { ColumnService } from './api/column.service'
+import ColumnDropdown from './ColumnDropdown.vue'
 import CreateColumn from './CreateColumn.vue'
 import { useTaskStore } from './TaskStore'
 
@@ -23,11 +24,8 @@ const itemToChangePosition = reactive<{
 const toast = useToast()
 
 const { mutate } = useMutation({
-	mutationFn: () =>
-		ColumnService.updatePosition(
-			itemToChangePosition!.id!,
-			+itemToChangePosition!.newPos!
-		),
+	mutationFn: (data: { id: string; newPos: number }) =>
+		ColumnService.updatePosition(data.id, data.newPos),
 	onSuccess: () => {
 		toast.add({
 			title: 'Pos update',
@@ -65,11 +63,26 @@ const isDragging = ref(false)
 watch(isDragging, async () => {
 	if (isDragging.value === false) {
 		if (itemToChangePosition.id && itemToChangePosition.newPos !== null) {
-			await mutate()
+			const currentItem = items.value.find(
+				col => col.id === itemToChangePosition.id
+			)
+
+			if (
+				currentItem &&
+				Number(currentItem.position) === itemToChangePosition.newPos
+			) {
+				itemToChangePosition.id = null
+				itemToChangePosition.newPos = null
+				return
+			}
+
+			await mutate({
+				id: itemToChangePosition.id,
+				newPos: +itemToChangePosition.newPos
+			})
 		}
 	}
 })
-
 onMounted(() => {
 	if (container.value) {
 		swapy.value = createSwapy(container.value, {
@@ -126,12 +139,18 @@ onUnmounted(() => {
 					<div class="flex-1" data-swapy-no-drag>
 						<span>{{ i.item?.title }}</span>
 					</div>
-					<UButton
-						icon="lucide:ellipsis-vertical"
-						data-swapy-no-drag
-						variant="soft"
-						size="xs"
-					/>
+					<ColumnDropdown
+						:title="i.item!.title"
+						:id="i.item!.id"
+						:color="i.item!.color"
+					>
+						<UButton
+							icon="lucide:ellipsis-vertical"
+							data-swapy-no-drag
+							variant="soft"
+							size="xs"
+						/>
+					</ColumnDropdown>
 				</div>
 				<UButton
 					data-swapy-no-drag
