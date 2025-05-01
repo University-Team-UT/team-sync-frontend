@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import TaskSidebar from './TaskSidebar.vue'
+import TaskSidebar from '../dashboard/TaskSidebar.vue'
 
 const value = ref(3)
 </script>
@@ -9,7 +9,7 @@ const value = ref(3)
 <template>
 	<UDrawer direction="right" :overlay="false" handle-only>
 		<div
-			class="flex flex-col border-t-2 rounded-t-sm border-primary-400 w-1/6 gap-4 scroll-auto"
+			class="flex flex-col border-t-2 rounded-t-sm border-primary-400 gap-4 scroll-auto"
 		>
 			<UButton
 				label="Добавить задачу"

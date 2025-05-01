@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import AccordionSidebar from './sidebar/AccordionSidebar.vue'
-import BreadCrumps from './sidebar/BreadCrumps.vue'
-import CommentSidebar from './sidebar/CommentSidebar.vue'
-import TaskDescription from './sidebar/TaskDescription.vue'
-import TaskInfo from './sidebar/TaskInfo.vue'
+import type { ITask } from '../task/lib/types'
+import AccordionSidebar from '../task/sidebar/AccordionSidebar.vue'
+import BreadCrumps from '../task/sidebar/BreadCrumps.vue'
+import CommentSidebar from '../task/sidebar/CommentSidebar.vue'
+import SubtaskList from '../task/sidebar/subtasks/SubtaskList.vue'
+import TaskInfo from '../task/sidebar/TaskInfo.vue'
+
+defineProps<{ task: ITask }>()
 </script>
 
 <template>
-	<div class="max-w-180 m-4 overflow-y-auto scroll-smooth">
+	<div class="w-full max-w-180 m-4 overflow-y-auto scroll-smooth">
 		<div class="flex flex-col gap-4">
 			<header class="flex p-2"></header>
 			<USeparator />
@@ -22,19 +25,30 @@ import TaskInfo from './sidebar/TaskInfo.vue'
 						/>
 					</div>
 					<div class="flex gap-1 items-center">
-						<UAvatar />
 						<div class="flex flex-col">
-							<span>Тайлер Дерден</span>
-							<span>23.06.2025 23:07</span>
+							<span v-if="task.executor">{{
+								task.executor.user.displayName
+							}}</span>
+
+							<span>
+								{{ new Date(task.createdAt).toLocaleDateString('ru-RU') }}
+								{{
+									new Date(task.createdAt).toLocaleTimeString('ru-RU', {
+										hour: '2-digit',
+										minute: '2-digit'
+									})
+								}}
+							</span>
 						</div>
 					</div>
 				</div>
-				<span class="text-2xl">Сделать таски, лучше чем Роман Семенов</span>
+				<span class="text-2xl">{{ task.title }}</span>
 				<BreadCrumps />
 				<TaskInfo />
 				<USeparator />
-				<TaskDescription />
-				<USeparator />
+				<!-- <TaskDescription />
+				<USeparator /> -->
+				<SubtaskList />
 				<AccordionSidebar />
 				<USeparator />
 				<CommentSidebar />

@@ -2,9 +2,8 @@
 import type { FormSubmitEvent } from '@nuxt/ui'
 import * as z from 'zod'
 
-import { ColumnService } from './api/column.service'
-import { useTaskStore } from './TaskStore'
-import { useWorkspaceStore } from '~/shared/stores/WorkspaceStore'
+import { ColumnService } from '../api/column.service'
+import { useTaskStore } from '../TaskStore'
 
 const open = ref(false)
 

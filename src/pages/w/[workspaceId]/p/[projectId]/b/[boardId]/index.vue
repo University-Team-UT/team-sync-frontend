@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import ColumnList from '~/modules/task/ColumnList.vue'
+import ColumnList from '~/modules/task/columns/ColumnList.vue'
 
 definePageMeta({
 	layout: 'project'

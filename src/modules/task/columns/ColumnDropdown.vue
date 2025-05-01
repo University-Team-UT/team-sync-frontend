@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type { DropdownMenuItem } from '@nuxt/ui'
 
-import { ColumnService } from './api/column.service'
+import { ColumnService } from '../api/column.service'
+import { useTaskStore } from '../TaskStore'
+
 import EditColumnModal from './EditColumnModal.vue'
-import { useTaskStore } from './TaskStore'
 
 defineProps<{ id: string; title: string; color: string }>()
 

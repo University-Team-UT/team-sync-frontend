@@ -51,9 +51,7 @@ const TaskInformation = [
 			:key="item.icon"
 			class="grid grid-cols-[1fr_1fr] gap- items-center"
 		>
-			<div
-				class="flex gap-3 text-primary-700/80 items-center justify-items-start"
-			>
+			<div class="flex gap-3 text-primary-400 items-center justify-items-start">
 				<UIcon :name="item.icon" />
 				<span>{{ item.title }}</span>
 			</div>

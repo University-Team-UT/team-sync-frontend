@@ -1,3 +1,5 @@
+import type { ITask } from '../lib/types'
+
 import { API } from '~/shared/api/config'
 
 export interface IColumnDto {
@@ -6,6 +8,7 @@ export interface IColumnDto {
 	color: string
 	position: number | string
 	boardId: string
+	tasks: ITask[]
 }
 
 export interface IFilterDto {}

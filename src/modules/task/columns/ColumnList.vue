@@ -3,10 +3,14 @@ import type { SlotItemMapArray, Swapy } from 'swapy'
 import { createSwapy, utils } from 'swapy'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
-import { ColumnService } from './api/column.service'
+import { ColumnService } from '../api/column.service'
+import ColumnTask from '../ColumnTask.vue'
+import CreateTask from '../CreateTask.vue'
+import TaskList from '../TaskList.vue'
+import { useTaskStore } from '../TaskStore'
+
 import ColumnDropdown from './ColumnDropdown.vue'
 import CreateColumn from './CreateColumn.vue'
-import { useTaskStore } from './TaskStore'
 
 const taskStore = useTaskStore()
 
@@ -152,14 +156,13 @@ onUnmounted(() => {
 						/>
 					</ColumnDropdown>
 				</div>
-				<UButton
-					data-swapy-no-drag
-					label="Добавить задачу"
-					variant="solid"
-					class="w-full bg-root-700 rounded-sm text-primary-400 px-4 py-2 hover:bg-root-700/50"
-				/>
+				<div data-swapy-no-drag>
+					<CreateTask :column-id="i.item!.id" />
+					<TaskList :tasks="i.item!.tasks" />
+				</div>
 			</div>
 		</div>
+		<ColumnTask />
 		<CreateColumn />
 	</div>
 </template>

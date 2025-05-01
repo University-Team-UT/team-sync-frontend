@@ -16,6 +16,7 @@ export interface IUserAccount {
 	about: string | undefined
 	email: string | undefined
 	displayName: string | undefined
+	id?: string
 }
 
 export interface IProject {

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ColumnService } from './api/column.service'
-import { useTaskStore } from './TaskStore'
+import { ColumnService } from '../api/column.service'
+import { useTaskStore } from '../TaskStore'
+
 import { useAppStore } from '~/shared/stores/AppStore'
 
 const color = ref('#00C16A')

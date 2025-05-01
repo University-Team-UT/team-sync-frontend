@@ -74,7 +74,9 @@ export const API = {
 		GET_TASKS_BY_WORKBENCH_ID: (workbenchId: string) =>
 			`get-tasks-by-workbench-id/${workbenchId}`,
 		GET_TASKS_BY_EXECUTOR_ID: (workbenchId: string) =>
-			`get-tasks-by-executor-id/${workbenchId}`
+			`get-tasks-by-executor-id/${workbenchId}`,
+		TOGGLE_SUBTASK: (subtaskId: string) => `/task/toggle-subtask/${subtaskId}`,
+		UPDATE_TASK: (taskId: string) => `/task/update-task/${taskId}`
 	},
 	COMMENTS: {
 		CREATE: (taskId: string) => `/comments/${taskId}`,
