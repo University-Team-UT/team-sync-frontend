@@ -10,7 +10,7 @@ const { t } = useLocale()
 </script>
 
 <template>
-	<div @click="$emit('click')" class="flex w-full cursor-pointer">
+	<div class="flex w-full cursor-pointer" @click="$emit('click')">
 		<div
 			class="flex items-center self-center justify-center bg-root-800 p-6 rounded-lg"
 		>

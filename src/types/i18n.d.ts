@@ -4,6 +4,14 @@ declare module 'vue-i18n' {
 	export interface DefineLocaleMessage {
 		welcome: string
 		hello: string
+		toaster: {
+			success: string
+		}
+		roles: {
+			admin: string
+			worker: string
+			visitor: string
+		}
 		auth: {
 			index: string
 			providers: {
@@ -46,6 +54,18 @@ declare module 'vue-i18n' {
 			footer: {
 				cancel: string
 				send: string
+			}
+		}
+		avatar: {
+			dropdown: {
+				settings: string
+				logout: string
+				theme: string
+				help: string
+				support: string
+				suggestion: string
+				keys: string
+				partners: string
 			}
 		}
 	}

@@ -60,7 +60,7 @@ const { mutate } = useMutation({
 		MembersService.inviteMembers(data.memberId, data.workbenchId, data.emails),
 	onSuccess: () => {
 		toast.add({
-			description: 'Приглашения были отосланы.',
+			description: t('toaster.success'),
 			color: 'success'
 		})
 	},

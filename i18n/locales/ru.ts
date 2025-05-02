@@ -1,5 +1,13 @@
 export default defineI18nLocale(() => ({
 	welcome: 'Добро пожаловать',
+	roles: {
+		admin: 'Админ',
+		worker: 'Работник',
+		visitor: 'Гость'
+	},
+	toaster: {
+		success: 'Приглашения были отосланы'
+	},
 	search: 'Поиск',
 	invite: {
 		index: 'Пригласить людей',
@@ -52,5 +60,17 @@ export default defineI18nLocale(() => ({
 			description: 'Создайте аккаунт через электронную почту'
 		},
 		bottom: 'Или продолжить другим путём'
+	},
+	avatar: {
+		dropdown: {
+			settings: 'Настройки',
+			logout: 'Выход',
+			theme: 'Темная тема',
+			help: 'Центр поддержки',
+			support: 'Тех. Поддержка',
+			suggestion: 'Предложения',
+			keys: 'Гор. Клавиши',
+			partners: 'Для партнеров'
+		}
 	}
 }))

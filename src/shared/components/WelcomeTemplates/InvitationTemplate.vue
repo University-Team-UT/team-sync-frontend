@@ -102,7 +102,7 @@ const emit = defineEmits(['nextStep'])
 		>
 
 		<div
-			class="flex flex-col w-6/7 min-h-3/5 bg-root-900 rounded-xl p-2 z-1000"
+			class="flex flex-col w-6/7 min-h-3/6 bg-root-900 rounded-xl p-2 z-1000"
 		>
 			<div>
 				<UTabs :items="items" class="w-full">
@@ -120,7 +120,7 @@ const emit = defineEmits(['nextStep'])
 					</template>
 
 					<template #guest>
-						<div class="flex flex-col mt-5">
+						<div class="flex flex-col mt-10">
 							<AddGuest
 								:invites="invites"
 								@add-invite="addInvite"

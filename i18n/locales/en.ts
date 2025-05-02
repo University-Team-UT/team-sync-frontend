@@ -1,5 +1,13 @@
 export default defineI18nLocale(() => ({
 	welcome: 'Welcome',
+	roles: {
+		admin: 'Admin',
+		worker: 'Worker',
+		visitor: 'Guest'
+	},
+	toaster: {
+		success: 'The invitations have been sent out'
+	},
 	auth: {
 		index: 'Login or Register with',
 		providers: {
@@ -50,6 +58,18 @@ export default defineI18nLocale(() => ({
 		footer: {
 			cancel: 'Cancel',
 			send: 'Invite people'
+		}
+	},
+	avatar: {
+		dropdown: {
+			settings: 'Settings',
+			logout: 'Log out',
+			theme: 'Dark theme',
+			help: 'Help Center',
+			support: 'Technical support',
+			suggestion: 'Suggestions',
+			keys: 'Hot keys',
+			partners: 'For partners'
 		}
 	}
 }))

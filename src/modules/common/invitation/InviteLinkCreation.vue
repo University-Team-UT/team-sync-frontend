@@ -73,7 +73,7 @@ watch(switched, newVal => newVal === true && fetch())
 			><template v-if="value?.length" #trailing
 				><UButton
 					:icon="copied ? 'i-lucide-copy-check' : 'i-lucide-copy'"
-					aria-label="Copy to clipboard"
+					:aria-label="t('invite.copy')"
 					color="neutral"
 					variant="ghost"
 					class="hover:bg-transparent hover:text-primary-400"

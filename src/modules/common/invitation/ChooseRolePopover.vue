@@ -12,17 +12,17 @@ const roleItems = [
 	{
 		role: WorkbenchRole.ADMIN,
 		icon: 'lucide:crown',
-		desc: t('roles_admin')
+		desc: t('roles.admin')
 	},
 	{
 		role: WorkbenchRole.WORKER,
 		icon: 'lucide:flame',
-		desc: t('roles_worker')
+		desc: t('roles.worker')
 	},
 	{
 		role: WorkbenchRole.VISITOR,
 		icon: 'lucide:handshake',
-		desc: t('roles_visitor')
+		desc: t('roles.visitor')
 	}
 ]
 

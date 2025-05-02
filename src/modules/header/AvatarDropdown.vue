@@ -10,6 +10,7 @@ import { useAuthStore } from '~/shared/stores/AuthStore'
 
 const { handleLogout } = useAuthStore()
 
+const { t } = useI18n()
 const items = ref<DropdownMenuItem[][]>([
 	[
 		{
@@ -19,19 +20,19 @@ const items = ref<DropdownMenuItem[][]>([
 	],
 	[
 		{
-			label: 'Settings',
+			label: t('avatar.dropdown.settings'),
 			icon: 'i-lucide-cog',
 			to: ROUTES.SETTINGS.PROFILE
 		},
 		{
-			label: 'Log out',
+			label: t('avatar.dropdown.logout'),
 			icon: 'lucide:door-open',
 			onSelect: () => {
 				handleLogout()
 			}
 		},
 		{
-			label: 'Dark-theme',
+			label: t('avatar.dropdown.theme'),
 			icon: 'lucide:moon',
 			type: 'label',
 			slot: 'theme' as const
@@ -40,26 +41,26 @@ const items = ref<DropdownMenuItem[][]>([
 	[
 		{
 			class: 'mt-2',
-			label: 'Help center',
+			label: t('avatar.dropdown.help'),
 			icon: 'lucide:circle-help',
 			to: 'https://github.com/nuxt/ui',
 			target: '_blank'
 		},
 		{
-			label: 'Technical support',
+			label: t('avatar.dropdown.support'),
 			icon: 'lucide:message-circle-code',
 			to: '/components/dropdown-menu'
 		},
 		{
-			label: 'Suggestions',
+			label: t('avatar.dropdown.suggestion'),
 			icon: 'lucide:lightbulb'
 		},
 		{
-			label: 'Hot keys',
+			label: t('avatar.dropdown.keys'),
 			icon: 'lucide:keyboard'
 		},
 		{
-			label: 'For partners',
+			label: t('avatar.dropdown.partners'),
 			icon: 'material-symbols:groups-sharp'
 		},
 		{ class: 'hover:bg-transparent', slot: 'language', type: 'label' }

@@ -39,7 +39,7 @@ const items: StepperItem[] = [
 	}
 ]
 
-const active = ref(4)
+const active = ref(0)
 
 const nextStep = () => {
 	active.value = (active.value + 1) % items.length
