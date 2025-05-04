@@ -20,16 +20,18 @@ const injected = inject(TaskKey)
 			<UIcon name="lucide:chevron-right" />
 			<span>Подзадачи</span>
 		</div>
-		<div v-if="isShown" class="flex flex-col gap-6">
-			<div
-				v-for="item in injected!.subtasks.sort(
-					(a, b) =>
-						new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-				)"
-				:key="item.id"
-				class="flex gap-2 items-center"
-			>
-				<AppSubtask :item="item" />
+		<div v-if="isShown">
+			<div v-if="injected?.subtasks" class="flex flex-col gap-6">
+				<div
+					v-for="item in injected?.subtasks.sort(
+						(a, b) =>
+							new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+					)"
+					:key="item.id"
+					class="flex gap-2 items-center"
+				>
+					<AppSubtask :item="item" />
+				</div>
 			</div>
 			<CreateSubtask v-if="!isAppTask" />
 		</div>

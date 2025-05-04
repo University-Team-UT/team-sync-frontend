@@ -2,6 +2,7 @@
 import type { FormSubmitEvent } from '@nuxt/ui'
 import * as z from 'zod'
 
+import { ProjectService } from '~/modules/projects/api/project.service'
 import {
 	type CreateWorkspaceDto,
 	WorkspaceService
@@ -10,29 +11,24 @@ import { useAppStore } from '~/shared/stores/AppStore'
 import { useWorkspaceStore } from '~/shared/stores/WorkspaceStore'
 
 const schema = z.object({
-	title: z.string(),
-	description: z.string()
+	title: z.string()
 })
 
 type Schema = z.output<typeof schema>
 
 const state = reactive<Partial<Schema>>({
-	title: '',
-	description: ''
+	title: ''
 })
 
 const toast = useToast()
-const wStore = useWorkspaceStore()
 const appStore = useAppStore()
 
 const { mutate, isLoading } = useMutation({
 	mutationFn: (data: CreateWorkspaceDto) =>
-		WorkspaceService.createWorkspace(data),
-	onSuccess: data => {
-		console.log(data.data)
-
+		ProjectService.createProject(appStore.currentWorkspace!.id, data.title),
+	onSuccess: () => {
 		toast.add({
-			description: 'Рабочее пространство создано',
+			description: 'проекут создано',
 			color: 'success'
 		})
 	},
@@ -47,9 +43,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 	await mutate(event.data)
 	emit('nextStep')
 	state.title = ''
-	state.description = ''
-	await wStore.getWorkspaces()
-	appStore.setCurrentWorkspace(wStore.workspaces[0])
 }
 
 const emit = defineEmits(['nextStep'])
@@ -86,22 +79,6 @@ const emit = defineEmits(['nextStep'])
 				/>
 			</UFormField>
 
-			<UFormField label="Описание рабочего проекта" name="password">
-				<UTextarea
-					v-model="state.description"
-					placeholder="Введите описание "
-					variant="subtle"
-					:rows="4"
-					size="xl"
-					color="primary"
-					autoresize
-					class="w-full"
-					:maxrows="4"
-					:ui="{
-						base: 'resize-none bg-root-700 focus:bg-root-600  hover:bg-root-700'
-					}"
-				/>
-			</UFormField>
 			<div class="flex items-center justify-center gap-8">
 				<UButton
 					:loading="isLoading"

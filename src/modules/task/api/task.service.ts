@@ -1,4 +1,6 @@
-import type { server } from 'typescript'
+import type { get } from '@nuxt/ui/runtime/utils/index.js'
+
+import type { ITask } from '../lib/types'
 
 import { API } from '~/shared/api/config'
 import type { Priority, TaskStatus } from '~/types/common.types'
@@ -24,7 +26,7 @@ export const TaskService = {
 		const { $privateApi } = useNuxtApp()
 		return $privateApi.post(API.TASKS.CREATE_TASK, { ...dto })
 	},
-	async setExecutor(executorId: string, taskId: string) {
+	async setExecutor(executorId: string | null, taskId: string) {
 		const { $privateApi } = useNuxtApp()
 		return $privateApi.patch(API.TASKS.SET_EXECUTOR(taskId), { executorId })
 	},
@@ -32,7 +34,7 @@ export const TaskService = {
 		const { $privateApi } = useNuxtApp()
 		return $privateApi.patch(API.TASKS.MOVE_POSITION(taskId), { position })
 	},
-	async setDeadline(taskId: string, deadline: Date) {
+	async setDeadline(taskId: string, deadline: Date | null) {
 		const { $privateApi } = useNuxtApp()
 		return $privateApi.patch(API.TASKS.SET_DEADLINE(taskId), { deadline })
 	},
@@ -40,7 +42,7 @@ export const TaskService = {
 		const { $privateApi } = useNuxtApp()
 		return $privateApi.patch(API.TASKS.SET_PRIORITY(taskId), { priority })
 	},
-	async changeStatus(taskId: string, status: TaskStatus) {
+	async changeStatus(taskId: string, status: TaskStatus | null) {
 		const { $privateApi } = useNuxtApp()
 		return $privateApi.patch(API.TASKS.CHANGE_STATUS(taskId), { status })
 	},
@@ -58,15 +60,15 @@ export const TaskService = {
 	},
 	async updateSubtask(subtaskId: string, dto: UpdateSubtaskDto) {
 		const { $privateApi } = useNuxtApp()
-		return $privateApi.patch(API.TASKS.UPDATE_SUBTASK(subtaskId), { dto })
+		return $privateApi.patch(API.TASKS.UPDATE_SUBTASK(subtaskId), { ...dto })
 	},
 	async removeSubtask(subtaskId: string) {
 		const { $privateApi } = useNuxtApp()
-		return $privateApi.patch(API.TASKS.REMOVE_SUBTASK(subtaskId))
+		return $privateApi.delete(API.TASKS.REMOVE_SUBTASK(subtaskId))
 	},
 	async deleteTask(taskId: string) {
 		const { $privateApi } = useNuxtApp()
-		return $privateApi.patch(API.TASKS.DELETE_TASK(taskId))
+		return $privateApi.delete(API.TASKS.DELETE_TASK(taskId))
 	},
 	async toggleSubtask(subtaskId: string, value: boolean) {
 		const { $privateApi } = useNuxtApp()
@@ -76,6 +78,14 @@ export const TaskService = {
 	},
 	async updateTask(taskId: string, dto: UpdateTaskDto) {
 		const { $privateApi } = useNuxtApp()
-		return $privateApi.patch(API.TASKS.UPDATE_TASK(taskId), { dto })
+		return $privateApi.patch(API.TASKS.UPDATE_TASK(taskId), { ...dto })
+	},
+	async getByWorkbenchId(workbenchId: string) {
+		const { $privateApi } = useNuxtApp()
+		return $privateApi.get(API.TASKS.GET_BY_WORKBENCH_ID(workbenchId))
+	},
+	async getByExecutorId(executorId: string) {
+		const { $privateApi } = useNuxtApp()
+		return $privateApi.get<ITask[]>(API.TASKS.GET_BY_EXECUTOR_ID(executorId))
 	}
 }

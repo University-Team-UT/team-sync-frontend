@@ -9,9 +9,8 @@ useSyncCurrentBoard()
 </script>
 
 <template>
-	<div class="p-4">
-		<div>filters</div>
-		<div><ColumnList /></div>
+	<div class="p-2">
+		<div class=""><ColumnList /></div>
 	</div>
 </template>
 

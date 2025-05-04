@@ -10,10 +10,11 @@ export const ROUTES = {
 	},
 	GET_STARTED: '/get-started',
 	WORKSPACE: (workspaceId: string) => ({
-		BASE: `/w/${workspaceId}`,
 		SETTINGS: `/w/${workspaceId}/settings`,
 		MEMBERS: `/w/${workspaceId}/members`,
 		TAGS: `/w/${workspaceId}/tags`,
+		ALL_TASKS: `/w/${workspaceId}/all-tasks`,
+		MY_TASKS: `/w/${workspaceId}/my-tasks`,
 		PROJECT: (projectId: string) => ({
 			BASE: `/w/${workspaceId}/p/${projectId}`,
 			BOARD: (boardId: string) => ({

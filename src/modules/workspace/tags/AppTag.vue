@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import type { TagColor } from './types'
 
-defineProps<{ color: TagColor; title: string }>()
+defineProps<{ color?: TagColor; title: string }>()
 </script>
 
 <template>
 	<div
 		class="p-1 rounded-lg flex items-center cursor-default"
 		:style="{
-			backgroundColor: color.background
+			backgroundColor: color?.background
 		}"
 	>
 		<span
 			class="text-xs"
 			:style="{
-				color: color.primary
+				color: color?.primary
 			}"
 		>
 			{{ title }}

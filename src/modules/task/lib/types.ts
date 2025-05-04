@@ -21,6 +21,9 @@ export interface ITask {
 	status: TaskStatus
 	subtasks: ISubtask[]
 	executor?: Executor
+	column: {
+		title: string
+	}
 }
 export type Executor = {
 	role: WorkbenchRole

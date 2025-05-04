@@ -4,7 +4,6 @@ import { createSwapy, utils } from 'swapy'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
 import { ColumnService } from '../api/column.service'
-import ColumnTask from '../ColumnTask.vue'
 import CreateTask from '../CreateTask.vue'
 import TaskList from '../TaskList.vue'
 import { useTaskStore } from '../TaskStore'
@@ -92,9 +91,10 @@ onMounted(() => {
 		swapy.value = createSwapy(container.value, {
 			manualSwap: true,
 			dragAxis: 'x',
-			animation: 'dynamic'
-			// autoScrollOnDrag: true,
-			// enabled: true,
+			animation: 'dynamic',
+			enabled: true,
+
+			autoScrollOnDrag: true
 			// dragOnHold: true
 		})
 		swapy.value.onSwap(event => {
@@ -118,14 +118,17 @@ onUnmounted(() => {
 })
 </script>
 <template>
-	<div ref="container" class="grid gap-1 grid-cols-6">
-		<div v-for="i in slottedItems" :key="i.slotId" :data-swapy-slot="i.slotId">
+	<div ref="container" class="flex gap-3">
+		<div
+			v-for="i in slottedItems"
+			:key="i.slotId"
+			:data-swapy-slot="i.slotId"
+			class="flex-shrink-0 w-[250px]"
+		>
 			<div
 				:key="i.itemId"
-				class="flex flex-col bg-root-800 border-t-2 rounded-t-sm w-full gap-4 scroll-auto"
-				:style="{
-					borderColor: i.item?.color
-				}"
+				class="flex flex-col border-t-2 rounded-t-sm gap-4"
+				:style="{ borderColor: i.item?.color }"
 				:data-swapy-item="i.itemId"
 				@mousedown="itemToChangePosition.id = i.item!.id"
 			>
@@ -156,15 +159,12 @@ onUnmounted(() => {
 						/>
 					</ColumnDropdown>
 				</div>
-				<div data-swapy-no-drag>
+				<div data-swapy-no-drag class="overflow-y-auto h-[calc(100vh-240px)]">
 					<CreateTask :column-id="i.item!.id" />
 					<TaskList :tasks="i.item!.tasks" />
 				</div>
 			</div>
 		</div>
-		<ColumnTask />
-		<CreateColumn />
+		<CreateColumn class="flex-shrink-0 w-[250px]" />
 	</div>
 </template>
-
-<style scoped></style>

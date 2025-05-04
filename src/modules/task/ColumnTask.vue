@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import TaskSidebar from '../dashboard/TaskSidebar.vue'
+import TaskSidebar from './sidebar/TaskSidebar.vue'
 
 const value = ref(3)
 </script>

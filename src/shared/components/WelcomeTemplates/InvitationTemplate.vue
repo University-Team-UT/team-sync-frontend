@@ -3,8 +3,10 @@ import AddGuest from '~/modules/common/invitation/AddGuest.vue'
 import AddParticipant from '~/modules/common/invitation/AddParticipant.vue'
 import InviteLinkCreation from '~/modules/common/invitation/InviteLinkCreation.vue'
 import { MembersService } from '~/modules/workspace/api/members.service'
+import { ROUTES } from '~/shared/config/routes'
 import { useAppStore } from '~/shared/stores/AppStore'
 import { useAuthStore } from '~/shared/stores/AuthStore'
+import { useWorkspaceStore } from '~/shared/stores/WorkspaceStore'
 import { WorkbenchRole } from '~/types/common.types'
 
 const { t } = useI18n()
@@ -29,6 +31,7 @@ const invites = ref<IInvites[]>([
 ])
 
 const toast = useToast()
+const authStore = useAuthStore()
 
 const addInvite = () => {
 	if (invites.value.length >= 5) return
@@ -57,7 +60,12 @@ const { mutate } = useMutation({
 		workbenchId: string
 		emails: IInvites[]
 	}) =>
-		MembersService.inviteMembers(data.memberId, data.workbenchId, data.emails),
+		MembersService.inviteMembers(
+			data.memberId,
+			data.workbenchId,
+			authStore.userId!,
+			data.emails
+		),
 	onSuccess: () => {
 		toast.add({
 			description: 'Приглашения были отосланы.',
@@ -87,7 +95,16 @@ function onUpdateInvite(id: string, value: string) {
 	if (target) target.email = value
 }
 
-const emit = defineEmits(['nextStep'])
+const appStore = useAppStore()
+const wStore = useWorkspaceStore()
+
+const getNextLink = () => {
+	if (appStore.currentWorkspace) {
+		return ROUTES.WORKSPACE(appStore.currentWorkspace!.id).ALL_TASKS
+	} else {
+		return ROUTES.WORKSPACE(wStore.projects[0].id).ALL_TASKS
+	}
+}
 </script>
 
 <template>
@@ -156,7 +173,7 @@ const emit = defineEmits(['nextStep'])
 			size="lg"
 			variant="solid"
 			class="px-8 text-xl font-bold absolute bottom-8"
-			@click="emit('nextStep')"
+			:to="ROUTES.WORKSPACE(appStore.currentWorkspace!.id).ALL_TASKS"
 		/>
 	</div>
 </template>

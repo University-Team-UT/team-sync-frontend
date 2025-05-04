@@ -41,7 +41,7 @@ const route = useRoute()
 				<template #topBar="{ isCollapsed }">
 					<NuxtLink
 						v-if="appStore.currentWorkspace"
-						:to="ROUTES.WORKSPACE(appStore.currentWorkspace?.id).BASE"
+						:to="ROUTES.WORKSPACE(appStore.currentWorkspace?.id).MY_TASKS"
 					>
 						<UButton
 							icon="lucide:arrow-left"

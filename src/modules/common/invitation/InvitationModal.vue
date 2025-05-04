@@ -30,6 +30,8 @@ const invites = ref<IInvites[]>([
 
 const toast = useToast()
 
+const authStore = useAuthStore()
+
 const addInvite = () => {
 	if (invites.value.length >= 5) return
 	invites.value.push({
@@ -57,7 +59,12 @@ const { mutate } = useMutation({
 		workbenchId: string
 		emails: IInvites[]
 	}) =>
-		MembersService.inviteMembers(data.memberId, data.workbenchId, data.emails),
+		MembersService.inviteMembers(
+			data.memberId,
+			data.workbenchId,
+			authStore.userId!,
+			data.emails
+		),
 	onSuccess: () => {
 		toast.add({
 			description: 'Приглашения были отосланы.',

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import TaskSidebar from '../dashboard/TaskSidebar.vue'
+import AppTag from '../workspace/tags/AppTag.vue'
 
 import { TaskKey } from './lib/keys'
 import type { ITask } from './lib/types'
-import SubtaskList from './sidebar/subtasks/SubtaskList.vue'
+import VisualSubtask from './sidebar/subtasks/VisualSubtask.vue'
+import TaskSidebar from './sidebar/TaskSidebar.vue'
 import { TaskStatus } from '~/types/common.types'
 
 const props = defineProps<{ task: ITask }>()
@@ -36,13 +37,16 @@ const completedLength = computed(
 	>
 		<div class="cursor-pointer">
 			<div
-				class="flex flex-col gap-6 cursor-pointer mt-4 bg-root-700 rounded-sm px-4 py-2"
+				class="flex flex-col gap-3 cursor-pointer mt-4 w-full bg-root-700 rounded-sm px-4 py-2"
 			>
-				<div class="flex flex-col gap-2 w-full">
-					<div class="flex">
-						{{ task.title }}
-					</div>
+				<div class="w-full font-bold text-primary-300 rounded-2xl">
+					{{ task.status }}
+					<span v-if="task.priority">/ {{ task.priority }}</span>
 				</div>
+
+				<p>
+					{{ task.title }}
+				</p>
 
 				<div class="flex justify-between w-full items-center">
 					<span v-if="task.executor">{{ task.executor.user.displayName }}</span>
@@ -61,7 +65,7 @@ const completedLength = computed(
 					</div>
 				</div>
 				<div
-					v-if="task.subtasks.length > 0"
+					v-if="task.subtasks"
 					class="flex justify-between w-full gap-4 items-center"
 				>
 					<UIcon name="lucide:network" class="size-5 rotate-90" />
@@ -79,8 +83,22 @@ const completedLength = computed(
 						<span>{{ completedLength }}/{{ task.subtasks.length }}</span>
 					</div>
 				</div>
-				<div v-if="task.subtasks.length > 0" class="flex flex-col gap-4">
-					<SubtaskList is-app-task />
+				<div v-if="task.subtasks" class="flex flex-col">
+					<VisualSubtask
+						v-for="subtask in task.subtasks"
+						:key="subtask.id"
+						:subtask="subtask"
+					/>
+				</div>
+
+				<div v-if="task.tags" class="flex gap-2 flex-wrap">
+					<AppTag
+						v-for="tag in task.tags"
+						:key="tag.id"
+						:tag="tag"
+						:title="tag.title"
+						:color="getTagColorByPrimary(tag.color)"
+					/>
 				</div>
 			</div>
 		</div>

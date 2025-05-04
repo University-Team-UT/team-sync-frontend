@@ -9,7 +9,7 @@ import DefaultLayout from '~/shared/components/DefaultLayout.vue'
 		<template #sidebar>
 			<AppSidebar :is-main="true" />
 		</template>
-		<div>
+		<div class="">
 			<ProjectBoards />
 			<slot />
 		</div>

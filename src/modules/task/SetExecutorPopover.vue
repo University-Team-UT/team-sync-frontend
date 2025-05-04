@@ -1,10 +1,15 @@
 <script setup lang="ts">
-
 import { MembersService } from '../workspace/api/members.service'
 
 import { useAppStore } from '~/shared/stores/AppStore'
 
-const items = ref([])
+const { initialMemberId = undefined } = defineProps<{
+	initialMemberId?: string | undefined
+}>()
+
+const items = ref<{ label: string; value: string | null }[]>([
+	{ label: 'unassigned', value: null }
+])
 
 const appStore = useAppStore()
 
@@ -14,29 +19,45 @@ useQuery({
 	queryFn: () =>
 		MembersService.getWorkbenchMembers(appStore.currentWorkspace!.id),
 	onSuccess: data => {
-		items.value = data.data.map(member => {
-			return {
+		data.data.forEach(member => {
+			items.value.push({
 				label: member.user.displayName!,
-				value: member.user.id!
-			}
+				value: member!.user!.id!
+			})
 		})
+		initialMember.value = items.value.find(
+			item => item.value === initialMemberId
+		)
 	},
 	enabled: true
 })
-
-const selectedValue = ref<{ value: string; label: string } | undefined>(
+const initialMember = ref<{ value: string; label: string } | undefined>(
 	undefined
 )
 
-watch(selectedValue, val => {
-	emit('updateExecutorId', val?.value)
-})
+const selectedValue = ref<{ value: string; label: string } | undefined>(
+	initialMember
+)
 
+watch(selectedValue, val => {
+	if (val?.value !== initialMemberId) {
+		emit('updateExecutorId', val?.value)
+	}
+})
+const slots = defineSlots<{
+	default?: () => any
+}>()
 </script>
 
 <template>
 	<UPopover :content="{ side: 'bottom', align: 'end' }">
-		<slot></slot>
+		<div v-if="slots.default">
+			<slot></slot>
+		</div>
+
+		<UButton v-else icon="lucide:user" size="xs" variant="soft">{{
+			selectedValue?.label || 'unassigned'
+		}}</UButton>
 
 		<template #content>
 			<UCommandPalette

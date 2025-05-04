@@ -70,7 +70,7 @@ const open = ref(false)
 							: true
 					)"
 					:key="item.id"
-					:to="ROUTES.WORKSPACE(item.id).BASE"
+					:to="ROUTES.WORKSPACE(item.id).MY_TASKS"
 					class="cursor-pointer"
 					@click="open = false"
 				>

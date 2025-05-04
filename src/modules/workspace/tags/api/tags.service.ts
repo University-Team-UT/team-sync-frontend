@@ -32,6 +32,6 @@ export const TagsService = {
 	},
 	async unAssignTag(taskId: string, tagId: string) {
 		const { $privateApi } = useNuxtApp()
-		return $privateApi.post(API.TAGS.UNASSIGN_TAG(taskId, tagId))
+		return $privateApi.patch(API.TAGS.UNASSIGN_TAG(taskId, tagId))
 	}
 }

@@ -1,23 +1,10 @@
 <script setup lang="ts">
 import BreadCrumps from './BreadCrumps.vue'
-import type { ServiceNotification } from './notifications.types'
+import type { INotification, ServiceNotification } from './notifications.types'
 
-const notifications: ServiceNotification[] = [
-	{
-		id: '4',
-		title: 'Overdue task from',
-		description: 'Описание задачи какое-то не внятное',
-		dateAdded: '30.03.2025',
-		deadline: '30.03.2025'
-	},
-	{
-		id: '5',
-		title: 'Overdue task from',
-		description: 'Описание задачи какое-то не внятное',
-		dateAdded: '30.03.2025',
-		deadline: '30.03.2025'
-	}
-]
+defineProps<{
+	notifications: INotification[]
+}>()
 </script>
 
 <template>
@@ -34,16 +21,15 @@ const notifications: ServiceNotification[] = [
 			<div class="flex gap-2 flex-col items-center w-full">
 				<span class="line-clamp-1">
 					<span class="mr-2">{{ notification.title }}</span>
+
 					<span
 						class="px-2 inline-flex rounded-lg bg-error-500/30 mr-2 text-error-400 font-bold"
-						>{{ notification.dateAdded }}</span
-					>{{ notification.description }}
+						>{{ notification.createdAt }}</span
+					>{{ notification.content }}
 				</span>
 				<BreadCrumps class="self-start" />
 			</div>
-			<div class="flex absolute right-2 bottom-2">
-				<span class="text-xs">{{ notification.deadline }}</span>
-			</div>
+			<div class="flex absolute right-2 bottom-2"></div>
 			<UButton
 				:ui="{
 					base: 'opacity-0 group-hover:opacity-100 hover:primary-400 group-hover:text-neutral-400 transition group-hover:ease-out duration:100'

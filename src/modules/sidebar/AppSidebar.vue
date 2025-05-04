@@ -7,6 +7,7 @@ import WorkspaceIcon from '../workspace/WorkspaceIcon.vue'
 import WorkspacePopover from '../workspace/WorkspacePopover.vue'
 
 import SidebarItem from './SidebarItem.vue'
+import { ROUTES } from '~/shared/config/routes'
 import { useAppStore } from '~/shared/stores/AppStore'
 
 const slots = defineSlots<{
@@ -18,12 +19,13 @@ const { isMain = false } = defineProps<{ isMain?: boolean }>()
 const { isCollapsed, toggle } = useSidebar()
 
 const appStore = useAppStore()
+const route = useRoute()
 </script>
 
 <template>
 	<aside
 		:class="[
-			'fixed inset-y-0  bg-root-900 h-full',
+			'fixed inset-y-0  bg-root-900 h-full z-100',
 			isCollapsed ? 'w-14' : 'w-62'
 		]"
 	>
@@ -81,16 +83,21 @@ const appStore = useAppStore()
 							:is-collapsed="isCollapsed"
 							icon="lucide:list-checks"
 							text="Мои задачи"
+							:is-active="
+								route.path ===
+								ROUTES.WORKSPACE(appStore.currentWorkspace?.id).MY_TASKS
+							"
+							:to="ROUTES.WORKSPACE(appStore.currentWorkspace?.id).MY_TASKS"
 						/>
 						<SidebarItem
 							:is-collapsed="isCollapsed"
 							icon="lucide:circle-check-big"
 							text="Все задачи"
-						/>
-						<SidebarItem
-							:is-collapsed="isCollapsed"
-							icon="lucide:folder-plus"
-							text="Мои проекты"
+							:is-active="
+								route.path ===
+								ROUTES.WORKSPACE(appStore.currentWorkspace?.id).ALL_TASKS
+							"
+							:to="ROUTES.WORKSPACE(appStore.currentWorkspace?.id).ALL_TASKS"
 						/>
 					</div>
 				</div>

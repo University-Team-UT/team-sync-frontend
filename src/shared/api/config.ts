@@ -76,13 +76,29 @@ export const API = {
 		GET_TASKS_BY_EXECUTOR_ID: (workbenchId: string) =>
 			`get-tasks-by-executor-id/${workbenchId}`,
 		TOGGLE_SUBTASK: (subtaskId: string) => `/task/toggle-subtask/${subtaskId}`,
-		UPDATE_TASK: (taskId: string) => `/task/update-task/${taskId}`
+		UPDATE_TASK: (taskId: string) => `/task/update-task/${taskId}`,
+		GET_BY_WORKBENCH_ID: (workbenchId: string) =>
+			`/task/get-by-workbenchId/${workbenchId}`,
+		GET_BY_EXECUTOR_ID: (executorId: string) =>
+			`/task/get-by-executorId/${executorId}`
 	},
 	COMMENTS: {
-		CREATE: (taskId: string) => `/comments/${taskId}`,
+		GET: (taskId: string) => `/comments/${taskId}`,
 		SEND: (taskId: string, workbenchId: string) =>
 			`/comments/send/${taskId}/${workbenchId}`,
 		DELETE: (commentId: string, userId: string, workbenchId: string) =>
 			`/comments/delete/${commentId}/${userId}/${workbenchId}`
+	},
+	NOTIFICATIONS: {
+		GET_NOTIFICATIONS: `/notifications`,
+		MARK_AS_READ: (notificationId: string) =>
+			`/notifications/${notificationId}/read`,
+		ARCHIVE: (notificationId: string) =>
+			`/notifications/${notificationId}/archive`
+	},
+	FILES: {
+		UPLOAD: '/files/upload',
+		DOWNLOAD: (fileId: string) => `/files/download/${fileId}`,
+		DELETE: (fileId: string) => `/files/delete/${fileId}`
 	}
 } as const

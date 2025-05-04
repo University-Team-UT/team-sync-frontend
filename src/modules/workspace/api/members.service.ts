@@ -32,12 +32,14 @@ export const MembersService = {
 	async inviteMembers(
 		memberId: string,
 		workbenchId: string,
+		inviterId: string,
 		emails: IInvites[]
 	) {
 		const { $privateApi } = useNuxtApp()
 		return $privateApi.post(API.MEMBERS.INVITE_USERS(memberId), {
 			emails,
-			workbenchId
+			workbenchId,
+			inviterId
 		})
 	},
 	async getInviterLink(inviterId: string, workbenchId: string) {
@@ -69,7 +71,7 @@ export const MembersService = {
 	async acceptInvite(memberId: string, workbenchId: string) {
 		const { $privateApi } = useNuxtApp()
 		return $privateApi.patch(API.MEMBERS.ACCEPT_INVITE(memberId), {
-			params: { workbenchId }
+			workbenchId
 		})
 	}
 }
