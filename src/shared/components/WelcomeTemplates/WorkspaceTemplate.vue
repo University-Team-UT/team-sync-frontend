@@ -6,6 +6,7 @@ import {
 	type CreateWorkspaceDto,
 	WorkspaceService
 } from '~/modules/workspace/api/workspace.service'
+import { useAppStore } from '~/shared/stores/AppStore'
 import { useWorkspaceStore } from '~/shared/stores/WorkspaceStore'
 
 const schema = z.object({
@@ -22,11 +23,14 @@ const state = reactive<Partial<Schema>>({
 
 const toast = useToast()
 const wStore = useWorkspaceStore()
+const appStore = useAppStore()
 
 const { mutate, isLoading } = useMutation({
 	mutationFn: (data: CreateWorkspaceDto) =>
 		WorkspaceService.createWorkspace(data),
-	onSuccess: () => {
+	onSuccess: data => {
+		console.log(data.data)
+
 		toast.add({
 			description: 'Рабочее пространство создано',
 			color: 'success'
@@ -44,7 +48,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 	emit('nextStep')
 	state.title = ''
 	state.description = ''
-	wStore.getWorkspaces()
+	await wStore.getWorkspaces()
+	appStore.setCurrentWorkspace(wStore.workspaces[0])
 }
 
 const emit = defineEmits(['nextStep'])
@@ -106,7 +111,6 @@ const emit = defineEmits(['nextStep'])
 					variant="solid"
 					type="submit"
 					class="px-8 text-xl font-bold absolute bottom-8"
-					@click="emit('nextStep')"
 				/>
 			</div>
 		</UForm>

@@ -30,7 +30,7 @@ const { mutate: login, isLoading } = useMutation({
 			color: 'success'
 		})
 		authStore.setAuthData(data.user, data.accessToken)
-		router.push(ROUTES.INDEX)
+		router.push(ROUTES.GET_STARTED)
 	},
 	onError: err => {
 		toast.add({

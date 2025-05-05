@@ -46,6 +46,10 @@ const { data: members, isLoading } = useQuery({
 
 const columns: TableColumn<IWorkspaceMember>[] = [
 	{
+		accessorKey: 'user.id',
+		header: '#'
+	},
+	{
 		accessorKey: 'user.displayName',
 		header: 'Имя'
 	},
@@ -96,29 +100,28 @@ const columns: TableColumn<IWorkspaceMember>[] = [
 ]
 
 function getRowItems(row: Row<IWorkspaceMember>) {
-	return (
-		appStore.currentWorkspace?.userRole !== 'ADMIN' && [
-			{
-				type: 'label',
-				label: 'Действия'
-			},
-			{
-				label: 'Выгнать из рабочего пространства',
-				onSelect() {
-					const memberId = row.original.id
-					deleteMember(memberId)
-				}
-			},
-			{
-				type: 'separator'
-			},
-			{
-				label: 'Поменять роль',
-				onSelect() {},
-				class: 'opacity-50 disabled hover:bg-transparent'
+	return [
+		{
+			type: 'label',
+			label: 'Действия'
+		},
+		{
+			label: 'Выгнать из рабочего пространства',
+			onSelect() {
+				const memberId = row.original.user.id
+
+				deleteMember(memberId!)
 			}
-		]
-	)
+		},
+		{
+			type: 'separator'
+		},
+		{
+			label: 'Поменять роль',
+			onSelect() {},
+			class: 'opacity-50 disabled hover:bg-transparent'
+		}
+	]
 }
 </script>
 

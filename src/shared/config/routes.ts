@@ -8,12 +8,19 @@ export const ROUTES = {
 		SECURITY: '/settings/security',
 		WORKSPACES: '/settings/workspaces'
 	},
-	GETSTARTED: '/get-started',
-	WORKSPACE: (id: string) => ({
-		BASE: `/w/${id}`,
-		SETTINGS: `/w/${id}/settings`,
-		MEMBERS: `/w/${id}/members`,
-		TAGS: `/w/${id}/tags`
+	GET_STARTED: '/get-started',
+	WORKSPACE: (workspaceId: string) => ({
+		SETTINGS: `/w/${workspaceId}/settings`,
+		MEMBERS: `/w/${workspaceId}/members`,
+		TAGS: `/w/${workspaceId}/tags`,
+		ALL_TASKS: `/w/${workspaceId}/all-tasks`,
+		MY_TASKS: `/w/${workspaceId}/my-tasks`,
+		PROJECT: (projectId: string) => ({
+			BASE: `/w/${workspaceId}/p/${projectId}`,
+			BOARD: (boardId: string) => ({
+				BASE: `/w/${workspaceId}/p/${projectId}/b/${boardId}`
+			})
+		})
 	}),
 	INVITE: '/invite'
 }

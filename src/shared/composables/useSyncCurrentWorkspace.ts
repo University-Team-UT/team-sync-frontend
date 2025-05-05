@@ -13,9 +13,7 @@ export function useSyncCurrentWorkspace() {
 		() => workspaceStore.workspaces,
 		newVal => {
 			const found = newVal.find(w => w.id === route.params.workspaceId)
-			if (found) {
-				appStore.setCurrentWorkspace(found)
-			}
+			appStore.setCurrentWorkspace(found ? found : null)
 		},
 		{ immediate: true }
 	)

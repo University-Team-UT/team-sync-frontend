@@ -138,7 +138,7 @@ const items = [
 <template>
 	<div class="flex flex-col justify-center items-center h-screen w-full">
 		<div
-			v-if="!authStore.user.id"
+			v-if="authStore.user.id"
 			class="mx-auto bg-root-700 p-6 min-size-50 rounded-lg shadow-lg"
 		>
 			<div class="flex items-center mb-4">
@@ -156,7 +156,12 @@ const items = [
 			</div>
 
 			<div class="mt-6 flex justify-end text-white opacity-75">
-				<UButton variant="soft" class="text-lg">Принять приглашение</UButton>
+				<UButton
+					variant="soft"
+					class="text-lg"
+					@click="mutate(authStore.userId!)"
+					>Принять приглашение</UButton
+				>
 			</div>
 		</div>
 		<div

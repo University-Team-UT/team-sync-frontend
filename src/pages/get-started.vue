@@ -3,6 +3,7 @@ import type { StepperItem } from '@nuxt/ui'
 
 import AccentColorTemplate from '~/shared/components/WelcomeTemplates/AccentColorTemplate.vue'
 import InvitationTemplate from '~/shared/components/WelcomeTemplates/InvitationTemplate.vue'
+import ProjectTemplate from '~/shared/components/WelcomeTemplates/ProjectTemplate.vue'
 import StartingTemplate from '~/shared/components/WelcomeTemplates/StartingTemplate.vue'
 import ThemeTemplate from '~/shared/components/WelcomeTemplates/ThemeTemplate.vue'
 import WorkspaceTemplate from '~/shared/components/WelcomeTemplates/WorkspaceTemplate.vue'
@@ -29,8 +30,13 @@ const items: StepperItem[] = [
 	},
 	{
 		slot: 'Workspace',
-		title: 'Проект',
+		title: 'Рабочее пространство',
 		icon: 'lucide:proportions'
+	},
+	{
+		slot: 'Project',
+		title: 'Проект',
+		icon: 'lucide:air-vent'
 	},
 	{
 		slot: 'Invitation',
@@ -66,6 +72,10 @@ const nextStep = () => {
 			<template #Workspace>
 				<WorkspaceTemplate @next-step="nextStep" />
 			</template>
+			<template #Project>
+				<ProjectTemplate @next-step="nextStep" />
+			</template>
+
 			<template #Invitation>
 				<InvitationTemplate @next-step="nextStep" />
 			</template>

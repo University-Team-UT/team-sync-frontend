@@ -1,11 +1,14 @@
 <!-- eslint-disable @typescript-eslint/no-explicit-any -->
 <script setup lang="ts">
 import SearchInput from '../common/search/SearchInput.vue'
+import CreateProjectModal from '../projects/CreateProjectModal.vue'
+import ProjectList from '../projects/ProjectList.vue'
 import WorkspaceIcon from '../workspace/WorkspaceIcon.vue'
 import WorkspacePopover from '../workspace/WorkspacePopover.vue'
 
 import SidebarItem from './SidebarItem.vue'
-import SidebarProject from './SidebarProject.vue'
+import { ROUTES } from '~/shared/config/routes'
+import { useAppStore } from '~/shared/stores/AppStore'
 
 const slots = defineSlots<{
 	topBar?: (props: { isCollapsed: boolean }) => any
@@ -14,12 +17,15 @@ const slots = defineSlots<{
 }>()
 const { isMain = false } = defineProps<{ isMain?: boolean }>()
 const { isCollapsed, toggle } = useSidebar()
+
+const appStore = useAppStore()
+const route = useRoute()
 </script>
 
 <template>
 	<aside
 		:class="[
-			'fixed inset-y-0  bg-root-900 h-full',
+			'fixed inset-y-0  bg-root-900 h-full z-100',
 			isCollapsed ? 'w-14' : 'w-62'
 		]"
 	>
@@ -34,7 +40,12 @@ const { isCollapsed, toggle } = useSidebar()
 							<h2 class="text-xs text-gray-400 line-clamp-1 font-bold">
 								Рабочее пространство
 							</h2>
-							<h2 class="text-sm font-semibold">Роман Семенов</h2>
+							<h2
+								v-if="appStore.currentWorkspace"
+								class="text-sm font-semibold"
+							>
+								{{ appStore.currentWorkspace.title }}
+							</h2>
 						</div>
 					</div>
 				</WorkspacePopover>
@@ -72,36 +83,40 @@ const { isCollapsed, toggle } = useSidebar()
 							:is-collapsed="isCollapsed"
 							icon="lucide:list-checks"
 							text="Мои задачи"
+							:is-active="
+								route.path ===
+								ROUTES.WORKSPACE(appStore.currentWorkspace?.id).MY_TASKS
+							"
+							:to="ROUTES.WORKSPACE(appStore.currentWorkspace?.id).MY_TASKS"
 						/>
 						<SidebarItem
 							:is-collapsed="isCollapsed"
 							icon="lucide:circle-check-big"
 							text="Все задачи"
-						/>
-						<SidebarItem
-							:is-collapsed="isCollapsed"
-							icon="lucide:folder-plus"
-							text="Мои проекты"
+							:is-active="
+								route.path ===
+								ROUTES.WORKSPACE(appStore.currentWorkspace?.id).ALL_TASKS
+							"
+							:to="ROUTES.WORKSPACE(appStore.currentWorkspace?.id).ALL_TASKS"
 						/>
 					</div>
 				</div>
 				<div v-if="isMain" class="w-full">
 					<div class="flex justify-between px-1 items-center w-full">
 						<h2 v-if="!isCollapsed" class="text-sm font-bold">Проекты</h2>
-						<UButton
-							variant="link"
-							icon="lucide:plus"
-							:class="[
-								'text-white ',
-								isCollapsed && 'justify-center items-center self-center w-full'
-							]"
-						/>
+						<CreateProjectModal>
+							<UButton
+								variant="link"
+								icon="lucide:plus"
+								:class="[
+									'text-white ',
+									isCollapsed &&
+										'justify-center items-center self-center w-full'
+								]"
+							/>
+						</CreateProjectModal>
 					</div>
-					<SidebarProject
-						:is-collapsed="isCollapsed"
-						text="Дизайн TeamSync"
-						icon="lucide:star"
-					/>
+					<ProjectList :is-collapsed="isCollapsed" />
 				</div>
 			</section>
 			<section class="mt-auto mb-5 w-full">

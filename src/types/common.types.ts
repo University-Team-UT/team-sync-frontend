@@ -16,6 +16,19 @@ export interface IUserAccount {
 	about: string | undefined
 	email: string | undefined
 	displayName: string | undefined
+	id?: string
+}
+export interface IUserAccountNotPartial {
+	displayName: string
+	id: string
+}
+
+export interface IProject {
+	id: string
+	createdAt: string
+	title: string
+	status: ProjectStatus
+	workbenchId: string
 }
 
 export enum WorkbenchRole {
