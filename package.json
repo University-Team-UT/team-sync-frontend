@@ -10,7 +10,8 @@
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix",
 		"postinstall": "nuxt prepare",
-		"clean": "rimraf .nuxt && rimraf node_modules/.cache"
+		"clean": "rimraf .nuxt && rimraf node_modules/.cache",
+		"start": "nuxt preview --host --port 3333"
 	},
 	"dependencies": {
 		"@nuxt/eslint": "^1.2.0",
